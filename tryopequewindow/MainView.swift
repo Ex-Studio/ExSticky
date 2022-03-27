@@ -6,17 +6,24 @@ class MainView: NSView {
     convenience init() {
         self.init(frame: .zero) // will extent to the size of parent window
 
-//        AddLabel()
+        AddTextView()
     }
 
     // MARK: - Subviews
 
-//    /// label
-//    let myLabel: NSView = NSTextField(labelWithString: "my label")
-//    private func AddLabel() {
-//        myLabel.frame = .init(x: 30, y: 0, width: 100, height: 20)
-//        myLabel.wantsLayer = true
-//        myLabel.layer?.backgroundColor = NSColor.green.cgColor
-//        self.addSubview(myLabel)
-//    }
+    private let textView = NSTextView()
+    private func AddTextView() {
+        textView.isRichText = false
+        textView.string = "test textView content"
+        textView.drawsBackground = false
+        self.addSubview(textView)
+
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            textView.topAnchor.constraint(equalTo: self.topAnchor),
+            textView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            textView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            textView.rightAnchor.constraint(equalTo: self.rightAnchor),
+        ])
+    }
 }
