@@ -25,8 +25,14 @@ class MainWindow: NSWindow {
         self.titlebarAppearsTransparent = true
         self.backgroundColor = NSColor(hex: UserPreferences.appearence.color,
                                        alpha: UserPreferences.appearence.alpha) // default color
-        self.level = .floating
-        self.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary] // appear on all desktops
+
+        if UserPreferences.behavior.float == true {
+            self.level = .floating
+        }
+
+        if UserPreferences.behavior.appearInAllDesktop == true {
+            self.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary] // appear on all desktops
+        }
     }
 
     // MARK: - Views

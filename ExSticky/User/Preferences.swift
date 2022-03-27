@@ -3,6 +3,7 @@ import Foundation
 struct Preferences {
     var text = Text()
     var appearence = Appearence()
+    var behavior = Behavior()
 
     // ---
 
@@ -16,6 +17,11 @@ struct Preferences {
         var color: UInt32 = 0x66CCFF // TODO: add get set
         var width: Float = 400 * sqrt(2)
         var height: Float = 400
+    }
+    
+    struct Behavior {
+        var float: Bool = true
+        var appearInAllDesktop: Bool = true
     }
 }
 
