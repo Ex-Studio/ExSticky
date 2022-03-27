@@ -21,6 +21,8 @@ class MainWindow: NSWindow {
         self.setContentSize(.init(width: 400 * sqrt(2), height: 400)) // default window size
         self.titlebarAppearsTransparent = true
         self.backgroundColor = NSColor(hex: 0x66CCFF, alpha: 0.2) // default color
+        self.level = .floating
+        self.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary] // appear on all desktops
     }
 
     // MARK: - Views

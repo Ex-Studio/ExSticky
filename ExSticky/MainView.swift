@@ -18,7 +18,7 @@ class MainView: NSView {
 
         textView.drawsBackground = false // transparent
         textView.isRichText = false
-        textView.string = testText
+        textView.string = ""
         textView.font = NSFont(name: "SF Mono", size: 24)
         textView.usesFontPanel = true // user can change font and size in Font menu
         textView.usesFindPanel = true
@@ -36,5 +36,3 @@ class MainView: NSView {
         ])
     }
 }
-
-let testText = String(repeating: "haha\n", count: 100)
