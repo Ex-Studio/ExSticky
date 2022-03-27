@@ -18,9 +18,13 @@ class MainWindow: NSWindow {
     }
 
     private func ConfigureWindow() {
-        self.setContentSize(.init(width: 400 * sqrt(2), height: 400)) // default window size
+        self.setContentSize(CGSize(
+            width: CGFloat(UserPreferences.appearence.width),
+            height: CGFloat(UserPreferences.appearence.height)
+        )) // default window size
         self.titlebarAppearsTransparent = true
-        self.backgroundColor = NSColor(hex: 0x66CCFF, alpha: 0.2) // default color
+        self.backgroundColor = NSColor(hex: UserPreferences.appearence.color,
+                                       alpha: UserPreferences.appearence.alpha) // default color
         self.level = .floating
         self.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary] // appear on all desktops
     }

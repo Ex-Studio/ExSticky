@@ -19,12 +19,19 @@ class MainView: NSView {
         textView.drawsBackground = false // transparent
         textView.isRichText = false
         textView.string = ""
-        textView.font = NSFont(name: "SF Mono", size: 24)
+        textView.font = NSFont(
+            name: UserPreferences.text.font,
+            size: CGFloat(UserPreferences.text.size)
+        )
         textView.usesFontPanel = true // user can change font and size in Font menu
         textView.usesFindPanel = true
         textView.allowsUndo = true
 
-        textView.selectedTextAttributes = [NSAttributedString.Key.backgroundColor: NSColor(hex: 0x66CCFF, alpha: 0.2)]
+        textView.selectedTextAttributes = [
+            NSAttributedString.Key.backgroundColor:
+                NSColor(hex: UserPreferences.appearence.color,
+                        alpha: UserPreferences.appearence.alpha),
+        ]
 
         self.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
