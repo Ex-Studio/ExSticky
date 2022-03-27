@@ -19,7 +19,6 @@ class MainWindow: NSWindow {
 
     private func ConfigureWindow() {
         self.setContentSize(.init(width: 400 * sqrt(2), height: 400)) // default window size
-        self.title = ""
         self.titlebarAppearsTransparent = true
         self.backgroundColor = NSColor(hex: 0x66CCFF, alpha: 0.2) // default color
     }
