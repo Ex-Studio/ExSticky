@@ -16,9 +16,11 @@ class MainView: NSView {
         let scrollView = NSTextView.scrollableTextView()
         textView = scrollView.documentView as? NSTextView
 
+        textView.drawsBackground = false // transparent
         textView.isRichText = false
         textView.string = testText
-        textView.drawsBackground = false
+        textView.font = NSFont(name: "SF Mono", size: 24)
+        textView.usesFontPanel = true // user can change font and size in Font menu
 
         self.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
