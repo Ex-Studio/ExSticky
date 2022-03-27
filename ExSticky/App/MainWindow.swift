@@ -17,11 +17,18 @@ class MainWindow: NSWindow {
         AddMainView()
     }
 
+    override func close() {
+        super.close()
+        print("closed")
+    }
+
     private func ConfigureWindow() {
         self.setContentSize(CGSize(
             width: CGFloat(UserPreferences.appearence.width),
             height: CGFloat(UserPreferences.appearence.height)
         )) // default window size
+        self.cascadeTopLeft(from: NSPoint(x: 100, y: 100))
+
         self.titlebarAppearsTransparent = true
         self.backgroundColor = NSColor(hex: UserPreferences.appearence.color,
                                        alpha: UserPreferences.appearence.alpha) // default color
