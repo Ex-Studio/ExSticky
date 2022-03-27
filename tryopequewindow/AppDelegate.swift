@@ -1,5 +1,3 @@
-// AppDelegate.swift
-
 import Cocoa
 
 @main
@@ -17,8 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Windows
 
     /// main window
-    let mainWindow = MainWindow()
-    func CreateAndShowMainWindow() {
+    private let mainWindow = MainWindow()
+    private func CreateAndShowMainWindow() {
         mainWindow.makeKeyAndOrderFront(self) // shows the window
         mainWindow.center()
     }
