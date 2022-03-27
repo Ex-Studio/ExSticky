@@ -19,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func CreateNewWindow() {
         windowQueue.append(MainWindow())
         windowQueue.last?.makeKeyAndOrderFront(self)
+        windowQueue.last?.center()
     }
 
     @IBAction func closeCurrentWindow(_: Any) {

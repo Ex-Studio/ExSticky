@@ -27,7 +27,6 @@ class MainWindow: NSWindow {
             width: CGFloat(UserPreferences.appearence.width),
             height: CGFloat(UserPreferences.appearence.height)
         )) // default window size
-        self.cascadeTopLeft(from: NSPoint(x: 100, y: 100))
 
         self.titlebarAppearsTransparent = true
         self.backgroundColor = NSColor(hex: UserPreferences.appearence.color,
