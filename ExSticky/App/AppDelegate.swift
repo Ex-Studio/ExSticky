@@ -22,10 +22,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         windowQueue.last?.center()
     }
 
-    @IBAction func closeCurrentWindow(_: Any) {
-        print("closeCurrentWindow")
-    }
-
     @IBAction func createNewWindow(_: Any) {
         print("createNewWindow")
         CreateNewWindow()

@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "XCLog",
+        "repositoryURL": "https://github.com/Yang-Xijie/XCLog",
+        "state": {
+          "branch": "main",
+          "revision": "c7df5ce4b0fccf4eccd78d81a646302bcb1f374f",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -14,6 +14,7 @@
 		482A99A727F052E8004D16EE /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99A627F052E8004D16EE /* MainWindow.swift */; };
 		482A99A927F052F6004D16EE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99A827F052F6004D16EE /* MainView.swift */; };
 		482A99AB27F059AC004D16EE /* NSColor+hexinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99AA27F059AC004D16EE /* NSColor+hexinit.swift */; };
+		484B943727F09C0B00E1ECF2 /* XCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 484B943627F09C0B00E1ECF2 /* XCLog */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				484B943727F09C0B00E1ECF2 /* XCLog in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +118,9 @@
 			dependencies = (
 			);
 			name = ExSticky;
+			packageProductDependencies = (
+				484B943627F09C0B00E1ECF2 /* XCLog */,
+			);
 			productName = tryopequewindow;
 			productReference = 482A999627F05279004D16EE /* ExSticky.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +149,9 @@
 				Base,
 			);
 			mainGroup = 482A998D27F05279004D16EE;
+			packageReferences = (
+				484B943527F09C0B00E1ECF2 /* XCRemoteSwiftPackageReference "XCLog" */,
+			);
 			productRefGroup = 482A999727F05279004D16EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -385,6 +393,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		484B943527F09C0B00E1ECF2 /* XCRemoteSwiftPackageReference "XCLog" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Yang-Xijie/XCLog";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		484B943627F09C0B00E1ECF2 /* XCLog */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 484B943527F09C0B00E1ECF2 /* XCRemoteSwiftPackageReference "XCLog" */;
+			productName = XCLog;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 482A998E27F05279004D16EE /* Project object */;
 }
