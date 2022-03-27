@@ -16,14 +16,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		482A999627F05279004D16EE /* tryopequewindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tryopequewindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		482A999627F05279004D16EE /* ExSticky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExSticky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482A999927F05279004D16EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		482A999B27F0527C004D16EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		482A999E27F0527C004D16EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		482A99A027F0527C004D16EE /* tryopequewindow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tryopequewindow.entitlements; sourceTree = "<group>"; };
+		482A99A027F0527C004D16EE /* ExSticky.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExSticky.entitlements; sourceTree = "<group>"; };
 		482A99A627F052E8004D16EE /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
 		482A99A827F052F6004D16EE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		482A99AA27F059AC004D16EE /* NSColor+hexinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+hexinit.swift"; sourceTree = "<group>"; };
+		482A99AD27F064DE004D16EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		482A99AE27F064E5004D16EE /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +42,9 @@
 		482A998D27F05279004D16EE = {
 			isa = PBXGroup;
 			children = (
-				482A999827F05279004D16EE /* tryopequewindow */,
+				482A99AE27F064E5004D16EE /* TODO.md */,
+				482A99AD27F064DE004D16EE /* README.md */,
+				482A999827F05279004D16EE /* ExSticky */,
 				482A999727F05279004D16EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +52,12 @@
 		482A999727F05279004D16EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				482A999627F05279004D16EE /* tryopequewindow.app */,
+				482A999627F05279004D16EE /* ExSticky.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		482A999827F05279004D16EE /* tryopequewindow */ = {
+		482A999827F05279004D16EE /* ExSticky */ = {
 			isa = PBXGroup;
 			children = (
 				482A999927F05279004D16EE /* AppDelegate.swift */,
@@ -62,9 +66,9 @@
 				482A99AC27F05CA3004D16EE /* Extensions */,
 				482A999B27F0527C004D16EE /* Assets.xcassets */,
 				482A999D27F0527C004D16EE /* MainMenu.xib */,
-				482A99A027F0527C004D16EE /* tryopequewindow.entitlements */,
+				482A99A027F0527C004D16EE /* ExSticky.entitlements */,
 			);
-			path = tryopequewindow;
+			path = ExSticky;
 			sourceTree = "<group>";
 		};
 		482A99AC27F05CA3004D16EE /* Extensions */ = {
@@ -78,9 +82,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		482A999527F05279004D16EE /* tryopequewindow */ = {
+		482A999527F05279004D16EE /* ExSticky */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 482A99A327F0527C004D16EE /* Build configuration list for PBXNativeTarget "tryopequewindow" */;
+			buildConfigurationList = 482A99A327F0527C004D16EE /* Build configuration list for PBXNativeTarget "ExSticky" */;
 			buildPhases = (
 				482A999227F05279004D16EE /* Sources */,
 				482A999327F05279004D16EE /* Frameworks */,
@@ -90,9 +94,9 @@
 			);
 			dependencies = (
 			);
-			name = tryopequewindow;
+			name = ExSticky;
 			productName = tryopequewindow;
-			productReference = 482A999627F05279004D16EE /* tryopequewindow.app */;
+			productReference = 482A999627F05279004D16EE /* ExSticky.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +114,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 482A999127F05279004D16EE /* Build configuration list for PBXProject "tryopequewindow" */;
+			buildConfigurationList = 482A999127F05279004D16EE /* Build configuration list for PBXProject "ExSticky" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,7 +127,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				482A999527F05279004D16EE /* tryopequewindow */,
+				482A999527F05279004D16EE /* ExSticky */,
 			);
 		};
 /* End PBXProject section */
@@ -286,7 +290,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = tryopequewindow/tryopequewindow.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ExSticky/ExSticky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -301,7 +305,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yangxijie.tryopequewindow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yangxijie.ExSticky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -313,7 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = tryopequewindow/tryopequewindow.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ExSticky/ExSticky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -328,7 +332,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yangxijie.tryopequewindow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yangxijie.ExSticky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -338,7 +342,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		482A999127F05279004D16EE /* Build configuration list for PBXProject "tryopequewindow" */ = {
+		482A999127F05279004D16EE /* Build configuration list for PBXProject "ExSticky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				482A99A127F0527C004D16EE /* Debug */,
@@ -347,7 +351,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		482A99A327F0527C004D16EE /* Build configuration list for PBXNativeTarget "tryopequewindow" */ = {
+		482A99A327F0527C004D16EE /* Build configuration list for PBXNativeTarget "ExSticky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				482A99A427F0527C004D16EE /* Debug */,
