@@ -41,7 +41,3 @@ struct Preferences {
 }
 
 var UserPreferences = Preferences.shared
-//
-// func haha(){
-//    UserDefaults.standard.
-// }

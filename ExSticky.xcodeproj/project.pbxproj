@@ -11,8 +11,8 @@
 		482A999A27F05279004D16EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A999927F05279004D16EE /* AppDelegate.swift */; };
 		482A999C27F0527C004D16EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482A999B27F0527C004D16EE /* Assets.xcassets */; };
 		482A999F27F0527C004D16EE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482A999D27F0527C004D16EE /* MainMenu.xib */; };
-		482A99A727F052E8004D16EE /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99A627F052E8004D16EE /* MainWindow.swift */; };
-		482A99A927F052F6004D16EE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99A827F052F6004D16EE /* MainView.swift */; };
+		482A99A727F052E8004D16EE /* TextWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99A627F052E8004D16EE /* TextWindow.swift */; };
+		482A99A927F052F6004D16EE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99A827F052F6004D16EE /* TextView.swift */; };
 		482A99AB27F059AC004D16EE /* NSColor+hexinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99AA27F059AC004D16EE /* NSColor+hexinit.swift */; };
 		484B943727F09C0B00E1ECF2 /* XCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 484B943627F09C0B00E1ECF2 /* XCLog */; };
 		484B943927F0A1A000E1ECF2 /* PreferenceWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484B943827F0A1A000E1ECF2 /* PreferenceWindow.swift */; };
@@ -27,8 +27,8 @@
 		482A999B27F0527C004D16EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		482A999E27F0527C004D16EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		482A99A027F0527C004D16EE /* ExSticky.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExSticky.entitlements; sourceTree = "<group>"; };
-		482A99A627F052E8004D16EE /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
-		482A99A827F052F6004D16EE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		482A99A627F052E8004D16EE /* TextWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWindow.swift; sourceTree = "<group>"; };
+		482A99A827F052F6004D16EE /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		482A99AA27F059AC004D16EE /* NSColor+hexinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+hexinit.swift"; sourceTree = "<group>"; };
 		482A99AD27F064DE004D16EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		482A99AE27F064E5004D16EE /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
@@ -52,8 +52,8 @@
 			isa = PBXGroup;
 			children = (
 				482A999927F05279004D16EE /* AppDelegate.swift */,
-				482A99A627F052E8004D16EE /* MainWindow.swift */,
-				482A99A827F052F6004D16EE /* MainView.swift */,
+				482A99A627F052E8004D16EE /* TextWindow.swift */,
+				482A99A827F052F6004D16EE /* TextView.swift */,
 				484B945727F0B9E100E1ECF2 /* Preferences */,
 			);
 			path = App;
@@ -185,9 +185,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				482A99AB27F059AC004D16EE /* NSColor+hexinit.swift in Sources */,
-				482A99A727F052E8004D16EE /* MainWindow.swift in Sources */,
+				482A99A727F052E8004D16EE /* TextWindow.swift in Sources */,
 				48164C7227F081E000145E13 /* UserPreferences.swift in Sources */,
-				482A99A927F052F6004D16EE /* MainView.swift in Sources */,
+				482A99A927F052F6004D16EE /* TextView.swift in Sources */,
 				482A999A27F05279004D16EE /* AppDelegate.swift in Sources */,
 				484B943927F0A1A000E1ECF2 /* PreferenceWindow.swift in Sources */,
 				484B945627F0B40B00E1ECF2 /* PreferenceView.swift in Sources */,

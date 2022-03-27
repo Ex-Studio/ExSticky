@@ -1,6 +1,6 @@
 import Cocoa
 
-class MainView: NSView {
+class TextView: NSView {
     // MARK: - View
 
     convenience init() {

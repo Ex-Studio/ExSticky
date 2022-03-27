@@ -1,7 +1,7 @@
 import Cocoa
 import XCLog
 
-class MainWindow: NSWindow {
+class TextWindow: NSWindow {
     // MARK: - Window
 
     convenience init() {
@@ -46,8 +46,8 @@ class MainWindow: NSWindow {
     // MARK: - Views
 
     /// main view
-    private let mainView = MainView()
+    private let view = TextView()
     private func AddMainView() {
-        self.contentView = mainView
+        self.contentView = view
     }
 }

@@ -30,9 +30,8 @@ class PreferencesPanel: NSWindow {
     // MARK: - Views
 
     /// main view
-    private let mainView = NSHostingView(
-        rootView: PreferenceView())
+    private let view = NSHostingView(rootView: PreferenceView())
     private func AddMainView() {
-        self.contentView = mainView
+        self.contentView = view
     }
 }
