@@ -1,4 +1,5 @@
 import Cocoa
+import XCLog
 
 class MainWindow: NSWindow {
     // MARK: - Window
@@ -18,8 +19,9 @@ class MainWindow: NSWindow {
     }
 
     override func close() {
+        // TODO: save content
         super.close()
-        print("closed")
+        XCLog(.trace)
     }
 
     private func ConfigureWindow() {

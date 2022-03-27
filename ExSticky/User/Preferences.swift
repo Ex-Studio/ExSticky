@@ -18,10 +18,10 @@ struct Preferences {
         var width: Float = 400 * sqrt(2)
         var height: Float = 400
     }
-    
+
     struct Behavior {
-        var float: Bool = true
-        var appearInAllDesktop: Bool = true
+        var float = true
+        var appearInAllDesktop = true
     }
 }
 

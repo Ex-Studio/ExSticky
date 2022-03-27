@@ -1,4 +1,5 @@
 import Cocoa
+import XCLog
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -23,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func createNewWindow(_: Any) {
-        print("createNewWindow")
+        XCLog(.trace)
         CreateNewWindow()
     }
 }
