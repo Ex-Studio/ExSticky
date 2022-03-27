@@ -11,19 +11,24 @@ class MainView: NSView {
 
     // MARK: - Subviews
 
-    private let textView = NSTextView()
+    private var textView: NSTextView!
     private func AddTextView() {
-        textView.isRichText = false
-        textView.string = "test textView content"
-        textView.drawsBackground = false
-        self.addSubview(textView)
+        let scrollView = NSTextView.scrollableTextView()
+        textView = scrollView.documentView as? NSTextView
 
-        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isRichText = false
+        textView.string = testText
+        textView.drawsBackground = false
+
+        self.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: self.topAnchor),
-            textView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            textView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            textView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            scrollView.topAnchor.constraint(equalTo: self.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            scrollView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: self.rightAnchor),
         ])
     }
 }
+
+let testText = String(repeating: "haha\n", count: 100)
