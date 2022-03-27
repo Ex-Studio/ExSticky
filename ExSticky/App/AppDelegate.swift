@@ -32,11 +32,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: PreferenceWindow
 
-    private var preferenceWindow: NSWindow!
+    private let preferenceWC = PreferenceWC()
+    private var hasOpenedPreferences = false
     @IBAction func MenuPreference(_: Any) {
         XCLog(.trace)
-        preferenceWindow = PreferencesPanel()
-        preferenceWindow.makeKeyAndOrderFront(self)
-        preferenceWindow.center()
+        preferenceWC.window!.makeKeyAndOrderFront(self)
+        if hasOpenedPreferences == false {
+            preferenceWC.window!.center()
+            hasOpenedPreferences = true
+        }
     }
 }
