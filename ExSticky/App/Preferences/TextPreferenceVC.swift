@@ -1,15 +1,21 @@
 import Cocoa
 import XCLog
 
-class TextPreferenceVC: NSViewController {
-    private var label_textSize: NSTextField!
-    private var slider_textSize: NSSlider!
-    private var label_textFont: NSTextField!
-    private var slider2: NSSlider!
+// TODO: border
 
+class TextPreferenceVC: NSViewController {
     private var vstack: NSStackView!
 
+    private var label_textSize: NSTextField!
+    private var textfield_textSize: NSTextField!
+    private var stepper_textSize: NSStepper!
+
+    private var label_textFont: NSTextField!
+    private var textfield_textFont: NSTextField!
+
     override func loadView() {
+        XCLog(.trace)
+
         view = {
             let v = NSView()
             v.wantsLayer = true
@@ -17,21 +23,33 @@ class TextPreferenceVC: NSViewController {
             return v
         }()
 
-        slider_textSize = {
-            let s = NSSlider(value: 24, minValue: 12, maxValue: 72,
-                             target: self, action: #selector(self.sliderGotNewValue(_:)))
-            return s
-        }()
-
-        slider2 = {
-            let s = NSSlider(value: 24, minValue: 12, maxValue: 72,
-                             target: self, action: #selector(self.sliderGotNewValue(_:)))
-            return s
-        }()
-
         label_textSize = {
             let l = NSTextField(labelWithAttributedString: try! NSAttributedString(markdown: "**Default Size**"))
             return l
+        }()
+
+        textfield_textSize = {
+            let tf = NSTextField(labelWithString: "\(UserPreferences.text.size)")
+            tf.isEditable = true
+            return tf
+        }()
+
+        stepper_textSize = {
+            let s = NSStepper()
+            s.maxValue = 72
+            s.minValue = 12
+            s.increment = 1
+            s.target = self
+            s.action = #selector(stepper_textSize_gotNewValue(_:))
+            s.autorepeat = true // 鼠标一直放上去就一直加
+            s.valueWraps = false // 别循环
+            return s
+        }()
+
+        textfield_textFont = {
+            let tf = NSTextField(labelWithString: "\(UserPreferences.text.font)")
+            tf.isEditable = true
+            return tf
         }()
 
         label_textFont = {
@@ -43,23 +61,22 @@ class TextPreferenceVC: NSViewController {
             let s = NSStackView()
             s.alignment = .centerX
 
-            let hstack1 = NSStackView()
-            hstack1.alignment = .centerY
-            hstack1.addView(label_textSize, in: .leading)
+            let hstack_textSize = NSStackView()
+            hstack_textSize.alignment = .centerY
+            hstack_textSize.addView(label_textSize, in: .leading)
             label_textSize.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([label_textSize.widthAnchor.constraint(equalToConstant: 100)])
-            hstack1.addView(slider_textSize, in: .trailing)
-            s.addView(hstack1, in: .center)
+            hstack_textSize.addView(textfield_textSize, in: .leading)
+            hstack_textSize.addView(stepper_textSize, in: .trailing)
+            s.addView(hstack_textSize, in: .center)
 
-            let hstack2 = NSStackView()
-            hstack2.alignment = .centerY
-            hstack2.addView(label_textFont, in: .leading)
+            let hstack_textFont = NSStackView()
+            hstack_textFont.alignment = .centerY
+            hstack_textFont.addView(label_textFont, in: .leading)
             label_textFont.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([label_textFont.widthAnchor.constraint(equalToConstant: 100)])
-            hstack2.addView(slider2, in: .trailing)
-            s.addView(hstack1, in: .center)
-
-            s.addView(hstack2, in: .center)
+            hstack_textFont.addView(textfield_textFont, in: .trailing)
+            s.addView(hstack_textFont, in: .center)
 
             return s
         }()
@@ -74,7 +91,8 @@ class TextPreferenceVC: NSViewController {
         ])
     }
 
-    @objc func sliderGotNewValue(_ sender: NSSlider!) {
+    @objc private func stepper_textSize_gotNewValue(_ sender: NSStepper!) {
         XCLog(.debug, "\(sender.doubleValue)")
+        textfield_textSize.stringValue = "\(Int(sender.doubleValue))"
     }
 }
