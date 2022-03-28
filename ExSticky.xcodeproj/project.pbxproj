@@ -44,6 +44,7 @@
 		482A99AD27F064DE004D16EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		482A99AE27F064E5004D16EE /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		48698FC927F226DA0006B3E4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		48698FCB27F22D550006B3E4 /* set_build_number.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = set_build_number.sh; path = Scripts/set_build_number.sh; sourceTree = SOURCE_ROOT; };
 		48A10A1E27F2003200303EC8 /* DataPackages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPackages.swift; sourceTree = "<group>"; };
 		48A10A2027F205FB00303EC8 /* ExStickyEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExStickyEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +85,7 @@
 			children = (
 				482A99AE27F064E5004D16EE /* TODO.md */,
 				482A99AD27F064DE004D16EE /* README.md */,
+				48698FCC27F22D640006B3E4 /* Scripts */,
 				482A999827F05279004D16EE /* ExSticky */,
 				482A999727F05279004D16EE /* Products */,
 			);
@@ -131,6 +133,14 @@
 			path = Preferences;
 			sourceTree = "<group>";
 		};
+		48698FCC27F22D640006B3E4 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				48698FCB27F22D550006B3E4 /* set_build_number.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		48A10A2227F2061000303EC8 /* DataStructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 482A99A327F0527C004D16EE /* Build configuration list for PBXNativeTarget "ExSticky" */;
 			buildPhases = (
+				48698FCD27F22DB60006B3E4 /* Set Build Number */,
 				482A999227F05279004D16EE /* Sources */,
 				482A999327F05279004D16EE /* Frameworks */,
 				482A999427F05279004D16EE /* Resources */,
@@ -212,6 +223,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48698FCD27F22DB60006B3E4 /* Set Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set Build Number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/Scripts/set_build_number.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		482A999227F05279004D16EE /* Sources */ = {
@@ -374,7 +406,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C4W6UUH267;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ExSticky/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -403,7 +435,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C4W6UUH267;
 				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ExSticky/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
