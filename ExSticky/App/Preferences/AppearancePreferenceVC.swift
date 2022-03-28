@@ -10,7 +10,7 @@ class AppearancePreferenceVC: NSHostingController<AppearancePreferenceView> {
 
 struct AppearancePreferenceView: View {
     @State var currentColorTheme: ColorTheme = UserPreferences.appearence.color_theme
-    @State var presetColor: PresetColor = .red
+    @State var presetColor: PresetColor = PresetColor(rawValue: UserPreferences.appearence.customizedColor) ?? .blue
     @State var isUsingCustomizedColor: Bool = UserPreferences.appearence.openCustomizedColor
     @State var customizedColorHex = "\(UserPreferences.appearence.customizedColor)".uint322hex
 
@@ -27,9 +27,9 @@ struct AppearancePreferenceView: View {
 
             Group {
                 Group {
-                    Text("Window")
+                    Text("Window Size")
                         .font(.system(.title))
-                    Text("The default size of a window (minimum size is 100x40).\nIt will take effect on new windows.")
+                    Text("The default size of a window (minimum size is 100x60).\nIt will take effect on new windows.")
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
                 }
@@ -45,7 +45,7 @@ struct AppearancePreferenceView: View {
                 }
                 TextField("Height",
                           text: $windowHeight_String) {
-                    if let receivedValue = Float(windowHeight_String), receivedValue > 40.0 {
+                    if let receivedValue = Float(windowHeight_String), receivedValue > 60.0 {
                         UserPreferences.appearence.height = receivedValue
                     } else {
                         alertMessage = "please input correct float"

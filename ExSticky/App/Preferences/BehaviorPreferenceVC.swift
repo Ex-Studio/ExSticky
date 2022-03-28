@@ -14,7 +14,7 @@ struct BehaviorPreferenceView: View {
 
     var body: some View {
         Form {
-            Text("Window")
+            Text("Window Behavior")
                 .font(.system(.title))
             
             Group {
@@ -23,7 +23,7 @@ struct BehaviorPreferenceView: View {
                         UserPreferences.behavior.float = float
                     }
 
-                Text("Should windows flaot on the top.\nChanges will take effect on new windows.")
+                Text("Should windows float on the top.\nChanges will take effect on new windows.")
                     .foregroundColor(Color.gray)
                     .font(.system(.callout))
             }
