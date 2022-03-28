@@ -64,9 +64,8 @@ struct ExStickyPreferences {
     }
 
     struct Appearence {
-        
         // MARK: theme
-        
+
         private let key_color_theme = "exsticky.appearance.color_theme"
         var color_theme: ColorTheme {
             get {
@@ -99,7 +98,6 @@ struct ExStickyPreferences {
             }
         }
 
-        
         // 新建窗口的颜色
         private let key_color = "exsticky.appearance.color"
         private let default_color = PresetColor.blue.rawValue
@@ -119,7 +117,7 @@ struct ExStickyPreferences {
 
         // 用户自定义的那个颜色 希望下次开启app还保留
         private let key_customizedColor = "exsticky.appearance.customizedColor"
-        private let default_customizedColor = UInt32(0x66ccff)
+        private let default_customizedColor = UInt32(0x66CCFF)
         var customizedColor: UInt32 {
             get {
                 if UserDefaults.standard.integer(forKey: key_customizedColor) == 0 {
@@ -133,9 +131,9 @@ struct ExStickyPreferences {
                 UserDefaults.standard.set(value, forKey: key_customizedColor)
             }
         }
-        
+
         // MARK: alpha
-        
+
         private let key_alpha = "exsticky.appearance.alpha"
         private let default_alpha: Float = 0.2
         var alpha: Float {
@@ -189,7 +187,24 @@ struct ExStickyPreferences {
     }
 
     struct Behavior {
-        var float = true
-        var appearInAllDesktop = true
+        private let key_float = "exsticky.appearance.float"
+        var float: Bool {
+            get {
+                return !UserDefaults.standard.bool(forKey: key_float) // default true
+            }
+            set {
+                UserDefaults.standard.set(!newValue, forKey: key_float)
+            }
+        }
+
+        private let key_appearOnAllDesktop = "exsticky.appearance.appearOnAllDesktop"
+        var appearOnAllDesktop: Bool {
+            get {
+                return !UserDefaults.standard.bool(forKey: key_appearOnAllDesktop) // default true
+            }
+            set {
+                UserDefaults.standard.set(!newValue, forKey: key_appearOnAllDesktop)
+            }
+        }
     }
 }

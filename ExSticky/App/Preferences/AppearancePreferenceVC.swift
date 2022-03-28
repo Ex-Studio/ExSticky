@@ -2,13 +2,13 @@ import Cocoa
 import SwiftUI
 import XCLog
 
-class AppearancePreferenceVC: NSHostingController<ContentView> {
+class AppearancePreferenceVC: NSHostingController<AppearancePreferenceView> {
     convenience init() {
-        self.init(rootView: ContentView())
+        self.init(rootView: AppearancePreferenceView())
     }
 }
 
-struct ContentView: View {
+struct AppearancePreferenceView: View {
     @State var currentColorTheme: ColorTheme = UserPreferences.appearence.color_theme
     @State var presetColor: PresetColor = .red
     @State var isUsingCustomizedColor: Bool = UserPreferences.appearence.openCustomizedColor
@@ -29,7 +29,7 @@ struct ContentView: View {
                 Group {
                     Text("Window")
                         .font(.system(.title))
-                    Text("The default size of a window. The minimum size is 100x40. It will take effect on new windows.")
+                    Text("The default size of a window (minimum size is 100x40).\nIt will take effect on new windows.")
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
                 }
@@ -71,7 +71,7 @@ struct ContentView: View {
                         XCLog(.error, "cannot convert")
                     }
                 }
-                Text("The alpha value of the window, which is bigger than 0.0 and smaller than 1.0. It will take effect on new windows.")
+                Text("The alpha value of the window, which is bigger than 0.0 and smaller than 1.0.\nIt will take effect on new windows.")
                     .foregroundColor(Color.gray)
                     .font(.system(.callout))
 

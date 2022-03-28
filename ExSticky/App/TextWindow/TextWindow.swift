@@ -56,7 +56,7 @@ class TextWindow: NSWindow {
             self.level = .floating
         }
 
-        if UserPreferences.behavior.appearInAllDesktop == true {
+        if UserPreferences.behavior.appearOnAllDesktop == true {
             self.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary] // appear on all desktops
         }
 

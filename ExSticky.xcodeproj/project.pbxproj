@@ -121,7 +121,6 @@
 		484B945727F0B9E100E1ECF2 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				48164C7127F081E000145E13 /* UserPreferences.swift */,
 				480C6C2327F0FAC200028C65 /* PreferenceWC.swift */,
 				480C6C2227F0FAC200028C65 /* TextPreferenceVC.swift */,
 				480C6C2527F0FAC200028C65 /* AppearancePreferenceVC.swift */,
@@ -135,6 +134,7 @@
 			children = (
 				48A10A1E27F2003200303EC8 /* Structs.swift */,
 				48A10A2027F205FB00303EC8 /* Enums.swift */,
+				48164C7127F081E000145E13 /* UserPreferences.swift */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
