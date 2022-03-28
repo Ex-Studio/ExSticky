@@ -10,13 +10,15 @@ class PreferenceWC: NSWindowController {
     convenience init() {
         let window: NSWindow = {
             let w = NSWindow(
-                contentRect: .init(x: 0, y: 0, width: 100, height: 100),
+                contentRect: .zero,
                 styleMask: [.titled, .closable, .miniaturizable, .resizable],
                 backing: .buffered,
                 defer: true
             )
-            w.title = "haha"
+            w.title = "Preferences"
             w.toolbarStyle = .preference
+            w.maxSize = NSSize(width: 400, height: 400 / sqrt(2))
+            w.minSize = NSSize(width: 400, height: 400 / sqrt(2))
 
             return w
 
