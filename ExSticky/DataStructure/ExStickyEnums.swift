@@ -1,8 +1,8 @@
 import Foundation
 
 enum ExStickyColorTheme: String, Identifiable, CaseIterable {
-    case single = "single"
-    case random = "random"
+    case single
+    case random
 
     var id: String { self.rawValue }
 }

@@ -10,7 +10,7 @@ class AppearancePreferenceVC: NSHostingController<AppearancePreferenceView> {
 
 struct AppearancePreferenceView: View {
     @State var currentColorTheme: ExStickyColorTheme = UserSettings.appearence.color_theme
-    @State var presetColor: ExStickyPresetColor = ExStickyPresetColor(rawValue: UserSettings.appearence.customizedColor) ?? .blue
+    @State var presetColor = ExStickyPresetColor(rawValue: UserSettings.appearence.customizedColor) ?? .blue
     @State var isUsingCustomizedColor: Bool = UserSettings.appearence.openCustomizedColor
     @State var customizedColorHex = "\(UserSettings.appearence.customizedColor)".uint322hex
 
@@ -34,7 +34,7 @@ struct AppearancePreferenceView: View {
                         .font(.system(.callout))
                 }
                 TextField("Width", text: $windowWidth_String) {
-                    if let receivedValue = Float(windowWidth_String), receivedValue > 100.0 {
+                    if let receivedValue = Float(windowWidth_String), receivedValue > C.TEXT_WINDOW_MIN_WIDTH {
                         UserSettings.appearence.width = receivedValue
                     } else {
                         XCLog(.error)
@@ -45,7 +45,7 @@ struct AppearancePreferenceView: View {
                 }
                 TextField("Height",
                           text: $windowHeight_String) {
-                    if let receivedValue = Float(windowHeight_String), receivedValue > 60.0 {
+                    if let receivedValue = Float(windowHeight_String), receivedValue > C.TEXT_WINDOW_MIN_HEIGHT {
                         UserSettings.appearence.height = receivedValue
                     } else {
                         alertMessage = "please input correct float"

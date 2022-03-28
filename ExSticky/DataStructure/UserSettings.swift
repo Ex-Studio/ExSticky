@@ -14,13 +14,7 @@ struct ExStickySettings {
     // MARK: - Text
 
     struct Text {
-        let max_size = 72
-        let min_size = 12
-        let defautlt_size = 24
-        let defautlt_font = "SFMono-Regular"
         private let key_size = "exsticky.text.size"
-        private let key_font = "exsticky.text.font"
-
         var size: Int {
             set {
                 UserDefaults.standard.set(newValue, forKey: key_size)
@@ -30,18 +24,19 @@ struct ExStickySettings {
                 if size != 0 {
                     return size
                 } else { // this key not exist
-                    UserDefaults.standard.set(defautlt_size, forKey: key_size)
-                    return defautlt_size
+                    UserDefaults.standard.set(C.TEXT_SIZE_DEFAULT, forKey: key_size)
+                    return C.TEXT_SIZE_DEFAULT
                 }
             }
         }
 
+        private let key_font = "exsticky.text.font"
         var font: String {
             set {
                 if NSFontManager.shared.availableFonts.contains(newValue) {
                     UserDefaults.standard.set(newValue, forKey: key_font)
                 } else {
-                    UserDefaults.standard.set(defautlt_font, forKey: key_font)
+                    UserDefaults.standard.set(C.TEXT_FONT_DEFAULT, forKey: key_font)
                     XCLog(.error, "no such font in the user's system")
                 }
             }
@@ -50,12 +45,12 @@ struct ExStickySettings {
                     if NSFontManager.shared.availableFonts.contains(f) {
                         return f
                     } else {
-                        return defautlt_font
+                        return C.TEXT_FONT_DEFAULT
                     }
 
                 } else { // this key not exist
-                    UserDefaults.standard.set(defautlt_size, forKey: key_font)
-                    return defautlt_font
+                    UserDefaults.standard.set(C.TEXT_FONT_DEFAULT, forKey: key_font)
+                    return C.TEXT_FONT_DEFAULT
                 }
             }
         }
@@ -115,11 +110,10 @@ struct ExStickySettings {
 
         // 用户自定义的那个颜色 希望下次开启app还保留
         private let key_customizedColor = "exsticky.appearance.customizedColor"
-        private let default_customizedColor = UInt32(0x66CCFF)
         var customizedColor: UInt32 {
             get {
                 if UserDefaults.standard.integer(forKey: key_customizedColor) == 0 {
-                    return default_customizedColor
+                    return C.COLOR_CUSTOMIZED_DEFAULT
                 } else {
                     return UInt32(UserDefaults.standard.integer(forKey: key_customizedColor))
                 }
@@ -133,15 +127,14 @@ struct ExStickySettings {
         // MARK: alpha
 
         private let key_alpha = "exsticky.appearance.alpha"
-        private let default_alpha: Float = 0.2
         var alpha: Float {
             get {
                 let value = UserDefaults.standard.float(forKey: key_alpha)
                 if value != 0.0 {
                     return value
                 } else {
-                    UserDefaults.standard.set(default_alpha, forKey: key_alpha)
-                    return default_alpha
+                    UserDefaults.standard.set(C.COLOR_ALPHA_DEFAULT, forKey: key_alpha)
+                    return C.COLOR_ALPHA_DEFAULT
                 }
             }
             set {
@@ -150,15 +143,14 @@ struct ExStickySettings {
         }
 
         private let key_width = "exsticky.appearance.width"
-        private let default_width: Float = 565.7
         var width: Float {
             get {
                 let value = UserDefaults.standard.float(forKey: key_width)
                 if value != 0.0 {
                     return value
                 } else {
-                    UserDefaults.standard.set(default_width, forKey: key_width)
-                    return default_width
+                    UserDefaults.standard.set(C.TEXT_WINDOW_WIDTH_DEFAULT, forKey: key_width)
+                    return C.TEXT_WINDOW_WIDTH_DEFAULT
                 }
             }
             set {
@@ -167,15 +159,14 @@ struct ExStickySettings {
         }
 
         private let key_height = "exsticky.appearance.height"
-        private let default_height: Float = 400
         var height: Float {
             get {
                 let value = UserDefaults.standard.float(forKey: key_height)
                 if value != 0.0 {
                     return value
                 } else {
-                    UserDefaults.standard.set(default_width, forKey: key_height)
-                    return default_height
+                    UserDefaults.standard.set(C.TEXT_WINDOW_HEIGHT_DEFAULT, forKey: key_height)
+                    return C.TEXT_WINDOW_HEIGHT_DEFAULT
                 }
             }
             set {

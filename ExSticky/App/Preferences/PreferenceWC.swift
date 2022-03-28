@@ -2,10 +2,10 @@ import Cocoa
 import XCLog
 
 class PreferenceWC: NSWindowController {
-    private var tabVC: NSTabViewController!
-    private var textItem: NSTabViewItem!
-    private var appearanceItem: NSTabViewItem!
-    private var behaviorItem: NSTabViewItem!
+    private var preferenceVC: NSTabViewController!
+    private var textTab: NSTabViewItem!
+    private var appearanceTab: NSTabViewItem!
+    private var behaviorTab: NSTabViewItem!
 
     convenience init() {
         let window: NSWindow = {
@@ -21,22 +21,22 @@ class PreferenceWC: NSWindowController {
         }()
         self.init(window: window)
 
-        tabVC = NSTabViewController()
-        tabVC.tabStyle = .toolbar
+        preferenceVC = NSTabViewController()
+        preferenceVC.tabStyle = .toolbar
 
-        textItem = NSTabViewItem(viewController: TextPreferenceVC())
-        textItem.label = "Text"
-        textItem.image = NSImage(systemSymbolName: "textformat.alt", accessibilityDescription: "")
-        appearanceItem = NSTabViewItem(viewController: AppearancePreferenceVC())
-        appearanceItem.label = "Appearance"
-        appearanceItem.image = NSImage(systemSymbolName: "macwindow", accessibilityDescription: "")
-        behaviorItem = NSTabViewItem(viewController: BehaviorPreferenceVC())
-        behaviorItem.label = "Behavior"
-        behaviorItem.image = NSImage(systemSymbolName: "rectangle.3.group", accessibilityDescription: "")
-        tabVC.addTabViewItem(textItem)
-        tabVC.addTabViewItem(appearanceItem)
-        tabVC.addTabViewItem(behaviorItem)
+        textTab = NSTabViewItem(viewController: TextPreferenceVC())
+        textTab.label = "Text"
+        textTab.image = NSImage(systemSymbolName: "textformat.alt", accessibilityDescription: "")
+        appearanceTab = NSTabViewItem(viewController: AppearancePreferenceVC())
+        appearanceTab.label = "Appearance"
+        appearanceTab.image = NSImage(systemSymbolName: "macwindow", accessibilityDescription: "")
+        behaviorTab = NSTabViewItem(viewController: BehaviorPreferenceVC())
+        behaviorTab.label = "Behavior"
+        behaviorTab.image = NSImage(systemSymbolName: "rectangle.3.group", accessibilityDescription: "")
+        preferenceVC.addTabViewItem(textTab)
+        preferenceVC.addTabViewItem(appearanceTab)
+        preferenceVC.addTabViewItem(behaviorTab)
 
-        contentViewController = tabVC
+        contentViewController = preferenceVC
     }
 }

@@ -28,7 +28,9 @@ struct TextPreferenceView: View {
             }
             Group {
                 TextField("Size", text: $textSize_string) {
-                    if let receivedValue = Int(textSize_string), receivedValue >= 12, receivedValue <= 72 {
+                    if let receivedValue = Int(textSize_string),
+                       receivedValue >= C.TEXT_SIZE_MIN,
+                       receivedValue <= C.TEXT_SIZE_MAX {
                         UserSettings.text.size = receivedValue
                     } else {
                         XCLog(.error)
@@ -37,14 +39,13 @@ struct TextPreferenceView: View {
                         XCLog(.error, "cannot convert")
                     }
                 }
-                Text("min 12 max 72 default 24")
+                Text("min \(C.TEXT_SIZE_MIN) max \(C.TEXT_SIZE_MAX) default \(C.TEXT_SIZE_DEFAULT)")
                     .foregroundColor(Color.gray)
                     .font(.system(.callout))
             }
             Group {
-                
                 TextField("Font", text: $textFont_string) {
-                    if NSFontManager.shared.availableFonts.contains(textFont_string)  {
+                    if NSFontManager.shared.availableFonts.contains(textFont_string) {
                         UserSettings.text.font = textFont_string
                     } else {
                         XCLog(.error)

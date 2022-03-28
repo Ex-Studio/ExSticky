@@ -9,14 +9,14 @@ class BehaviorPreferenceVC: NSHostingController<BehaviorPreferenceView> {
 }
 
 struct BehaviorPreferenceView: View {
-    @State var float:Bool = UserSettings.behavior.float
-    @State var appearOnAllDesktop:Bool = UserSettings.behavior.appearOnAllDesktop
+    @State var float: Bool = UserSettings.behavior.float
+    @State var appearOnAllDesktop: Bool = UserSettings.behavior.appearOnAllDesktop
 
     var body: some View {
         Form {
             Text("Window Behavior")
                 .font(.system(.title))
-            
+
             Group {
                 Toggle("Floating", isOn: $float)
                     .onChange(of: float) { _ in
@@ -27,7 +27,7 @@ struct BehaviorPreferenceView: View {
                     .foregroundColor(Color.gray)
                     .font(.system(.callout))
             }
-            
+
             Group {
                 Toggle("Appear on All Desktops", isOn: $appearOnAllDesktop)
                     .onChange(of: appearOnAllDesktop) { _ in
@@ -42,4 +42,3 @@ struct BehaviorPreferenceView: View {
         .padding()
     }
 }
-
