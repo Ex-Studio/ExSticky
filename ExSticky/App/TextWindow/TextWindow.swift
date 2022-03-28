@@ -13,12 +13,16 @@ class TextWindow: NSWindow {
             defer: true
         )
 
-        // get the color
-
         let color_theme = UserPreferences.appearence.color_theme
         switch color_theme {
         case .single:
-            let color = UserPreferences.appearence.color
+            var color: UInt32
+            if UserPreferences.appearence.openCustomizedColor == true {
+                color = UserPreferences.appearence.customizedColor
+            } else {
+                color = UserPreferences.appearence.color
+            }
+
             let alpha = UserPreferences.appearence.alpha
             let window_color = WindowColor(hex: color, alpha: alpha)
             ConfigureWindow(color: window_color)

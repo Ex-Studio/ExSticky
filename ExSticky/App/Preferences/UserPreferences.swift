@@ -64,34 +64,43 @@ struct ExStickyPreferences {
     }
 
     struct Appearence {
+        
+        // MARK: theme
+        
         private let key_color_theme = "exsticky.appearance.color_theme"
         var color_theme: ColorTheme {
             get {
                 if let value = UserDefaults.standard.string(forKey: key_color_theme) {
-                    if value == "single" {
+                    if value == ColorTheme.single.rawValue {
                         return .single
-                    } else if value == "random" {
+                    } else if value == ColorTheme.random.rawValue {
                         return .random
-                    } else {
+                    } else { // error
                         XCLog(.error)
                         return .single
                     }
-                } else {
+                } else { // default value
                     UserDefaults.standard.set("single", forKey: key_color_theme)
                     return .single
                 }
             }
-
             set {
-                switch newValue {
-                case .single:
-                    UserDefaults.standard.set("single", forKey: key_color_theme)
-                case .random:
-                    UserDefaults.standard.set("random", forKey: key_color_theme)
-                }
+                UserDefaults.standard.set(newValue.rawValue, forKey: key_color_theme)
             }
         }
 
+        private let key_openCustomizedColor = "exsticky.appearance.openCustomizedColor"
+        var openCustomizedColor: Bool {
+            get {
+                return UserDefaults.standard.bool(forKey: key_openCustomizedColor) // default false
+            }
+            set {
+                UserDefaults.standard.set(newValue, forKey: key_openCustomizedColor)
+            }
+        }
+
+        
+        // 新建窗口的颜色
         private let key_color = "exsticky.appearance.color"
         private let default_color = PresetColor.blue.rawValue
         var color: UInt32 {
@@ -108,6 +117,25 @@ struct ExStickyPreferences {
             }
         }
 
+        // 用户自定义的那个颜色 希望下次开启app还保留
+        private let key_customizedColor = "exsticky.appearance.customizedColor"
+        private let default_customizedColor = UInt32(0x66ccff)
+        var customizedColor: UInt32 {
+            get {
+                if UserDefaults.standard.integer(forKey: key_customizedColor) == 0 {
+                    return default_customizedColor
+                } else {
+                    return UInt32(UserDefaults.standard.integer(forKey: key_customizedColor))
+                }
+            }
+            set {
+                let value = UInt32(newValue)
+                UserDefaults.standard.set(value, forKey: key_customizedColor)
+            }
+        }
+        
+        // MARK: alpha
+        
         private let key_alpha = "exsticky.appearance.alpha"
         private let default_alpha: Float = 0.2
         var alpha: Float {
@@ -165,5 +193,3 @@ struct ExStickyPreferences {
         var appearInAllDesktop = true
     }
 }
-
-

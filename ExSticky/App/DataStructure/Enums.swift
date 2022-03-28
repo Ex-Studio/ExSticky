@@ -1,8 +1,8 @@
 import Foundation
 
 enum ColorTheme: String, Identifiable, CaseIterable {
-    case single
-    case random
+    case single = "single"
+    case random = "random"
 
     var id: String { self.rawValue }
 }

@@ -121,11 +121,11 @@
 		484B945727F0B9E100E1ECF2 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				48164C7127F081E000145E13 /* UserPreferences.swift */,
 				480C6C2327F0FAC200028C65 /* PreferenceWC.swift */,
 				480C6C2227F0FAC200028C65 /* TextPreferenceVC.swift */,
 				480C6C2527F0FAC200028C65 /* AppearancePreferenceVC.swift */,
 				480C6C2427F0FAC200028C65 /* BehaviorPreferenceVC.swift */,
-				48164C7127F081E000145E13 /* UserPreferences.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
