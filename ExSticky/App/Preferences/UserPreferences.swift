@@ -93,10 +93,11 @@ struct ExStickyPreferences {
         }
 
         private let key_color = "exsticky.appearance.color"
+        private let default_color = PresetColor.blue.rawValue
         var color: UInt32 {
             get {
                 if UserDefaults.standard.integer(forKey: key_color) == 0 {
-                    return 0x66CCFF
+                    return default_color
                 } else {
                     return UInt32(UserDefaults.standard.integer(forKey: key_color))
                 }
@@ -165,19 +166,4 @@ struct ExStickyPreferences {
     }
 }
 
-enum ColorTheme: String, Identifiable, CaseIterable {
-    case single
-    case random
 
-    var id: String { self.rawValue }
-}
-
-enum PresetColor: UInt32, Identifiable, CaseIterable {
-    case red = 0xFF3B30
-    case orange = 0xFF9500
-    case yellow = 0xFFCC00
-    case green = 0x28CD41
-    case blue = 0x007AFF
-
-    var id: UInt32 { self.rawValue }
-}

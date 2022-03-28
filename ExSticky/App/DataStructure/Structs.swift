@@ -1,5 +1,3 @@
-// Structs.swift
-
 import Foundation
 
 struct WindowColor{

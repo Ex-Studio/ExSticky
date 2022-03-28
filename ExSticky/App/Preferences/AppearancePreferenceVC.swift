@@ -9,14 +9,14 @@ class AppearancePreferenceVC: NSHostingController<ContentView> {
 }
 
 struct ContentView: View {
-    @State var currentColorTheme: ColorTheme = .single
+    @State var currentColorTheme: ColorTheme = UserPreferences.appearence.color_theme
     @State var presetColor: PresetColor = .red
     @State var isUsingCustomizedColor = false
     @State var customizedColorHex = "0x66CCFF"
 
-    @State var windowWidth_String = "565.7"
-    @State var windowHeight_String = "400"
-    @State var alpha_String = "0.2"
+    @State var windowWidth_String = "\(UserPreferences.appearence.width)"
+    @State var windowHeight_String = "\(UserPreferences.appearence.height)"
+    @State var alpha_String = "\(UserPreferences.appearence.alpha)"
 
     @State var presentAlert_customColorCannotConvertToUInt32 = false
     @State var presentAlert_widthCannotConvertToUInt32 = false
@@ -30,7 +30,7 @@ struct ContentView: View {
 
                 Group {
                     Text("Window")
-                        .font(.system(.title2))
+                        .font(.system(.title))
                     Text("The default size of a window. It will take effect on new windows.")
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
@@ -58,7 +58,7 @@ struct ContentView: View {
 
                 Group {
                     Text("Color")
-                        .font(.system(.title2))
+                        .font(.system(.title))
 
                     TextField("Alpha",
                               text: $alpha_String) {
@@ -155,8 +155,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
-}
+ }
