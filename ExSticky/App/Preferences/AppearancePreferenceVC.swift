@@ -12,7 +12,7 @@ struct ContentView: View {
     @State var currentColorTheme: ColorTheme = UserPreferences.appearence.color_theme
     @State var presetColor: PresetColor = .red
     @State var isUsingCustomizedColor: Bool = UserPreferences.appearence.openCustomizedColor
-    @State var customizedColorHex = "\(UserPreferences.appearence.customizedColor)"
+    @State var customizedColorHex = "\(UserPreferences.appearence.customizedColor)".uint322hex
 
     @State var windowWidth_String = "\(UserPreferences.appearence.width)"
     @State var windowHeight_String = "\(UserPreferences.appearence.height)"
