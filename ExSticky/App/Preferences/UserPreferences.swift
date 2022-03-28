@@ -17,7 +17,7 @@ struct ExStickyPreferences {
         let max_size = 72
         let min_size = 12
         let defautlt_size = 24
-        let defautlt_font = "SF Mono"
+        let defautlt_font = "SFMono-Regular"
         let key_size = "exsticky.text.size"
         let key_font = "exsticky.text.font"
 
