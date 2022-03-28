@@ -40,7 +40,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         XCLog(.trace)
         preferenceWC.window!.makeKeyAndOrderFront(self)
         if hasOpenedPreferences == false {
-//            preferenceWC.window!.setContentSize(NSSize(width: 400, height: 400 / sqrt(2)))
             preferenceWC.window!.center()
             hasOpenedPreferences = true
         }

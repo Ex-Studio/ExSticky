@@ -43,7 +43,7 @@ struct ContentView: View {
                             presentAlert_widthCannotConvertToUInt32 = true
                         }
                     }
-                    TextField("Alpha",
+                    TextField("Height",
                               text: $windowHeight_String) {
                         if let receivedValue = Float(windowHeight_String), receivedValue > 0.0 {
                             print(receivedValue)
@@ -60,10 +60,7 @@ struct ContentView: View {
                     Text("Color")
                         .font(.system(.title2))
 
-                    Text("The alpha value of a window. It will take effect on new windows.")
-                        .foregroundColor(Color.gray)
-                        .font(.system(.callout))
-                    TextField("Height",
+                    TextField("Alpha",
                               text: $alpha_String) {
                         if let receivedValue = Float(alpha_String), receivedValue > 0.0, receivedValue <= 1.0 {
                             print(receivedValue)
@@ -73,7 +70,7 @@ struct ContentView: View {
                         }
                     }
 
-                    Text("The color of the window. It will take effect on new windows.")
+                    Text("The alpha value of the window, which is bigger than 0.0 and smaller than 1.0. It will take effect on new windows.")
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
 
@@ -134,7 +131,7 @@ struct ContentView: View {
                                       }
                                   })
                                   .disabled(!isUsingCustomizedColor)
-                        Text("input the color hex eg. 0x66CCFF")
+                        Text("Input the hex of your faviorite color. eg. 0x66CCFF")
                             .foregroundColor(Color.gray)
                             .font(.system(.callout))
                     }

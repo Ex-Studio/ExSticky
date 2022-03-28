@@ -20,6 +20,7 @@
 		482A99A927F052F6004D16EE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99A827F052F6004D16EE /* TextView.swift */; };
 		482A99AB27F059AC004D16EE /* NSColor+hexinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99AA27F059AC004D16EE /* NSColor+hexinit.swift */; };
 		484B943727F09C0B00E1ECF2 /* XCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 484B943627F09C0B00E1ECF2 /* XCLog */; };
+		48A10A1F27F2003200303EC8 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A10A1E27F2003200303EC8 /* Structs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		482A99AA27F059AC004D16EE /* NSColor+hexinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+hexinit.swift"; sourceTree = "<group>"; };
 		482A99AD27F064DE004D16EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		482A99AE27F064E5004D16EE /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		48A10A1E27F2003200303EC8 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		480C6BFB27F0D8CB00028C65 /* TextWindow */ = {
 			isa = PBXGroup;
 			children = (
+				48A10A1E27F2003200303EC8 /* Structs.swift */,
 				482A99A627F052E8004D16EE /* TextWindow.swift */,
 				482A99A827F052F6004D16EE /* TextView.swift */,
 			);
@@ -204,6 +207,7 @@
 				482A99AB27F059AC004D16EE /* NSColor+hexinit.swift in Sources */,
 				481F04E827F1E5E0005FB2A4 /* UInt32+hex2dec.swift in Sources */,
 				480C6C2727F0FAC200028C65 /* AppearancePreferenceVC.swift in Sources */,
+				48A10A1F27F2003200303EC8 /* Structs.swift in Sources */,
 				480C6C2627F0FAC200028C65 /* PreferenceWC.swift in Sources */,
 				482A99A727F052E8004D16EE /* TextWindow.swift in Sources */,
 				48164C7227F081E000145E13 /* UserPreferences.swift in Sources */,

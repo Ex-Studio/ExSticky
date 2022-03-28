@@ -3,16 +3,16 @@ import Cocoa
 class TextView: NSView {
     // MARK: - View
 
-    convenience init() {
+    convenience init(color: WindowColor) {
         self.init(frame: .zero) // will extent to the size of parent window
 
-        AddTextView()
+        AddTextView(color: color)
     }
 
     // MARK: - Subviews
 
     private var textView: NSTextView!
-    private func AddTextView() {
+    private func AddTextView(color: WindowColor) {
         let scrollView = NSTextView.scrollableTextView()
         textView = scrollView.documentView as? NSTextView
 
@@ -29,8 +29,8 @@ class TextView: NSView {
 
         textView.selectedTextAttributes = [
             NSAttributedString.Key.backgroundColor:
-                NSColor(hex: UserPreferences.appearence.color,
-                        alpha: UserPreferences.appearence.alpha),
+                NSColor(hex: color.hex,
+                        alpha: color.alpha),
         ]
 
         self.addSubview(scrollView)

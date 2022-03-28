@@ -13,9 +13,23 @@ class TextWindow: NSWindow {
             defer: true
         )
 
-        ConfigureWindow()
+        // get the color
 
-        AddMainView()
+        let color_theme = UserPreferences.appearence.color_theme
+        switch color_theme {
+        case .single:
+            let color = UserPreferences.appearence.color
+            let alpha = UserPreferences.appearence.alpha
+            let window_color = WindowColor(hex: color, alpha: alpha)
+            ConfigureWindow(color: window_color)
+            AddMainView(color: window_color)
+        case .random:
+            let color = PresetColor.allCases.randomElement()!.rawValue
+            let alpha = UserPreferences.appearence.alpha
+            let window_color = WindowColor(hex: color, alpha: alpha)
+            ConfigureWindow(color: window_color)
+            AddMainView(color: window_color)
+        }
     }
 
     override func close() {
@@ -24,15 +38,15 @@ class TextWindow: NSWindow {
         XCLog(.trace)
     }
 
-    private func ConfigureWindow() {
+    private func ConfigureWindow(color: WindowColor) {
         self.setContentSize(CGSize(
             width: CGFloat(UserPreferences.appearence.width),
             height: CGFloat(UserPreferences.appearence.height)
         )) // default window size
 
         self.titlebarAppearsTransparent = true
-        self.backgroundColor = NSColor(hex: UserPreferences.appearence.color,
-                                       alpha: UserPreferences.appearence.alpha) // default color
+        self.backgroundColor = NSColor(hex: color.hex,
+                                       alpha: color.alpha) // default color
 
         if UserPreferences.behavior.float == true {
             self.level = .floating
@@ -46,8 +60,9 @@ class TextWindow: NSWindow {
     // MARK: - Views
 
     /// main view
-    private let view = TextView()
-    private func AddMainView() {
+    private var view: TextView!
+    private func AddMainView(color: WindowColor) {
+        view = TextView(color: color)
         self.contentView = view
     }
 }
