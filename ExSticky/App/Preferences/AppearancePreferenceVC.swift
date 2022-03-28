@@ -17,7 +17,7 @@ struct ContentView: View {
     @State var windowWidth_String = "\(UserPreferences.appearence.width)"
     @State var windowHeight_String = "\(UserPreferences.appearence.height)"
     @State var alpha_String = "\(UserPreferences.appearence.alpha)"
-    
+
     @State var alertMessage = ""
     @State var presentAlert = false
 
@@ -26,15 +26,15 @@ struct ContentView: View {
             // MARK: - Window
 
             Group {
-                Text("Window")
-                    .font(.system(.title))
-                Text("The default size of a window. It will take effect on new windows.")
-                    .foregroundColor(Color.gray)
-                    .font(.system(.callout))
-
+                Group {
+                    Text("Window")
+                        .font(.system(.title))
+                    Text("The default size of a window. The minimum size is 100x40. It will take effect on new windows.")
+                        .foregroundColor(Color.gray)
+                        .font(.system(.callout))
+                }
                 TextField("Width", text: $windowWidth_String) {
-                    if let receivedValue = Float(windowWidth_String), receivedValue > 0.0 {
-                        print(receivedValue)
+                    if let receivedValue = Float(windowWidth_String), receivedValue > 100.0 {
                         UserPreferences.appearence.width = receivedValue
                     } else {
                         XCLog(.error)
@@ -45,8 +45,7 @@ struct ContentView: View {
                 }
                 TextField("Height",
                           text: $windowHeight_String) {
-                    if let receivedValue = Float(windowHeight_String), receivedValue > 0.0 {
-                        print(receivedValue)
+                    if let receivedValue = Float(windowHeight_String), receivedValue > 40.0 {
                         UserPreferences.appearence.height = receivedValue
                     } else {
                         alertMessage = "please input correct float"
@@ -65,7 +64,6 @@ struct ContentView: View {
                 TextField("Alpha",
                           text: $alpha_String) {
                     if let receivedValue = Float(alpha_String), receivedValue > 0.0, receivedValue <= 1.0 {
-                        print(receivedValue)
                         UserPreferences.appearence.alpha = receivedValue
                     } else {
                         alertMessage = "please input correct float"
@@ -73,7 +71,6 @@ struct ContentView: View {
                         XCLog(.error, "cannot convert")
                     }
                 }
-
                 Text("The alpha value of the window, which is bigger than 0.0 and smaller than 1.0. It will take effect on new windows.")
                     .foregroundColor(Color.gray)
                     .font(.system(.callout))

@@ -59,6 +59,8 @@ class TextWindow: NSWindow {
         if UserPreferences.behavior.appearInAllDesktop == true {
             self.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary] // appear on all desktops
         }
+
+        self.minSize = .init(width: 100, height: 60) // include title bar
     }
 
     // MARK: - Views
