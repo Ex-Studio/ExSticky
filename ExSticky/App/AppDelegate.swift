@@ -23,8 +23,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func CreateNewWindow() {
         textWindowQueue.append(TextWindow())
-        textWindowQueue.last?.makeKeyAndOrderFront(self)
-        textWindowQueue.last?.center()
+        textWindowQueue.last!.makeKeyAndOrderFront(self)
+        if textWindowQueue.count < 16 {
+            let screenh = NSScreen.main!.frame.size.height
+            textWindowQueue.last!.setFrameOrigin(
+                NSPoint(x: CGFloat(10 + 20 * (textWindowQueue.count - 1)),
+                        y: screenh - CGFloat(10) - textWindowQueue.last!.frame.height - CGFloat(26 * (textWindowQueue.count - 1))))
+        } else {
+            textWindowQueue.last?.center()
+        }
     }
 
     @IBAction func MenuNew(_: Any) {

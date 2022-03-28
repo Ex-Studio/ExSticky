@@ -7,6 +7,5 @@
 
 - 退出app的时候，是否调用close？
 - 创建GitHub的exstudio
-- 用swiftui写preferencepanel
 - 第一次打开显示提示
 - 统计使用数量 然后到100的时候提示给我买咖啡
