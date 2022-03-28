@@ -2,7 +2,6 @@ import Cocoa
 import XCLog
 
 // TODO: add border
-// TODO: 各种sender和提示的结合
 
 class TextPreferenceVC: NSViewController {
     private let title_width: CGFloat = 40.0
@@ -39,6 +38,7 @@ class TextPreferenceVC: NSViewController {
         textfield_textSize = {
             let tf = NSTextField(labelWithString: "\(Int(UserPreferences.text.size))") // default value
             tf.isEditable = true
+            tf.isBordered = true
             tf.target = self
             tf.action = #selector(textfield_textSize_gotNewValue(_:))
             return tf
@@ -69,6 +69,7 @@ class TextPreferenceVC: NSViewController {
         textfield_textFont = { // TODO:
             let tf = NSTextField(labelWithString: "\(UserPreferences.text.font)")
             tf.isEditable = true
+            tf.isBordered = true
             tf.target = self
             tf.action = #selector(textfield_textFont_gotNewValue(_:))
             return tf
@@ -82,7 +83,7 @@ class TextPreferenceVC: NSViewController {
 
         label_hint_textFont = {
             let l = NSTextField(labelWithAttributedString:
-                NSAttributedString(string: "Check your Font Book to get the postscript name of a specific font.\n(default SFMono-Regular)\nChanges will take effect on new windows.",
+                NSAttributedString(string: "default SFMono-Regular\nCheck your Font Book to get the postscript name of a specific font.\nChanges will take effect on new windows.",
                                    attributes: [.foregroundColor: NSColor.systemGray]))
             l.alignment = .natural
             l.usesSingleLineMode = false
@@ -105,7 +106,7 @@ class TextPreferenceVC: NSViewController {
             s.addView(label_hint_textSize, in: .center)
             label_hint_textSize.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                label_hint_textSize.leftAnchor.constraint(equalTo: s.leftAnchor, constant: self.title_width),
+                label_hint_textSize.leftAnchor.constraint(equalTo: s.leftAnchor, constant: self.title_width + 10),
             ])
 
             let hstack_textFont = NSStackView()
@@ -119,7 +120,7 @@ class TextPreferenceVC: NSViewController {
             s.addView(label_hint_textFont, in: .center)
             label_hint_textFont.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                label_hint_textFont.leftAnchor.constraint(equalTo: s.leftAnchor, constant: self.title_width),
+                label_hint_textFont.leftAnchor.constraint(equalTo: s.leftAnchor, constant: self.title_width + 10),
             ])
 
             return s
@@ -152,6 +153,11 @@ class TextPreferenceVC: NSViewController {
             UserPreferences.text.size = newValue
         } else {
             XCLog(.error, "cannot convert to Int")
+            let alert = NSAlert()
+            alert.messageText = "Cannot convert to an integer."
+            alert.informativeText = "Please input the correct number."
+            alert.icon = NSImage(systemSymbolName: "questionmark", accessibilityDescription: nil)
+            alert.runModal()
         }
     }
 
@@ -163,7 +169,11 @@ class TextPreferenceVC: NSViewController {
         } else {
             XCLog(.error, "user don't have this font")
             textfield_textFont.stringValue = UserPreferences.text.font
-            // TODO: add hints
+            let alert = NSAlert()
+            alert.messageText = "No such font."
+            alert.informativeText = "Please input the correct font name."
+            alert.icon = NSImage(systemSymbolName: "questionmark", accessibilityDescription: nil)
+            alert.runModal()
         }
     }
 }
