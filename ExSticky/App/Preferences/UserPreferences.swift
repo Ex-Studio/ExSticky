@@ -66,6 +66,11 @@ struct ExStickyPreferences {
     struct Appearence {
         private let key_color_theme = "exsticky.appearance.color_theme"
         private let key_color = "exsticky.appearance.color"
+        private let key_width = "exsticky.appearance.width"
+        private let key_height = "exsticky.appearance.height"
+
+        private let default_width: Float = 565.7
+        private let default_height: Float = 400
 
         var color_theme: ColorTheme {
             get {
@@ -109,8 +114,35 @@ struct ExStickyPreferences {
             }
         }
 
-        var width: Float = 400 * sqrt(2)
-        var height: Float = 400
+        var width: Float {
+            get {
+                let value = UserDefaults.standard.float(forKey: key_width)
+                if value != 0.0 {
+                    return value
+                } else {
+                    UserDefaults.standard.set(default_width, forKey: key_width)
+                    return default_width
+                }
+            }
+            set {
+                UserDefaults.standard.set(newValue, forKey: key_width)
+            }
+        }
+
+        var height: Float {
+            get {
+                let value = UserDefaults.standard.float(forKey: key_height)
+                if value != 0.0 {
+                    return value
+                } else {
+                    UserDefaults.standard.set(default_width, forKey: key_height)
+                    return default_height
+                }
+            }
+            set {
+                UserDefaults.standard.set(newValue, forKey: key_height)
+            }
+        }
     }
 
     struct Behavior {
