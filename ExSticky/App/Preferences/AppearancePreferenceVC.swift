@@ -11,11 +11,13 @@ class AppearancePreferenceVC: NSHostingController<ContentView> {
 struct ContentView: View {
     @State var currentColorTheme: ColorTheme = .single
 
-    @State var presetColor: ExStickyColor = .systemBlue
+    @State var presetColor: ExStickyColor = .red
 
     @State var isUsingCustomizedColor = false
 
     @State var customizedColorHex = "0x66CCFF"
+
+    @State var presentAlert = false
 
     var body: some View {
         VStack {
@@ -46,18 +48,41 @@ struct ContentView: View {
                 Group {
                     Picker("Preset", selection: $presetColor) {
                         ForEach(ExStickyColor.allCases) { color in
-                            Text("\(color.rawValue)")
-                                .tag(color)
+                            switch color {
+                            case .red:
+                                Text("Red")
+                                    .tag(color)
+                            case .orange:
+                                Text("Orange")
+                                    .tag(color)
+                            case .yellow:
+                                Text("Yellow")
+                                    .tag(color)
+                            case .green:
+                                Text("Green")
+                                    .tag(color)
+                            case .blue:
+                                Text("Blue")
+                                    .tag(color)
+                            }
                         }
                     }
                     .disabled(isUsingCustomizedColor)
+                    .onChange(of: presetColor) { _ in
+                        UserPreferences.appearence.color = presetColor.rawValue
+                    }
 
                     Toggle("Use customized color", isOn: $isUsingCustomizedColor)
 
                     TextField("Customization",
                               text: $customizedColorHex,
                               onCommit: {
-                                  print("haha")
+                                  if let value = customizedColorHex.hex2uint32 {
+                                      UserPreferences.appearence.color = value
+                                  } else {
+                                      presentAlert = true
+                                      XCLog(.error, "cannot convert to UInt32")
+                                  }
                               })
                               .disabled(!isUsingCustomizedColor)
                     Text("input the color hex eg. 0x66CCFF")
@@ -67,16 +92,11 @@ struct ContentView: View {
                 .disabled(currentColorTheme == .random)
             }
             .padding()
+            .alert(isPresented: $presentAlert) {
+                Alert(title: Text("haha"), message: nil, dismissButton: nil)
+            }
         }
     }
-}
-
-enum ExStickyColor: String, Identifiable, CaseIterable {
-    case systemBlue
-    case systemGreen
-    case systemRed
-
-    var id: String { self.rawValue }
 }
 
 struct ContentView_Previews: PreviewProvider {

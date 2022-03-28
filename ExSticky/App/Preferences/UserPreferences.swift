@@ -2,6 +2,8 @@ import AppKit
 import Foundation
 import XCLog
 
+// TODO: random color
+
 var UserPreferences = ExStickyPreferences.shared
 
 struct ExStickyPreferences {
@@ -18,8 +20,8 @@ struct ExStickyPreferences {
         let min_size = 12
         let defautlt_size = 24
         let defautlt_font = "SFMono-Regular"
-        let key_size = "exsticky.text.size"
-        let key_font = "exsticky.text.font"
+        private let key_size = "exsticky.text.size"
+        private let key_font = "exsticky.text.font"
 
         var size: Int {
             set {
@@ -62,9 +64,8 @@ struct ExStickyPreferences {
     }
 
     struct Appearence {
-        let defautlt_size = 24
-        let defautlt_font = "SFMono-Regular"
-        let key_color_theme = "exsticky.appearance.color_theme"
+        private let key_color_theme = "exsticky.appearance.color_theme"
+        private let key_color = "exsticky.appearance.color"
 
         var color_theme: ColorTheme {
             get {
@@ -94,7 +95,20 @@ struct ExStickyPreferences {
         }
 
         var alpha: Float = 0.2
-        var color: UInt32 = 0x66CCFF // TODO: add get set
+        var color: UInt32 {
+            get {
+                if UserDefaults.standard.integer(forKey: key_color) == 0 {
+                    return 0x66CCFF
+                } else {
+                    return UInt32(UserDefaults.standard.integer(forKey: key_color))
+                }
+            }
+            set {
+                let value = UInt32(newValue)
+                UserDefaults.standard.set(value, forKey: key_color)
+            }
+        }
+
         var width: Float = 400 * sqrt(2)
         var height: Float = 400
     }
@@ -110,4 +124,14 @@ enum ColorTheme: String, Identifiable, CaseIterable {
     case random
 
     var id: String { self.rawValue }
+}
+
+enum ExStickyColor: UInt32, Identifiable, CaseIterable {
+    case red = 0xFF3B30
+    case orange = 0xFF9500
+    case yellow = 0xFFCC00
+    case green = 0x28CD41
+    case blue = 0x007AFF
+
+    var id: UInt32 { self.rawValue }
 }
