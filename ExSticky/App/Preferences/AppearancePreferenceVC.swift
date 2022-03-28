@@ -9,14 +9,14 @@ class AppearancePreferenceVC: NSHostingController<AppearancePreferenceView> {
 }
 
 struct AppearancePreferenceView: View {
-    @State var currentColorTheme: ColorTheme = UserPreferences.appearence.color_theme
-    @State var presetColor: PresetColor = PresetColor(rawValue: UserPreferences.appearence.customizedColor) ?? .blue
-    @State var isUsingCustomizedColor: Bool = UserPreferences.appearence.openCustomizedColor
-    @State var customizedColorHex = "\(UserPreferences.appearence.customizedColor)".uint322hex
+    @State var currentColorTheme: ExStickyColorTheme = UserSettings.appearence.color_theme
+    @State var presetColor: ExStickyPresetColor = ExStickyPresetColor(rawValue: UserSettings.appearence.customizedColor) ?? .blue
+    @State var isUsingCustomizedColor: Bool = UserSettings.appearence.openCustomizedColor
+    @State var customizedColorHex = "\(UserSettings.appearence.customizedColor)".uint322hex
 
-    @State var windowWidth_String = "\(UserPreferences.appearence.width)"
-    @State var windowHeight_String = "\(UserPreferences.appearence.height)"
-    @State var alpha_String = "\(UserPreferences.appearence.alpha)"
+    @State var windowWidth_String = "\(UserSettings.appearence.width)"
+    @State var windowHeight_String = "\(UserSettings.appearence.height)"
+    @State var alpha_String = "\(UserSettings.appearence.alpha)"
 
     @State var alertMessage = ""
     @State var presentAlert = false
@@ -35,7 +35,7 @@ struct AppearancePreferenceView: View {
                 }
                 TextField("Width", text: $windowWidth_String) {
                     if let receivedValue = Float(windowWidth_String), receivedValue > 100.0 {
-                        UserPreferences.appearence.width = receivedValue
+                        UserSettings.appearence.width = receivedValue
                     } else {
                         XCLog(.error)
                         alertMessage = "please input correct float"
@@ -46,7 +46,7 @@ struct AppearancePreferenceView: View {
                 TextField("Height",
                           text: $windowHeight_String) {
                     if let receivedValue = Float(windowHeight_String), receivedValue > 60.0 {
-                        UserPreferences.appearence.height = receivedValue
+                        UserSettings.appearence.height = receivedValue
                     } else {
                         alertMessage = "please input correct float"
                         presentAlert = true
@@ -64,7 +64,7 @@ struct AppearancePreferenceView: View {
                 TextField("Alpha",
                           text: $alpha_String) {
                     if let receivedValue = Float(alpha_String), receivedValue > 0.0, receivedValue <= 1.0 {
-                        UserPreferences.appearence.alpha = receivedValue
+                        UserSettings.appearence.alpha = receivedValue
                     } else {
                         alertMessage = "please input correct float"
                         presentAlert = true
@@ -77,24 +77,24 @@ struct AppearancePreferenceView: View {
 
                 Picker("Theme", selection: $currentColorTheme) {
                     Text("single")
-                        .tag(ColorTheme.single)
+                        .tag(ExStickyColorTheme.single)
                     Text("random")
-                        .tag(ColorTheme.random)
+                        .tag(ExStickyColorTheme.random)
                 }
                 .pickerStyle(.inline)
                 .onChange(of: currentColorTheme) { newValue in
                     switch newValue {
                     case .single:
-                        UserPreferences.appearence.color_theme = .single
+                        UserSettings.appearence.color_theme = .single
                     case .random:
-                        UserPreferences.appearence.color_theme = .random
+                        UserSettings.appearence.color_theme = .random
                     }
                 }
 
                 // single
                 Group {
                     Picker("Preset", selection: $presetColor) {
-                        ForEach(PresetColor.allCases) { color in
+                        ForEach(ExStickyPresetColor.allCases) { color in
                             switch color {
                             case .red:
                                 Text("Red")
@@ -116,7 +116,7 @@ struct AppearancePreferenceView: View {
                     }
                     .disabled(isUsingCustomizedColor)
                     .onChange(of: presetColor) { _ in
-                        UserPreferences.appearence.color = presetColor.rawValue
+                        UserSettings.appearence.color = presetColor.rawValue
                     }
 
                     Toggle("Use customized color", isOn: $isUsingCustomizedColor)
@@ -125,7 +125,7 @@ struct AppearancePreferenceView: View {
                               text: $customizedColorHex,
                               onCommit: {
                                   if let value = customizedColorHex.hex2uint32 {
-                                      UserPreferences.appearence.color = value
+                                      UserSettings.appearence.color = value
                                   } else {
                                       alertMessage = "please input correct integer" // "please input correct float"
                                       presentAlert = true

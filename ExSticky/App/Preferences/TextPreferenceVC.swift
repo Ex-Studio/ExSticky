@@ -9,8 +9,8 @@ class TextPreferenceVC: NSHostingController<TextPreferenceView> {
 }
 
 struct TextPreferenceView: View {
-    @State var textSize_string = "\(UserPreferences.text.size)"
-    @State var textFont_string = "\(UserPreferences.text.font)"
+    @State var textSize_string = "\(UserSettings.text.size)"
+    @State var textFont_string = "\(UserSettings.text.font)"
 
     @State var alertMessage = ""
     @State var presentAlert = false
@@ -29,7 +29,7 @@ struct TextPreferenceView: View {
             Group {
                 TextField("Size", text: $textSize_string) {
                     if let receivedValue = Int(textSize_string), receivedValue >= 12, receivedValue <= 72 {
-                        UserPreferences.text.size = receivedValue
+                        UserSettings.text.size = receivedValue
                     } else {
                         XCLog(.error)
                         alertMessage = "please input correct font size"
@@ -45,7 +45,7 @@ struct TextPreferenceView: View {
                 
                 TextField("Font", text: $textFont_string) {
                     if NSFontManager.shared.availableFonts.contains(textFont_string)  {
-                        UserPreferences.text.font = textFont_string
+                        UserSettings.text.font = textFont_string
                     } else {
                         XCLog(.error)
                         alertMessage = "please input correct font name"

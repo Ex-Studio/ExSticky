@@ -1,6 +1,6 @@
 import Foundation
 
-struct WindowColor{
+struct TextWindowColor {
     var hex: UInt32
     var alpha: Float
 }

@@ -9,8 +9,8 @@ class BehaviorPreferenceVC: NSHostingController<BehaviorPreferenceView> {
 }
 
 struct BehaviorPreferenceView: View {
-    @State var float:Bool = UserPreferences.behavior.float
-    @State var appearOnAllDesktop:Bool = UserPreferences.behavior.appearOnAllDesktop
+    @State var float:Bool = UserSettings.behavior.float
+    @State var appearOnAllDesktop:Bool = UserSettings.behavior.appearOnAllDesktop
 
     var body: some View {
         Form {
@@ -20,7 +20,7 @@ struct BehaviorPreferenceView: View {
             Group {
                 Toggle("Floating", isOn: $float)
                     .onChange(of: float) { _ in
-                        UserPreferences.behavior.float = float
+                        UserSettings.behavior.float = float
                     }
 
                 Text("Should windows float on the top.\nChanges will take effect on new windows.")
@@ -31,7 +31,7 @@ struct BehaviorPreferenceView: View {
             Group {
                 Toggle("Appear on All Desktops", isOn: $appearOnAllDesktop)
                     .onChange(of: appearOnAllDesktop) { _ in
-                        UserPreferences.behavior.appearOnAllDesktop = appearOnAllDesktop
+                        UserSettings.behavior.appearOnAllDesktop = appearOnAllDesktop
                     }
 
                 Text("Should windows appear on all desktops.\nChanges will take effect on new windows.")

@@ -13,24 +13,24 @@ class TextWindow: NSWindow {
             defer: true
         )
 
-        let color_theme = UserPreferences.appearence.color_theme
+        let color_theme = UserSettings.appearence.color_theme
         switch color_theme {
         case .single:
             var color: UInt32
-            if UserPreferences.appearence.openCustomizedColor == true {
-                color = UserPreferences.appearence.customizedColor
+            if UserSettings.appearence.openCustomizedColor == true {
+                color = UserSettings.appearence.customizedColor
             } else {
-                color = UserPreferences.appearence.color
+                color = UserSettings.appearence.color
             }
 
-            let alpha = UserPreferences.appearence.alpha
-            let window_color = WindowColor(hex: color, alpha: alpha)
+            let alpha = UserSettings.appearence.alpha
+            let window_color = TextWindowColor(hex: color, alpha: alpha)
             ConfigureWindow(color: window_color)
             AddMainView(color: window_color)
         case .random:
-            let color = PresetColor.allCases.randomElement()!.rawValue
-            let alpha = UserPreferences.appearence.alpha
-            let window_color = WindowColor(hex: color, alpha: alpha)
+            let color = ExStickyPresetColor.allCases.randomElement()!.rawValue
+            let alpha = UserSettings.appearence.alpha
+            let window_color = TextWindowColor(hex: color, alpha: alpha)
             ConfigureWindow(color: window_color)
             AddMainView(color: window_color)
         }
@@ -42,21 +42,21 @@ class TextWindow: NSWindow {
         XCLog(.trace)
     }
 
-    private func ConfigureWindow(color: WindowColor) {
+    private func ConfigureWindow(color: TextWindowColor) {
         self.setContentSize(CGSize(
-            width: CGFloat(UserPreferences.appearence.width),
-            height: CGFloat(UserPreferences.appearence.height)
+            width: CGFloat(UserSettings.appearence.width),
+            height: CGFloat(UserSettings.appearence.height)
         )) // default window size
 
         self.titlebarAppearsTransparent = true
         self.backgroundColor = NSColor(hex: color.hex,
                                        alpha: color.alpha) // default color
 
-        if UserPreferences.behavior.float == true {
+        if UserSettings.behavior.float == true {
             self.level = .floating
         }
 
-        if UserPreferences.behavior.appearOnAllDesktop == true {
+        if UserSettings.behavior.appearOnAllDesktop == true {
             self.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary] // appear on all desktops
         }
 
@@ -67,7 +67,7 @@ class TextWindow: NSWindow {
 
     /// main view
     private var view: TextView!
-    private func AddMainView(color: WindowColor) {
+    private func AddMainView(color: TextWindowColor) {
         view = TextView(color: color)
         self.contentView = view
     }

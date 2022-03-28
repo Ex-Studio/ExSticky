@@ -2,12 +2,10 @@ import AppKit
 import Foundation
 import XCLog
 
-// TODO: random color
+var UserSettings = ExStickySettings.shared
 
-var UserPreferences = ExStickyPreferences.shared
-
-struct ExStickyPreferences {
-    static var shared = ExStickyPreferences()
+struct ExStickySettings {
+    static var shared = ExStickySettings()
 
     var text = Text()
     var appearence = Appearence()
@@ -67,12 +65,12 @@ struct ExStickyPreferences {
         // MARK: theme
 
         private let key_color_theme = "exsticky.appearance.color_theme"
-        var color_theme: ColorTheme {
+        var color_theme: ExStickyColorTheme {
             get {
                 if let value = UserDefaults.standard.string(forKey: key_color_theme) {
-                    if value == ColorTheme.single.rawValue {
+                    if value == ExStickyColorTheme.single.rawValue {
                         return .single
-                    } else if value == ColorTheme.random.rawValue {
+                    } else if value == ExStickyColorTheme.random.rawValue {
                         return .random
                     } else { // error
                         XCLog(.error)
@@ -100,7 +98,7 @@ struct ExStickyPreferences {
 
         // 新建窗口的颜色
         private let key_color = "exsticky.appearance.color"
-        private let default_color = PresetColor.blue.rawValue
+        private let default_color = ExStickyPresetColor.blue.rawValue
         var color: UInt32 {
             get {
                 if UserDefaults.standard.integer(forKey: key_color) == 0 {

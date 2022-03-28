@@ -11,7 +11,7 @@
 		480C6C2727F0FAC200028C65 /* AppearancePreferenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C6C2527F0FAC200028C65 /* AppearancePreferenceVC.swift */; };
 		480C6C2827F0FAC200028C65 /* BehaviorPreferenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C6C2427F0FAC200028C65 /* BehaviorPreferenceVC.swift */; };
 		480C6C2927F0FAC200028C65 /* TextPreferenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C6C2227F0FAC200028C65 /* TextPreferenceVC.swift */; };
-		48164C7227F081E000145E13 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48164C7127F081E000145E13 /* UserPreferences.swift */; };
+		48164C7227F081E000145E13 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48164C7127F081E000145E13 /* UserSettings.swift */; };
 		481F04E827F1E5E0005FB2A4 /* UInt32+hex2dec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F04E727F1E5E0005FB2A4 /* UInt32+hex2dec.swift */; };
 		482A999A27F05279004D16EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A999927F05279004D16EE /* AppDelegate.swift */; };
 		482A999C27F0527C004D16EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482A999B27F0527C004D16EE /* Assets.xcassets */; };
@@ -20,8 +20,8 @@
 		482A99A927F052F6004D16EE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99A827F052F6004D16EE /* TextView.swift */; };
 		482A99AB27F059AC004D16EE /* NSColor+hexinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99AA27F059AC004D16EE /* NSColor+hexinit.swift */; };
 		484B943727F09C0B00E1ECF2 /* XCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 484B943627F09C0B00E1ECF2 /* XCLog */; };
-		48A10A1F27F2003200303EC8 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A10A1E27F2003200303EC8 /* Structs.swift */; };
-		48A10A2127F205FB00303EC8 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A10A2027F205FB00303EC8 /* Enums.swift */; };
+		48A10A1F27F2003200303EC8 /* DataPackages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A10A1E27F2003200303EC8 /* DataPackages.swift */; };
+		48A10A2127F205FB00303EC8 /* ExStickyEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A10A2027F205FB00303EC8 /* ExStickyEnums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 		480C6C2427F0FAC200028C65 /* BehaviorPreferenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorPreferenceVC.swift; sourceTree = "<group>"; };
 		480C6C2527F0FAC200028C65 /* AppearancePreferenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearancePreferenceVC.swift; sourceTree = "<group>"; };
 		48164C6D27F07CC200145E13 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		48164C7127F081E000145E13 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		48164C7127F081E000145E13 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		481F04E727F1E5E0005FB2A4 /* UInt32+hex2dec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt32+hex2dec.swift"; sourceTree = "<group>"; };
 		482A999627F05279004D16EE /* ExSticky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExSticky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482A999927F05279004D16EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,8 +42,8 @@
 		482A99AA27F059AC004D16EE /* NSColor+hexinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+hexinit.swift"; sourceTree = "<group>"; };
 		482A99AD27F064DE004D16EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		482A99AE27F064E5004D16EE /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
-		48A10A1E27F2003200303EC8 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
-		48A10A2027F205FB00303EC8 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		48A10A1E27F2003200303EC8 /* DataPackages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPackages.swift; sourceTree = "<group>"; };
+		48A10A2027F205FB00303EC8 /* ExStickyEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExStickyEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +132,9 @@
 		48A10A2227F2061000303EC8 /* DataStructure */ = {
 			isa = PBXGroup;
 			children = (
-				48A10A1E27F2003200303EC8 /* Structs.swift */,
-				48A10A2027F205FB00303EC8 /* Enums.swift */,
-				48164C7127F081E000145E13 /* UserPreferences.swift */,
+				48A10A1E27F2003200303EC8 /* DataPackages.swift */,
+				48A10A2027F205FB00303EC8 /* ExStickyEnums.swift */,
+				48164C7127F081E000145E13 /* UserSettings.swift */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -218,14 +218,14 @@
 				482A99AB27F059AC004D16EE /* NSColor+hexinit.swift in Sources */,
 				481F04E827F1E5E0005FB2A4 /* UInt32+hex2dec.swift in Sources */,
 				480C6C2727F0FAC200028C65 /* AppearancePreferenceVC.swift in Sources */,
-				48A10A1F27F2003200303EC8 /* Structs.swift in Sources */,
+				48A10A1F27F2003200303EC8 /* DataPackages.swift in Sources */,
 				480C6C2627F0FAC200028C65 /* PreferenceWC.swift in Sources */,
 				482A99A727F052E8004D16EE /* TextWindow.swift in Sources */,
-				48164C7227F081E000145E13 /* UserPreferences.swift in Sources */,
+				48164C7227F081E000145E13 /* UserSettings.swift in Sources */,
 				480C6C2927F0FAC200028C65 /* TextPreferenceVC.swift in Sources */,
 				482A99A927F052F6004D16EE /* TextView.swift in Sources */,
 				482A999A27F05279004D16EE /* AppDelegate.swift in Sources */,
-				48A10A2127F205FB00303EC8 /* Enums.swift in Sources */,
+				48A10A2127F205FB00303EC8 /* ExStickyEnums.swift in Sources */,
 				480C6C2827F0FAC200028C65 /* BehaviorPreferenceVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

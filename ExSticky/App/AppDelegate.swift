@@ -6,8 +6,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Application
 
     func applicationDidFinishLaunching(_: Notification) {
-        AppStartTest()
-
         CreateNewWindow()
     }
 
@@ -30,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 NSPoint(x: CGFloat(10 + 20 * (textWindowQueue.count - 1)),
                         y: screenh - CGFloat(10) - textWindowQueue.last!.frame.height - CGFloat(26 * (textWindowQueue.count - 1))))
         } else {
-            textWindowQueue.last?.center()
+            textWindowQueue.last!.center() // if the user have created many windows, center new windows
         }
     }
 
@@ -41,18 +39,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: PreferenceWindow
 
-    private let preferenceWC = PreferenceWC()
-    private var hasOpenedPreferences = false
+    private let preferenceWC = PreferenceWC() // instance only once
+    private var didOpenPreferenceWindow = false
     @IBAction func MenuPreference(_: Any) {
         XCLog(.trace)
         preferenceWC.window!.makeKeyAndOrderFront(self)
-        if hasOpenedPreferences == false {
-            preferenceWC.window!.center()
-            hasOpenedPreferences = true
+        if didOpenPreferenceWindow == false {
+            preferenceWC.window!.center() // only center preference window when first open it
+            didOpenPreferenceWindow = true
         }
     }
-}
-
-func AppStartTest() {
-    XCLog(.debug, "\(NSFontManager.shared.availableFonts)", false)
 }
