@@ -2,7 +2,7 @@ import AppKit
 import Foundation
 import XCLog
 
-// TODO: 每一个identifier都做成一个变量
+var UserPreferences = ExStickyPreferences.shared
 
 struct ExStickyPreferences {
     static var shared = ExStickyPreferences()
@@ -62,6 +62,37 @@ struct ExStickyPreferences {
     }
 
     struct Appearence {
+        let defautlt_size = 24
+        let defautlt_font = "SFMono-Regular"
+        let key_color_theme = "exsticky.appearance.color_theme"
+
+        var color_theme: ColorTheme {
+            get {
+                if let value = UserDefaults.standard.string(forKey: key_color_theme) {
+                    if value == "single" {
+                        return .single
+                    } else if value == "random" {
+                        return .random
+                    } else {
+                        XCLog(.error)
+                        return .single
+                    }
+                } else {
+                    UserDefaults.standard.set("single", forKey: key_color_theme)
+                    return .single
+                }
+            }
+
+            set {
+                switch newValue {
+                case .single:
+                    UserDefaults.standard.set("single", forKey: key_color_theme)
+                case .random:
+                    UserDefaults.standard.set("random", forKey: key_color_theme)
+                }
+            }
+        }
+
         var alpha: Float = 0.2
         var color: UInt32 = 0x66CCFF // TODO: add get set
         var width: Float = 400 * sqrt(2)
@@ -74,4 +105,9 @@ struct ExStickyPreferences {
     }
 }
 
-var UserPreferences = ExStickyPreferences.shared
+enum ColorTheme: String, Identifiable, CaseIterable {
+    case single
+    case random
+
+    var id: String { self.rawValue }
+}

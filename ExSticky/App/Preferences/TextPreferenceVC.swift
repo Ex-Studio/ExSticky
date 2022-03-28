@@ -1,8 +1,6 @@
 import Cocoa
 import XCLog
 
-// TODO: add border
-
 class TextPreferenceVC: NSViewController {
     private let title_width: CGFloat = 40.0
     private let space_around: CGFloat = 30.0
