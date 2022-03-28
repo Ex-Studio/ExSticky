@@ -6,6 +6,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Application
 
     func applicationDidFinishLaunching(_: Notification) {
+        AppStartTest()
+
         CreateNewWindow()
     }
 
@@ -42,4 +44,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             hasOpenedPreferences = true
         }
     }
+}
+
+func AppStartTest() {
+    XCLog(.debug, "\(NSFontManager.shared.availableFonts)", false)
 }

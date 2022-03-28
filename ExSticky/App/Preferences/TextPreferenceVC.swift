@@ -1,7 +1,10 @@
 import Cocoa
 import XCLog
 
-// TODO: border
+// TODO: add border
+// TODO: 各种sender写一下
+// TODO: 添加提示
+// TODO: 去掉背景色
 
 class TextPreferenceVC: NSViewController {
     private var vstack: NSStackView!
@@ -28,16 +31,19 @@ class TextPreferenceVC: NSViewController {
             return l
         }()
 
-        textfield_textSize = {
-            let tf = NSTextField(labelWithString: "\(UserPreferences.text.size)")
+        textfield_textSize = { // TODO:
+            let tf = NSTextField(labelWithString: "\(Int(UserPreferences.text.size))") // default value
             tf.isEditable = true
+            tf.target = self
+            tf.action = #selector(textfield_textSize_gotNewValue(_:))
             return tf
         }()
 
         stepper_textSize = {
             let s = NSStepper()
-            s.maxValue = 72
-            s.minValue = 12
+            s.doubleValue = Double(UserPreferences.text.size) // default value
+            s.maxValue = Double(UserPreferences.text.max_size)
+            s.minValue = Double(UserPreferences.text.min_size)
             s.increment = 1
             s.target = self
             s.action = #selector(stepper_textSize_gotNewValue(_:))
@@ -46,7 +52,7 @@ class TextPreferenceVC: NSViewController {
             return s
         }()
 
-        textfield_textFont = {
+        textfield_textFont = { // TODO:
             let tf = NSTextField(labelWithString: "\(UserPreferences.text.font)")
             tf.isEditable = true
             return tf
@@ -92,7 +98,22 @@ class TextPreferenceVC: NSViewController {
     }
 
     @objc private func stepper_textSize_gotNewValue(_ sender: NSStepper!) {
-        XCLog(.debug, "\(sender.doubleValue)")
-        textfield_textSize.stringValue = "\(Int(sender.doubleValue))"
+        let newValue = Int(sender.doubleValue)
+        XCLog(.debug, "\(newValue)")
+        textfield_textSize.stringValue = "\(newValue)"
+        UserPreferences.text.size = newValue
+    }
+
+    @objc private func textfield_textSize_gotNewValue(_ sender: NSTextField!) {
+        if var newValue = Int(sender.stringValue) {
+            if newValue > UserPreferences.text.max_size { newValue = Int(UserPreferences.text.max_size) }
+            if newValue < UserPreferences.text.min_size { newValue = Int(UserPreferences.text.min_size) }
+            XCLog(.debug, "\(newValue)")
+            textfield_textSize.stringValue = "\(newValue)" // 显示为整数
+            stepper_textSize.doubleValue = Double(newValue)
+            UserPreferences.text.size = newValue
+        } else {
+            XCLog(.error, "cannot convert to Int")
+        }
     }
 }

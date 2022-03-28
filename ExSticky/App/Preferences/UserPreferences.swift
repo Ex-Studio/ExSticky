@@ -14,18 +14,20 @@ struct ExStickyPreferences {
     // MARK: - Text
 
     struct Text {
-        let defautlt_size: Float = 24.0
+        let max_size = 72
+        let min_size = 12
+        let defautlt_size = 24
         let defautlt_font = "SF Mono"
         let key_size = "exsticky.text.size"
         let key_font = "exsticky.text.font"
 
-        var size: Float {
+        var size: Int {
             set {
                 UserDefaults.standard.set(newValue, forKey: key_size)
             }
             get {
-                let size = UserDefaults.standard.float(forKey: key_size)
-                if size != 0.0 {
+                let size = UserDefaults.standard.integer(forKey: key_size)
+                if size != 0 {
                     return size
                 } else { // this key not exist
                     UserDefaults.standard.set(defautlt_size, forKey: key_size)
