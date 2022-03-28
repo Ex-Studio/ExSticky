@@ -41,6 +41,8 @@ struct ContentView: View {
                         UserPreferences.appearence.color_theme = .random
                     }
                 }
+
+                // single
                 Group {
                     Picker("Preset", selection: $presetColor) {
                         ForEach(ExStickyColor.allCases) { color in
@@ -48,10 +50,9 @@ struct ContentView: View {
                                 .tag(color)
                         }
                     }
-                    .disabled(currentColorTheme == .random || isUsingCustomizedColor)
+                    .disabled(isUsingCustomizedColor)
 
                     Toggle("Use customized color", isOn: $isUsingCustomizedColor)
-                        .disabled(currentColorTheme == .random)
 
                     TextField("Customization",
                               text: $customizedColorHex,
@@ -63,6 +64,7 @@ struct ContentView: View {
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
                 }
+                .disabled(currentColorTheme == .random)
             }
             .padding()
         }
