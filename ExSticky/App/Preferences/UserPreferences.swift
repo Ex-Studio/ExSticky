@@ -65,13 +65,6 @@ struct ExStickyPreferences {
 
     struct Appearence {
         private let key_color_theme = "exsticky.appearance.color_theme"
-        private let key_color = "exsticky.appearance.color"
-        private let key_width = "exsticky.appearance.width"
-        private let key_height = "exsticky.appearance.height"
-
-        private let default_width: Float = 565.7
-        private let default_height: Float = 400
-
         var color_theme: ColorTheme {
             get {
                 if let value = UserDefaults.standard.string(forKey: key_color_theme) {
@@ -99,7 +92,7 @@ struct ExStickyPreferences {
             }
         }
 
-        var alpha: Float = 0.2
+        private let key_color = "exsticky.appearance.color"
         var color: UInt32 {
             get {
                 if UserDefaults.standard.integer(forKey: key_color) == 0 {
@@ -114,6 +107,25 @@ struct ExStickyPreferences {
             }
         }
 
+        private let key_alpha = "exsticky.appearance.alpha"
+        private let default_alpha: Float = 0.2
+        var alpha: Float {
+            get {
+                let value = UserDefaults.standard.float(forKey: key_alpha)
+                if value != 0.0 {
+                    return value
+                } else {
+                    UserDefaults.standard.set(default_alpha, forKey: key_alpha)
+                    return default_alpha
+                }
+            }
+            set {
+                UserDefaults.standard.set(newValue, forKey: key_alpha)
+            }
+        }
+
+        private let key_width = "exsticky.appearance.width"
+        private let default_width: Float = 565.7
         var width: Float {
             get {
                 let value = UserDefaults.standard.float(forKey: key_width)
@@ -129,6 +141,8 @@ struct ExStickyPreferences {
             }
         }
 
+        private let key_height = "exsticky.appearance.height"
+        private let default_height: Float = 400
         var height: Float {
             get {
                 let value = UserDefaults.standard.float(forKey: key_height)
@@ -158,7 +172,7 @@ enum ColorTheme: String, Identifiable, CaseIterable {
     var id: String { self.rawValue }
 }
 
-enum ExStickyColor: UInt32, Identifiable, CaseIterable {
+enum PresetColor: UInt32, Identifiable, CaseIterable {
     case red = 0xFF3B30
     case orange = 0xFF9500
     case yellow = 0xFFCC00

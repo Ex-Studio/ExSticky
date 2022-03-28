@@ -10,15 +10,18 @@ class AppearancePreferenceVC: NSHostingController<ContentView> {
 
 struct ContentView: View {
     @State var currentColorTheme: ColorTheme = .single
-    @State var presetColor: ExStickyColor = .red
+    @State var presetColor: PresetColor = .red
     @State var isUsingCustomizedColor = false
     @State var customizedColorHex = "0x66CCFF"
-    @State var presentAlert_customColorCannotConvertToUInt32 = false
-    @State var presentAlert_widthCannotConvertToUInt32 = false
-    @State var presentAlert_heightCannotConvertToUInt32 = false
 
     @State var windowWidth_String = "565.7"
     @State var windowHeight_String = "400"
+    @State var alpha_String = "0.2"
+
+    @State var presentAlert_customColorCannotConvertToUInt32 = false
+    @State var presentAlert_widthCannotConvertToUInt32 = false
+    @State var presentAlert_heightCannotConvertToUInt32 = false
+    @State var presentAlert_alphaCannotConvertToFloat = false
 
     var body: some View {
         VStack {
@@ -33,16 +36,16 @@ struct ContentView: View {
                         .font(.system(.callout))
 
                     TextField("Width", text: $windowWidth_String) {
-                        if let receivedValue = Float(windowWidth_String) {
+                        if let receivedValue = Float(windowWidth_String), receivedValue > 0.0 {
                             print(receivedValue)
                             UserPreferences.appearence.width = receivedValue
                         } else {
                             presentAlert_widthCannotConvertToUInt32 = true
                         }
                     }
-                    TextField("Height",
+                    TextField("Alpha",
                               text: $windowHeight_String) {
-                        if let receivedValue = Float(windowHeight_String) {
+                        if let receivedValue = Float(windowHeight_String), receivedValue > 0.0 {
                             print(receivedValue)
                             UserPreferences.appearence.height = receivedValue
                         } else {
@@ -56,6 +59,20 @@ struct ContentView: View {
                 Group {
                     Text("Color")
                         .font(.system(.title2))
+
+                    Text("The alpha value of a window. It will take effect on new windows.")
+                        .foregroundColor(Color.gray)
+                        .font(.system(.callout))
+                    TextField("Height",
+                              text: $alpha_String) {
+                        if let receivedValue = Float(alpha_String), receivedValue > 0.0, receivedValue <= 1.0 {
+                            print(receivedValue)
+                            UserPreferences.appearence.alpha = receivedValue
+                        } else {
+                            presentAlert_alphaCannotConvertToFloat = true
+                        }
+                    }
+
                     Text("The color of the window. It will take effect on new windows.")
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
@@ -79,7 +96,7 @@ struct ContentView: View {
                     // single
                     Group {
                         Picker("Preset", selection: $presetColor) {
-                            ForEach(ExStickyColor.allCases) { color in
+                            ForEach(PresetColor.allCases) { color in
                                 switch color {
                                 case .red:
                                     Text("Red")
@@ -126,7 +143,16 @@ struct ContentView: View {
             }
             .padding()
             .alert(isPresented: $presentAlert_customColorCannotConvertToUInt32) {
-                Alert(title: Text("haha"), message: nil, dismissButton: nil)
+                Alert(title: Text("please input correct integer"), message: nil, dismissButton: nil)
+            }
+            .alert(isPresented: $presentAlert_widthCannotConvertToUInt32) {
+                Alert(title: Text("please input correct float"), message: nil, dismissButton: nil)
+            }
+            .alert(isPresented: $presentAlert_heightCannotConvertToUInt32) {
+                Alert(title: Text("please input correct float"), message: nil, dismissButton: nil)
+            }
+            .alert(isPresented: $presentAlert_alphaCannotConvertToFloat) {
+                Alert(title: Text("please input correct float"), message: nil, dismissButton: nil)
             }
         }
     }
