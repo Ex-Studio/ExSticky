@@ -24,8 +24,14 @@ struct ExStickyConstants {
 
     let HISTORY_MAX_COUNT = 7
 
-    /// 每新建多少个窗口出现一次
+    /// 每新建多少个窗口出现一次买咖啡的消息
     let SUPPORT_INFO_FREQUENCY = 64
 
     let MENU_TITLE_HISTORY = "History"
+
+    let UI_FIRST_WINDOW_X = 20
+    let UI_FIRST_WINDOW_Y_FROM_TOP_LEFT = 40 // will be grate if not hide menu bar
+    let UI_WINDOW_HORIZONTAL_DISTANCE = 20
+    let UI_WINDOW_VERTICLE_DISTANCE = 26
+    let UI_WINDOW_CYCLE = 8
 }

@@ -47,9 +47,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         textWindowQueue.append(TextWindow())
         textWindowQueue.last!.makeKeyAndOrderFront(self)
 
-        let window_serial: Int = (textWindowQueue.count - 1) % 8
-        let x = CGFloat(10 + 20 * window_serial)
-        let y = CGFloat(10 + 26 * window_serial)
+        let window_serial: Int = (textWindowQueue.count - 1) % C.UI_WINDOW_CYCLE
+        let x = CGFloat(C.UI_FIRST_WINDOW_X + C.UI_WINDOW_HORIZONTAL_DISTANCE * window_serial)
+        let y = CGFloat(C.UI_FIRST_WINDOW_Y_FROM_TOP_LEFT + C.UI_WINDOW_VERTICLE_DISTANCE * window_serial)
         textWindowQueue.last!.setFrameOrigin(NSPoint(x: x, yFromTopLeft: y, windowHeight: textWindowQueue.last!.frame.height))
     }
 
