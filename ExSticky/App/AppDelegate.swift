@@ -22,14 +22,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func CreateNewWindow() {
         textWindowQueue.append(TextWindow())
         textWindowQueue.last!.makeKeyAndOrderFront(self)
-        if textWindowQueue.count < 16 {
-            let screenh = NSScreen.main!.frame.size.height
-            textWindowQueue.last!.setFrameOrigin(
-                NSPoint(x: CGFloat(10 + 20 * (textWindowQueue.count - 1)),
-                        y: screenh - CGFloat(10) - textWindowQueue.last!.frame.height - CGFloat(26 * (textWindowQueue.count - 1))))
-        } else {
-            textWindowQueue.last!.center() // if the user have created many windows, center new windows
-        }
+
+        let window_serial: Int = (textWindowQueue.count - 1) % 8
+        let x = CGFloat(10 + 20 * window_serial)
+        let y = CGFloat(10 + 26 * window_serial)
+        textWindowQueue.last!.setFrameOrigin(NSPoint(x: x, yFromTopLeft: y, windowHeight: textWindowQueue.last!.frame.height))
     }
 
     @IBAction func MenuNew(_: Any) {
