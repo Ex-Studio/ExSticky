@@ -6,5 +6,6 @@
     - 退出app的时候，是否调用close 调用的话加history
 - 国际化 中英
 - 上架
+- in-app purchase
 
 - 创建GitHub的exstudio
