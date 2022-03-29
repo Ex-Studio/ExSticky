@@ -7,10 +7,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         CreateNewWindow()
+        SetupHistoryMenu()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
         true
+    }
+
+    /// menu: ExSticky Edit Window History Help
+    private func SetupHistoryMenu() {
+        // create menu
+        let HistoryMenu = NSMenu(title: C.MENU_TITLE_HISTORY)
+        let HistoryMenu_ClearAll = NSMenuItem(title: "Clear All", action: #selector(HistoryMenu_ClearAll(_:)), keyEquivalent: "")
+        HistoryMenu.addItem(HistoryMenu_ClearAll)
+        let HistoryMenu_Separator = NSMenuItem.separator()
+        HistoryMenu.addItem(HistoryMenu_Separator)
+
+        // add menu to menu bar
+        let main_HistoryMenu = NSMenuItem(title: C.MENU_TITLE_HISTORY, action: nil, keyEquivalent: "")
+        main_HistoryMenu.submenu = HistoryMenu
+        NSApp.mainMenu!.insertItem(main_HistoryMenu, at: 3)
+
+        // load history before
+        SetupHistoryMenuItems(history: UserData.history)
+    }
+
+    @objc
+    private func HistoryMenu_ClearAll(_: NSMenuItem) {
+        UserData.history = []
     }
 
     // MARK: - Windows
