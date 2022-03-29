@@ -1,5 +1,3 @@
-// Constants.swift
-
 import Foundation
 
 let C = ExStickyConstants.shared

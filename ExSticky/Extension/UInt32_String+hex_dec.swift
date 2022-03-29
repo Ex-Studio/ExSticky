@@ -1,5 +1,3 @@
-// UInt32+threeInt.swift
-
 import Foundation
 
 // https://stackoverflow.com/a/27191772/18596242
