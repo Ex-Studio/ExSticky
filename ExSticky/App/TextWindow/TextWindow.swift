@@ -60,8 +60,8 @@ class TextWindow: NSWindow {
             self.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary] // appear on all desktops
         }
 
-        self.minSize = .init(width: CGFloat(C.TEXT_WINDOW_MIN_WIDTH),
-                             height: CGFloat(C.TEXT_WINDOW_MIN_HEIGHT)) // include title bar
+        self.minSize = .init(width: CGFloat(C.TEXT_WINDOW_WIDTH_MIN),
+                             height: CGFloat(C.TEXT_WINDOW_HEIGHT_MIN)) // include title bar
     }
 
     // MARK: - Views

@@ -22,123 +22,132 @@ struct AppearancePreferenceView: View {
     @State var presentAlert = false
 
     var body: some View {
-        Form {
-            // MARK: - Window
+        VStack {
+            Form {
+                // MARK: - Window
 
-            Group {
                 Group {
                     Text("Window Size")
                         .font(.system(.title))
-                    Text("The default size of a window (minimum size is 100x60).\nIt will take effect on new windows.")
-                        .foregroundColor(Color.gray)
-                        .font(.system(.callout))
-                }
-                TextField("Width", text: $windowWidth_String) {
-                    if let receivedValue = Float(windowWidth_String), receivedValue > C.TEXT_WINDOW_MIN_WIDTH {
-                        UserSettings.appearence.width = receivedValue
-                    } else {
-                        XCLog(.error)
-                        alertMessage = "please input correct float"
-                        presentAlert = true
-                        XCLog(.error, "cannot convert")
-                    }
-                }
-                TextField("Height",
-                          text: $windowHeight_String) {
-                    if let receivedValue = Float(windowHeight_String), receivedValue > C.TEXT_WINDOW_MIN_HEIGHT {
-                        UserSettings.appearence.height = receivedValue
-                    } else {
-                        alertMessage = "please input correct float"
-                        presentAlert = true
-                        XCLog(.error, "cannot convert")
-                    }
-                }
-            }
 
-            // MARK: - Color
-
-            Group {
-                Text("Color")
-                    .font(.system(.title))
-
-                TextField("Alpha",
-                          text: $alpha_String) {
-                    if let receivedValue = Float(alpha_String), receivedValue > 0.0, receivedValue <= 1.0 {
-                        UserSettings.appearence.alpha = receivedValue
-                    } else {
-                        alertMessage = "please input correct float"
-                        presentAlert = true
-                        XCLog(.error, "cannot convert")
-                    }
-                }
-                Text("The alpha value of the window, which is bigger than 0.0 and smaller than 1.0.\nIt will take effect on new windows.")
-                    .foregroundColor(Color.gray)
-                    .font(.system(.callout))
-
-                Picker("Theme", selection: $currentColorTheme) {
-                    Text("single")
-                        .tag(ExStickyColorTheme.single)
-                    Text("random")
-                        .tag(ExStickyColorTheme.random)
-                }
-                .pickerStyle(.inline)
-                .onChange(of: currentColorTheme) { newValue in
-                    switch newValue {
-                    case .single:
-                        UserSettings.appearence.color_theme = .single
-                    case .random:
-                        UserSettings.appearence.color_theme = .random
-                    }
-                }
-
-                // single
-                Group {
-                    Picker("Preset", selection: $presetColor) {
-                        ForEach(ExStickyPresetColor.allCases) { color in
-                            switch color {
-                            case .red:
-                                Text("Red")
-                                    .tag(color)
-                            case .orange:
-                                Text("Orange")
-                                    .tag(color)
-                            case .yellow:
-                                Text("Yellow")
-                                    .tag(color)
-                            case .green:
-                                Text("Green")
-                                    .tag(color)
-                            case .blue:
-                                Text("Blue")
-                                    .tag(color)
-                            }
+                    TextField("Width", text: $windowWidth_String) {
+                        if let receivedValue = Float(windowWidth_String), receivedValue >= C.TEXT_WINDOW_WIDTH_MIN {
+                            UserSettings.appearence.width = receivedValue
+                        } else {
+                            XCLog(.error)
+                            alertMessage = "please input correct float"
+                            presentAlert = true
+                            XCLog(.error, "cannot convert")
                         }
                     }
-                    .disabled(isUsingCustomizedColor)
-                    .onChange(of: presetColor) { _ in
-                        UserSettings.appearence.color = presetColor.rawValue
+                    TextField("Height",
+                              text: $windowHeight_String) {
+                        if let receivedValue = Float(windowHeight_String), receivedValue >= C.TEXT_WINDOW_HEIGHT_MIN {
+                            UserSettings.appearence.height = receivedValue
+                        } else {
+                            alertMessage = "please input correct float"
+                            presentAlert = true
+                            XCLog(.error, "cannot convert")
+                        }
                     }
-
-                    Toggle("Use customized color", isOn: $isUsingCustomizedColor)
-
-                    TextField("Customization",
-                              text: $customizedColorHex,
-                              onCommit: {
-                                  if let value = customizedColorHex.hex2uint32 {
-                                      UserSettings.appearence.color = value
-                                  } else {
-                                      alertMessage = "please input correct integer" // "please input correct float"
-                                      presentAlert = true
-                                      XCLog(.error, "cannot convert")
-                                  }
-                              })
-                              .disabled(!isUsingCustomizedColor)
-                    Text("Input the hex of your faviorite color. eg. 0x66CCFF")
+                    Text("min \(Int(C.TEXT_WINDOW_WIDTH_MIN))x\(Int(C.TEXT_WINDOW_HEIGHT_MIN))  max \(Int(NSScreen.main!.frame.width))x\(Int(NSScreen.main!.frame.height))  default \(Int(C.TEXT_WINDOW_WIDTH_DEFAULT))x\(Int(C.TEXT_WINDOW_HEIGHT_DEFAULT))")
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
                 }
-                .disabled(currentColorTheme == .random)
+
+                // MARK: - Color
+
+                Group {
+                    Text("Color")
+                        .font(.system(.title))
+
+                    TextField("Alpha",
+                              text: $alpha_String) {
+                        if let receivedValue = Float(alpha_String),
+                           receivedValue >= C.COLOR_ALPHA_MIN,
+                           receivedValue <= C.COLOR_ALPHA_MAX {
+                            UserSettings.appearence.alpha = receivedValue
+                        } else {
+                            alertMessage = "please input correct float"
+                            presentAlert = true
+                            XCLog(.error, "cannot convert")
+                        }
+                    }
+                    Text("min \(String(format: "%.2f", C.COLOR_ALPHA_MIN)) max \(String(format: "%.2f", C.COLOR_ALPHA_MAX)) default \(String(format: "%.2f", C.COLOR_ALPHA_DEFAULT))")
+                        .foregroundColor(Color.gray)
+                        .font(.system(.callout))
+
+                    Picker("Theme", selection: $currentColorTheme) {
+                        Text("single")
+                            .tag(ExStickyColorTheme.single)
+                        Text("random")
+                            .tag(ExStickyColorTheme.random)
+                    }
+                    .pickerStyle(.inline)
+                    .onChange(of: currentColorTheme) { newValue in
+                        switch newValue {
+                        case .single:
+                            UserSettings.appearence.color_theme = .single
+                        case .random:
+                            UserSettings.appearence.color_theme = .random
+                        }
+                    }
+
+                    // single
+                    Group {
+                        Picker("Preset", selection: $presetColor) {
+                            ForEach(ExStickyPresetColor.allCases) { color in
+                                switch color {
+                                case .red:
+                                    Text("Red")
+                                        .tag(color)
+                                case .orange:
+                                    Text("Orange")
+                                        .tag(color)
+                                case .yellow:
+                                    Text("Yellow")
+                                        .tag(color)
+                                case .green:
+                                    Text("Green")
+                                        .tag(color)
+                                case .blue:
+                                    Text("Blue")
+                                        .tag(color)
+                                }
+                            }
+                        }
+                        .disabled(isUsingCustomizedColor)
+                        .onChange(of: presetColor) { _ in
+                            UserSettings.appearence.color = presetColor.rawValue
+                        }
+
+                        Toggle("Use customized color", isOn: $isUsingCustomizedColor)
+
+                        TextField("Customization",
+                                  text: $customizedColorHex,
+                                  onCommit: {
+                                      if let value = customizedColorHex.hex2uint32 {
+                                          UserSettings.appearence.color = value
+                                      } else {
+                                          alertMessage = "please input correct integer" // "please input correct float"
+                                          presentAlert = true
+                                          XCLog(.error, "cannot convert")
+                                      }
+                                  })
+                                  .disabled(!isUsingCustomizedColor)
+                        Text("Input the hex of your faviorite color. eg. 0x66CCFF")
+                            .foregroundColor(Color.gray)
+                            .font(.system(.callout))
+                    }
+                    .disabled(currentColorTheme == .random)
+                }
             }
+
+            Divider()
+
+            Text("Changes will take effect on new windows.")
+                .foregroundColor(Color.gray)
+                .font(.system(.callout))
         }
         .padding()
         .alert(
@@ -150,9 +159,3 @@ struct AppearancePreferenceView: View {
         }
     }
 }
-
-// struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-// }
