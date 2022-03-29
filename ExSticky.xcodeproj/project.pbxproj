@@ -23,6 +23,8 @@
 		482A99AB27F059AC004D16EE /* NSColor+hexinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A99AA27F059AC004D16EE /* NSColor+hexinit.swift */; };
 		484B943727F09C0B00E1ECF2 /* XCLog in Frameworks */ = {isa = PBXBuildFile; productRef = 484B943627F09C0B00E1ECF2 /* XCLog */; };
 		48698FCA27F226DA0006B3E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48698FC927F226DA0006B3E4 /* Constants.swift */; };
+		488D64EA27F338B4003578EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 488D64E827F338B4003578EB /* InfoPlist.strings */; };
+		488D64ED27F338B4003578EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 488D64EB27F338B4003578EB /* Localizable.strings */; };
 		48A10A1F27F2003200303EC8 /* DataPackages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A10A1E27F2003200303EC8 /* DataPackages.swift */; };
 		48A10A2127F205FB00303EC8 /* ExStickyEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A10A2027F205FB00303EC8 /* ExStickyEnums.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,9 @@
 		482A99AD27F064DE004D16EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		482A99AE27F064E5004D16EE /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		48698FC927F226DA0006B3E4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		488D64E727F336F7003578EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		488D64E927F338B4003578EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		488D64EC27F338B4003578EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		48A10A1E27F2003200303EC8 /* DataPackages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPackages.swift; sourceTree = "<group>"; };
 		48A10A2027F205FB00303EC8 /* ExStickyEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExStickyEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +115,8 @@
 				482A999B27F0527C004D16EE /* Assets.xcassets */,
 				482A999D27F0527C004D16EE /* MainMenu.xib */,
 				48164C6D27F07CC200145E13 /* Info.plist */,
+				488D64EB27F338B4003578EB /* Localizable.strings */,
+				488D64E827F338B4003578EB /* InfoPlist.strings */,
 				482A99A027F0527C004D16EE /* ExSticky.entitlements */,
 			);
 			path = ExSticky;
@@ -193,6 +200,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 482A998D27F05279004D16EE;
 			packageReferences = (
@@ -213,6 +221,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				482A999C27F0527C004D16EE /* Assets.xcassets in Resources */,
+				488D64ED27F338B4003578EB /* Localizable.strings in Resources */,
+				488D64EA27F338B4003578EB /* InfoPlist.strings in Resources */,
 				482A999F27F0527C004D16EE /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,8 +259,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				482A999E27F0527C004D16EE /* Base */,
+				488D64E727F336F7003578EB /* zh-Hans */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		488D64E827F338B4003578EB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				488D64E927F338B4003578EB /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		488D64EB27F338B4003578EB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				488D64EC27F338B4003578EB /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -260,6 +287,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -321,6 +349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -379,7 +408,7 @@
 				CODE_SIGN_ENTITLEMENTS = ExSticky/ExSticky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = C4W6UUH267;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -392,7 +421,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yangxijie.exsticky.beta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -408,7 +437,7 @@
 				CODE_SIGN_ENTITLEMENTS = ExSticky/ExSticky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = C4W6UUH267;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -421,7 +450,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yangxijie.exsticky.beta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -49,7 +49,7 @@ class TextWindow: NSWindow {
                     UserData.history.removeFirst()
                 }
                 UserData.history.append(ExStickyHistoryItem(string))
-            } 
+            }
         }
     }
 

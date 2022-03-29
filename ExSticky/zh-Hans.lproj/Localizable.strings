@@ -1,0 +1,141 @@
+/* No comment provided by engineer. */
+"Alert" = "提示";
+
+/* No comment provided by engineer. */
+"Alpha" = "透明度";
+
+/* No comment provided by engineer. */
+"Appear on All Desktops" = "在所有窗口显示";
+
+/* No comment provided by engineer. */
+"Appearance" = "外观";
+
+/* No comment provided by engineer. */
+"Behavior" = "行为";
+
+/* No comment provided by engineer. */
+"Blue" = "蓝色";
+
+/* No comment provided by engineer. */
+"cannot convert" = "无法转换";
+
+/* No comment provided by engineer. */
+"Changes will take effect on new windows." = "修改将会对新窗口生效";
+
+/* No comment provided by engineer. */
+"Clear All" = "清空记录";
+
+/* No comment provided by engineer. */
+"Color" = "颜色";
+
+/* No comment provided by engineer. */
+"Customization" = "自定义";
+
+/* No comment provided by engineer. */
+"default" = "默认";
+
+/* No comment provided by engineer. */
+"Default display format of text.\nYou can also change the format of your contents in menu bar." = "文字的默认显示效果\n你也可以在格式菜单中修改内容的样式";
+
+/* No comment provided by engineer. */
+"default SFMono-Regular\nCheck Font Book in your Mac to get the postscript name of a specific font." = "默认 SFMono-Regular\n查看你电脑上的字体库来查看字体的名字";
+
+/* No comment provided by engineer. */
+"Floating" = "悬浮";
+
+/* No comment provided by engineer. */
+"Font" = "字体";
+
+/* No comment provided by engineer. */
+"Green" = "绿色";
+
+/* No comment provided by engineer. */
+"Height" = "高度";
+
+/* No comment provided by engineer. */
+"History" = "历史";
+
+/* No comment provided by engineer. */
+"Input the hex of your faviorite color. eg. 0x66CCFF" = "输入自定义颜色的hex值 如0x66CCFF";
+
+/* No comment provided by engineer. */
+"max" = "最大";
+
+/* No comment provided by engineer. */
+"min" = "最小";
+
+/* No comment provided by engineer. */
+"min %@ max %@ default %@" = "最小 %@ 最大 %@ 默认 %@";
+
+/* No comment provided by engineer. */
+"OK" = "好";
+
+/* No comment provided by engineer. */
+"Orange" = "橙色";
+
+/* No comment provided by engineer. */
+"please input correct float" = "请输入正确的小数值";
+
+/* No comment provided by engineer. */
+"please input correct font name" = "请输入正确的字体名称";
+
+/* No comment provided by engineer. */
+"please input correct font size" = "请输入正确的字体大小";
+
+/* No comment provided by engineer. */
+"please input correct integer" = "请输入正确的整数";
+
+/* No comment provided by engineer. */
+"Preferences" = "设置";
+
+/* No comment provided by engineer. */
+"Preset" = "预设";
+
+/* No comment provided by engineer. */
+"random" = "随机色";
+
+/* No comment provided by engineer. */
+"Red" = "红色";
+
+/* No comment provided by engineer. */
+"Should windows appear on all desktops." = "窗口是否出现在所有桌面";
+
+/* No comment provided by engineer. */
+"Should windows float on the top." = "窗口是否悬浮在其他窗口之上";
+
+/* No comment provided by engineer. */
+"single" = "单色";
+
+/* No comment provided by engineer. */
+"Size" = "大小";
+
+/* No comment provided by engineer. */
+"Text" = "文字";
+
+/* No comment provided by engineer. */
+"Text Format" = "文字样式";
+
+/* No comment provided by engineer. */
+"Thanks for downloading ExSticky!\n\nSeveral Usages\n- pin a sticky on your desktop\n- copy and paste pure text contents\n- temporarily store some text (click history in History menu to copy)\n\nShortcuts\n- ⌘N New Window\n- ⌘, Preferences" = "感谢下载使用Ex便签！\n\n几种用法：\n- 将便签悬浮到你的桌面\n- 复制粘贴纯文本内容\n- 临时保存某些文字（在历史菜单中可以点击进行复制）\n\n快捷键：\n- ⌘N 新建便签\n- ⌘, 打开设置";
+
+/* No comment provided by engineer. */
+"Theme" = "主题";
+
+/* No comment provided by engineer. */
+"Use customized color" = "使用自定义色";
+
+/* No comment provided by engineer. */
+"Width" = "宽度";
+
+/* No comment provided by engineer. */
+"Window Behavior" = "窗口行为";
+
+/* No comment provided by engineer. */
+"Window Size" = "窗口大小";
+
+/* No comment provided by engineer. */
+"Yellow" = "黄色";
+
+/* No comment provided by engineer. */
+"You have created %lld stickies with ExSticky.\nWould you want to buy a cup of coffee for the developer?" = "你已经使用Ex便签创建了 %lld 个便签。你想为开发者买一杯咖啡吗？";
+

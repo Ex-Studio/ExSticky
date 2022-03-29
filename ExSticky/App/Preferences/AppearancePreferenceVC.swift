@@ -27,30 +27,30 @@ struct AppearancePreferenceView: View {
                 // MARK: - Window
 
                 Group {
-                    Text("Window Size")
+                    Text(String(localized: "Window Size"))
                         .font(.system(.title))
 
-                    TextField("Width", text: $windowWidth_String) {
+                    TextField(String(localized: "Width"), text: $windowWidth_String) {
                         if let receivedValue = Float(windowWidth_String), receivedValue >= C.TEXT_WINDOW_WIDTH_MIN {
                             UserSettings.appearence.width = receivedValue
                         } else {
                             XCLog(.error)
-                            alertMessage = "please input correct float"
+                            alertMessage = String(localized: "please input correct float")
                             presentAlert = true
-                            XCLog(.error, "cannot convert")
+                            XCLog(.error, String(localized: "cannot convert"))
                         }
                     }
-                    TextField("Height",
+                    TextField(String(localized: "Height"),
                               text: $windowHeight_String) {
                         if let receivedValue = Float(windowHeight_String), receivedValue >= C.TEXT_WINDOW_HEIGHT_MIN {
                             UserSettings.appearence.height = receivedValue
                         } else {
-                            alertMessage = "please input correct float"
+                            alertMessage = String(localized: "please input correct float")
                             presentAlert = true
                             XCLog(.error, "cannot convert")
                         }
                     }
-                    Text("min \(Int(C.TEXT_WINDOW_WIDTH_MIN))x\(Int(C.TEXT_WINDOW_HEIGHT_MIN))  max \(Int(NSScreen.main!.frame.width))x\(Int(NSScreen.main!.frame.height))  default \(Int(C.TEXT_WINDOW_WIDTH_DEFAULT))x\(Int(C.TEXT_WINDOW_HEIGHT_DEFAULT))")
+                    Text("\(String(localized: "min")) \(Int(C.TEXT_WINDOW_WIDTH_MIN))x\(Int(C.TEXT_WINDOW_HEIGHT_MIN))  \(String(localized: "max")) \(Int(NSScreen.main!.frame.width))x\(Int(NSScreen.main!.frame.height))  \(String(localized: "default")) \(Int(C.TEXT_WINDOW_WIDTH_DEFAULT))x\(Int(C.TEXT_WINDOW_HEIGHT_DEFAULT))")
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
                 }
@@ -58,29 +58,29 @@ struct AppearancePreferenceView: View {
                 // MARK: - Color
 
                 Group {
-                    Text("Color")
+                    Text(String(localized: "Color"))
                         .font(.system(.title))
 
-                    TextField("Alpha",
+                    TextField(String(localized: "Alpha"),
                               text: $alpha_String) {
                         if let receivedValue = Float(alpha_String),
                            receivedValue >= C.COLOR_ALPHA_MIN,
                            receivedValue <= C.COLOR_ALPHA_MAX {
                             UserSettings.appearence.alpha = receivedValue
                         } else {
-                            alertMessage = "please input correct float"
+                            alertMessage = String(localized: "please input correct float")
                             presentAlert = true
                             XCLog(.error, "cannot convert")
                         }
                     }
-                    Text("min \(String(format: "%.2f", C.COLOR_ALPHA_MIN)) max \(String(format: "%.2f", C.COLOR_ALPHA_MAX)) default \(String(format: "%.2f", C.COLOR_ALPHA_DEFAULT))")
+                    Text(String(localized: "min \(String(format: "%.2f", C.COLOR_ALPHA_MIN)) max \(String(format: "%.2f", C.COLOR_ALPHA_MAX)) default \(String(format: "%.2f", C.COLOR_ALPHA_DEFAULT))"))
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
 
-                    Picker("Theme", selection: $currentColorTheme) {
-                        Text("single")
+                    Picker(String(localized: "Theme"), selection: $currentColorTheme) {
+                        Text(String(localized: "single"))
                             .tag(ExStickyColorTheme.single)
-                        Text("random")
+                        Text(String(localized: "random"))
                             .tag(ExStickyColorTheme.random)
                     }
                     .pickerStyle(.inline)
@@ -95,23 +95,23 @@ struct AppearancePreferenceView: View {
 
                     // single
                     Group {
-                        Picker("Preset", selection: $presetColor) {
+                        Picker(String(localized: "Preset"), selection: $presetColor) {
                             ForEach(ExStickyPresetColor.allCases) { color in
                                 switch color {
                                 case .red:
-                                    Text("Red")
+                                    Text(String(localized: "Red"))
                                         .tag(color)
                                 case .orange:
-                                    Text("Orange")
+                                    Text(String(localized: "Orange"))
                                         .tag(color)
                                 case .yellow:
-                                    Text("Yellow")
+                                    Text(String(localized: "Yellow"))
                                         .tag(color)
                                 case .green:
-                                    Text("Green")
+                                    Text(String(localized: "Green"))
                                         .tag(color)
                                 case .blue:
-                                    Text("Blue")
+                                    Text(String(localized: "Blue"))
                                         .tag(color)
                                 }
                             }
@@ -121,21 +121,22 @@ struct AppearancePreferenceView: View {
                             UserSettings.appearence.color = presetColor.rawValue
                         }
 
-                        Toggle("Use customized color", isOn: $isUsingCustomizedColor)
+                        Toggle(String(localized: "Use customized color"),
+                               isOn: $isUsingCustomizedColor)
 
-                        TextField("Customization",
+                        TextField(String(localized: "Customization"),
                                   text: $customizedColorHex,
                                   onCommit: {
                                       if let value = customizedColorHex.hex2uint32 {
                                           UserSettings.appearence.color = value
                                       } else {
-                                          alertMessage = "please input correct integer" // "please input correct float"
+                                          alertMessage = String(localized: "please input correct integer") // "please input correct float"
                                           presentAlert = true
                                           XCLog(.error, "cannot convert")
                                       }
                                   })
                                   .disabled(!isUsingCustomizedColor)
-                        Text("Input the hex of your faviorite color. eg. 0x66CCFF")
+                        Text(String(localized: "Input the hex of your faviorite color. eg. 0x66CCFF"))
                             .foregroundColor(Color.gray)
                             .font(.system(.callout))
                     }
@@ -145,15 +146,15 @@ struct AppearancePreferenceView: View {
 
             Divider()
 
-            Text("Changes will take effect on new windows.")
+            Text(String(localized: "Changes will take effect on new windows."))
                 .foregroundColor(Color.gray)
                 .font(.system(.callout))
         }
         .padding()
         .alert(
-            "Alert", isPresented: $presentAlert, presenting: alertMessage
+            String(localized: "Alert"), isPresented: $presentAlert, presenting: alertMessage
         ) { _ in
-            Button("OK") {}
+            Button(String(localized: "OK")) {}
         } message: { message in
             Text(message)
         }

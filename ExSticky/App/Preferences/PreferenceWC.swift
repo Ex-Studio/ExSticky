@@ -14,7 +14,7 @@ class PreferenceWC: NSWindowController {
                 backing: .buffered,
                 defer: true
             )
-            w.title = "Preferences"
+            w.title = String(localized: "Preferences")
             w.toolbarStyle = .preference
             return w
         }()
@@ -24,13 +24,13 @@ class PreferenceWC: NSWindowController {
         preferenceVC.tabStyle = .toolbar
 
         textTab = NSTabViewItem(viewController: TextPreferenceVC())
-        textTab.label = "Text"
+        textTab.label = String(localized: "Text")
         textTab.image = NSImage(systemSymbolName: "textformat.alt", accessibilityDescription: "")
         appearanceTab = NSTabViewItem(viewController: AppearancePreferenceVC())
-        appearanceTab.label = "Appearance"
+        appearanceTab.label = String(localized: "Appearance")
         appearanceTab.image = NSImage(systemSymbolName: "macwindow", accessibilityDescription: "")
         behaviorTab = NSTabViewItem(viewController: BehaviorPreferenceVC())
-        behaviorTab.label = "Behavior"
+        behaviorTab.label = String(localized: "Behavior")
         behaviorTab.image = NSImage(systemSymbolName: "rectangle.3.group", accessibilityDescription: "")
         preferenceVC.addTabViewItem(textTab)
         preferenceVC.addTabViewItem(appearanceTab)

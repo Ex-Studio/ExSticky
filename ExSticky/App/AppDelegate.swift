@@ -18,7 +18,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func SetupHistoryMenu() {
         // create menu
         let HistoryMenu = NSMenu(title: C.MENU_TITLE_HISTORY)
-        let HistoryMenu_ClearAll = NSMenuItem(title: "Clear All", action: #selector(HistoryMenu_ClearAll(_:)), keyEquivalent: "")
+
+        let HistoryMenu_ClearAll = NSMenuItem(
+            title: String(localized: "Clear All"),
+            action: #selector(HistoryMenu_ClearAll(_:)),
+            keyEquivalent: ""
+        )
         HistoryMenu.addItem(HistoryMenu_ClearAll)
         let HistoryMenu_Separator = NSMenuItem.separator()
         HistoryMenu.addItem(HistoryMenu_Separator)

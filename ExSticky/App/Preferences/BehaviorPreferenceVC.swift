@@ -14,34 +14,35 @@ struct BehaviorPreferenceView: View {
     var body: some View {
         VStack {
             Form {
-                Text("Window Behavior")
+                Text(String(localized: "Window Behavior"))
                     .font(.system(.title))
 
                 Group {
-                    Toggle("Floating", isOn: $float)
+                    Toggle(String(localized: "Floating"), isOn: $float)
                         .onChange(of: float) { _ in
                             UserSettings.behavior.float = float
                         }
 
-                    Text("Should windows float on the top.")
+                    Text(String(localized: "Should windows float on the top."))
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
                 }
 
                 Group {
-                    Toggle("Appear on All Desktops", isOn: $appearOnAllDesktop)
+                    Toggle(String(localized: "Appear on All Desktops"),
+                           isOn: $appearOnAllDesktop)
                         .onChange(of: appearOnAllDesktop) { _ in
                             UserSettings.behavior.appearOnAllDesktop = appearOnAllDesktop
                         }
 
-                    Text("Should windows appear on all desktops.")
+                    Text(String(localized: "Should windows appear on all desktops."))
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
                 }
             }
             Divider()
 
-            Text("Changes will take effect on new windows.")
+            Text(String(localized: "Changes will take effect on new windows."))
                 .foregroundColor(Color.gray)
                 .font(.system(.callout))
         }
