@@ -18,7 +18,15 @@ class TextView: NSView {
 
         textView.drawsBackground = false // transparent
         textView.isRichText = false
-        textView.string = ""
+        if UserData.statistic.times == 0 {
+            textView.string = "Thanks for downloading ExSticky!\n\nSeveral Usages\n- pin a sticky on your desktop\n- copy and paste pure text contents\n\nShortcuts\n- ⌘N New Window\n- ⌘, Preferences"
+        } else if UserData.statistic.times % 100 == 0 {
+            textView.string = "You have created \(UserData.statistic.times) stickies with ExSticky.\nWould you want to buy a cup of coffee for the developer?"
+        } else {
+            textView.string = ""
+        }
+        UserData.statistic.times += 1
+
         textView.font = NSFont(
             name: UserSettings.text.font,
             size: CGFloat(UserSettings.text.size)

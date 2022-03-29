@@ -13,6 +13,7 @@
 		480C6C2927F0FAC200028C65 /* TextPreferenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C6C2227F0FAC200028C65 /* TextPreferenceVC.swift */; };
 		48164C7227F081E000145E13 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48164C7127F081E000145E13 /* UserSettings.swift */; };
 		4816AB2527F2D27B00C49316 /* NSPoint+fromTopLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4816AB2427F2D27B00C49316 /* NSPoint+fromTopLeft.swift */; };
+		4816AB2727F2D7B000C49316 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4816AB2627F2D7B000C49316 /* UserData.swift */; };
 		481F04E827F1E5E0005FB2A4 /* UInt32_String+hex_dec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F04E727F1E5E0005FB2A4 /* UInt32_String+hex_dec.swift */; };
 		482A999A27F05279004D16EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A999927F05279004D16EE /* AppDelegate.swift */; };
 		482A999C27F0527C004D16EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482A999B27F0527C004D16EE /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		48164C6D27F07CC200145E13 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48164C7127F081E000145E13 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		4816AB2427F2D27B00C49316 /* NSPoint+fromTopLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPoint+fromTopLeft.swift"; sourceTree = "<group>"; };
+		4816AB2627F2D7B000C49316 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		481F04E727F1E5E0005FB2A4 /* UInt32_String+hex_dec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt32_String+hex_dec.swift"; sourceTree = "<group>"; };
 		482A999627F05279004D16EE /* ExSticky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExSticky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482A999927F05279004D16EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				48A10A2027F205FB00303EC8 /* ExStickyEnums.swift */,
 				48698FC927F226DA0006B3E4 /* Constants.swift */,
 				48164C7127F081E000145E13 /* UserSettings.swift */,
+				4816AB2627F2D7B000C49316 /* UserData.swift */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				4816AB2527F2D27B00C49316 /* NSPoint+fromTopLeft.swift in Sources */,
 				482A99AB27F059AC004D16EE /* NSColor+hexinit.swift in Sources */,
 				481F04E827F1E5E0005FB2A4 /* UInt32_String+hex_dec.swift in Sources */,
+				4816AB2727F2D7B000C49316 /* UserData.swift in Sources */,
 				480C6C2727F0FAC200028C65 /* AppearancePreferenceVC.swift in Sources */,
 				48A10A1F27F2003200303EC8 /* DataPackages.swift in Sources */,
 				480C6C2627F0FAC200028C65 /* PreferenceWC.swift in Sources */,
@@ -375,7 +379,7 @@
 				CODE_SIGN_ENTITLEMENTS = ExSticky/ExSticky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = C4W6UUH267;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -388,7 +392,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yangxijie.exsticky.beta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -404,7 +408,7 @@
 				CODE_SIGN_ENTITLEMENTS = ExSticky/ExSticky.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = C4W6UUH267;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -417,7 +421,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yangxijie.exsticky.beta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
