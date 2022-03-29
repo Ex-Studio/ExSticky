@@ -37,9 +37,22 @@ class TextWindow: NSWindow {
     }
 
     override func close() {
-        // TODO: save content
         super.close()
         XCLog(.trace)
+        // TODO: save content
+        let string = view.textView.string
+        if string != "" {
+            let c = UserData.history.count
+            if c <= C.HISTORY_MAX_COUNT {
+                UserData.history.append(ExStickyHistoryItem(string))
+            } else {
+                for _ in 0 ..< (c - C.HISTORY_MAX_COUNT) {
+                    UserData.history.removeFirst()
+                }
+                UserData.history.append(ExStickyHistoryItem(string))
+            } 
+        }
+        XCLog(.debug, "\(UserData.history)")
     }
 
     private func ConfigureWindow(color: TextWindowColor) {

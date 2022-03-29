@@ -11,7 +11,7 @@ class TextView: NSView {
 
     // MARK: - Subviews
 
-    private var textView: NSTextView!
+    var textView: NSTextView!
     private func AddTextView(color: TextWindowColor) {
         let scrollView = NSTextView.scrollableTextView()
         textView = scrollView.documentView as? NSTextView
@@ -19,8 +19,8 @@ class TextView: NSView {
         textView.drawsBackground = false // transparent
         textView.isRichText = false
         if UserData.times == 0 {
-            textView.string = "Thanks for downloading ExSticky!\n\nSeveral Usages\n- pin a sticky on your desktop\n- copy and paste pure text contents\n\nShortcuts\n- ⌘N New Window\n- ⌘, Preferences"
-        } else if UserData.times % 100 == 0 {
+            textView.string = "Thanks for downloading ExSticky!\n\nSeveral Usages\n- pin a sticky on your desktop\n- copy and paste pure text contents\n- temporarily store some text\n\nShortcuts\n- ⌘N New Window\n- ⌘, Preferences"
+        } else if UserData.times % C.SUPPORT_INFO_FREQUENCY == 0 {
             textView.string = "You have created \(UserData.times) stickies with ExSticky.\nWould you want to buy a cup of coffee for the developer?"
         } else {
             textView.string = ""

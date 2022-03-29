@@ -21,4 +21,9 @@ struct ExStickyConstants {
     let TEXT_WINDOW_HEIGHT_MIN: Float = 60
     let TEXT_WINDOW_WIDTH_DEFAULT: Float = 565.7
     let TEXT_WINDOW_HEIGHT_DEFAULT: Float = 400
+    
+    let HISTORY_MAX_COUNT:Int = 7
+    
+    /// 每新建多少个窗口出现一次
+    let SUPPORT_INFO_FREQUENCY:Int = 64
 }
