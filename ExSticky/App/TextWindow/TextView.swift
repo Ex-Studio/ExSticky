@@ -19,7 +19,7 @@ class TextView: NSView {
         textView.drawsBackground = false // transparent
         textView.isRichText = false
         if UserData.times == 0 {
-            textView.string = "Thanks for downloading ExSticky!\n\nSeveral Usages\n- pin a sticky on your desktop\n- copy and paste pure text contents\n- temporarily store some text\n\nShortcuts\n- ⌘N New Window\n- ⌘, Preferences"
+            textView.string = "Thanks for downloading ExSticky!\n\nSeveral Usages\n- pin a sticky on your desktop\n- copy and paste pure text contents\n- temporarily store some text (click history in History menu to copy)\n\nShortcuts\n- ⌘N New Window\n- ⌘, Preferences"
         } else if UserData.times % C.SUPPORT_INFO_FREQUENCY == 0 {
             textView.string = "You have created \(UserData.times) stickies with ExSticky.\nWould you want to buy a cup of coffee for the developer?"
         } else {
