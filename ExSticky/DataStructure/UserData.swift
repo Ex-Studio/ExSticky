@@ -62,21 +62,18 @@ func SetupHistoryMenuItems(history: [ExStickyHistoryItem]) {
     }
     // add all history in `UserData.history`
     _ = sortedHistory.map { history in
-        HistoryMenu!.submenu!.addItem(NSMenuItem(title: history.content, action: #selector(NSApp.CopyToNSPasteboard(_:)), keyEquivalent: ""))
+        HistoryMenu!.submenu!.addItem(NSMenuItem(title: history.content, action: #selector(NSApp.CopyToSystemPasteboard(_:)), keyEquivalent: ""))
     }
 }
 
 extension NSApplication {
     @objc
-    func CopyToNSPasteboard(_ sender: NSMenuItem) {
+    func CopyToSystemPasteboard(_ sender: NSMenuItem) {
         let menuitem = sender as NSMenuItem
         let title = menuitem.title
 
-        XCLog(.debug, title)
-
         let pasteboard = NSPasteboard.general
         pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
-        let suc = pasteboard.setString(title, forType: NSPasteboard.PasteboardType.string)
-        print(suc)
+        pasteboard.setString(title, forType: NSPasteboard.PasteboardType.string)
     }
 }

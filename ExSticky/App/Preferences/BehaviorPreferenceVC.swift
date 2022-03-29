@@ -1,6 +1,5 @@
 import Cocoa
 import SwiftUI
-import XCLog
 
 class BehaviorPreferenceVC: NSHostingController<BehaviorPreferenceView> {
     convenience init() {

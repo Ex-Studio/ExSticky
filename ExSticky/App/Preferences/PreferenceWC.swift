@@ -1,5 +1,4 @@
 import Cocoa
-import XCLog
 
 class PreferenceWC: NSWindowController {
     private var preferenceVC: NSTabViewController!

@@ -54,7 +54,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func MenuNew(_: Any) {
-        XCLog(.trace)
         CreateNewWindow()
     }
 
@@ -63,7 +62,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let preferenceWC = PreferenceWC() // instance only once
     private var didOpenPreferenceWindow = false
     @IBAction func MenuPreference(_: Any) {
-        XCLog(.trace)
         preferenceWC.window!.makeKeyAndOrderFront(self)
         if didOpenPreferenceWindow == false {
             preferenceWC.window!.center() // only center preference window when first open it
