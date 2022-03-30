@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let HistoryMenu_ClearAll = NSMenuItem(
             title: String(localized: "Clear All"),
-            action: #selector(HistoryMenu_ClearAll(_:)),
+            action: #selector(Click_Menu_History_ClearAll(_:)),
             keyEquivalent: ""
         )
         HistoryMenu.addItem(HistoryMenu_ClearAll)
@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc
-    private func HistoryMenu_ClearAll(_: NSMenuItem) {
+    private func Click_Menu_History_ClearAll(_: NSMenuItem) {
         UserData.history = []
     }
 
@@ -67,11 +67,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private let preferenceWC = PreferenceWC() // instance only once
     private var didOpenPreferenceWindow = false
-    @IBAction func MenuPreference(_: Any) {
+    @IBAction func Click_Menu_Preferences(_: Any) {
         preferenceWC.window!.makeKeyAndOrderFront(self)
         if didOpenPreferenceWindow == false {
             preferenceWC.window!.center() // only center preference window when first open it
             didOpenPreferenceWindow = true
+        }
+    }
+    
+    // MARK: HelpWindow
+    
+    private let helpWC = HelpWC() // instance only once
+    private var didOpenHelpWindow = false
+    @IBAction func Click_Menu_Help(_: Any) {
+        helpWC.window!.makeKeyAndOrderFront(self)
+        if didOpenHelpWindow == false {
+            helpWC.window!.center() // only center preference window when first open it
+            didOpenHelpWindow = true
         }
     }
 }

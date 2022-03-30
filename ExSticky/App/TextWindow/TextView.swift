@@ -22,6 +22,7 @@ class TextView: NSView {
             textView.string = String(localized: "Thanks for downloading ExSticky!\n\nSeveral Usages\n- pin a sticky on your desktop\n- copy and paste pure text contents\n- temporarily store some text (click history in History menu to copy)\n\nShortcuts\n- ⌘N New Window\n- ⌘, Preferences")
         } else if UserData.times % C.SUPPORT_INFO_FREQUENCY == 0 {
             textView.string = String(localized: "You have created \(UserData.times) stickies with ExSticky.\nWould you want to buy a cup of coffee for the developer?")
+            // TODO: 购买之后就没有这个机制了
         } else {
             textView.string = ""
         }

@@ -28,7 +28,7 @@
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                             <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                 <connections>
-                                    <action selector="MenuPreference:" target="Voe-Tx-rLC" id="c5c-ZN-Blx"/>
+                                    <action selector="Click_Menu_Preferences:" target="Voe-Tx-rLC" id="1IX-4s-YLp"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
@@ -580,7 +580,7 @@
                         <items>
                             <menuItem title="ExSticky Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
-                                    <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
+                                    <action selector="Click_Menu_Help:" target="Voe-Tx-rLC" id="OiR-aF-KvB"/>
                                 </connections>
                             </menuItem>
                         </items>

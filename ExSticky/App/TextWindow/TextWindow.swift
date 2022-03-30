@@ -38,7 +38,6 @@ class TextWindow: NSWindow {
 
     override func close() {
         super.close()
-        // TODO: save content
         let string = view.textView.string
         if string != "" {
             let c = UserData.history.count
