@@ -47,9 +47,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Menu
 
     // menu: ExSticky Edit Window History Help
-    
-    private func SetupMenu_Window_New(){
-        
+
+    private func SetupMenu_Window_New() {
+        let Menu_Window = NSApp.mainMenu!.item(withTitle: "Window")
+        let Menu_Window_New = NSMenuItem(
+            title: String(localized: "New"),
+            action: #selector(ClickMenu_Window_New(_:)),
+            keyEquivalent: "n"
+        )
+        Menu_Window_New.keyEquivalentModifierMask = .command
+        Menu_Window!.submenu!.insertItem(Menu_Window_New, at: 0)
     }
 
     @objc
