@@ -19,7 +19,7 @@ class TextView: NSView {
         textView.drawsBackground = false // transparent
         textView.isRichText = false
         if UserData.times == 0 {
-            textView.string = C.HELP_INFO
+            textView.string = String(localized: "HELP_INFO")
         } else if UserData.times % C.SUPPORT_INFO_FREQUENCY == 0 {
             textView.string = String(localized: "You have created \(UserData.times) stickies with ExSticky.\nWould you want to buy a cup of coffee for the developer?")
             // TODO: 购买之后就没有这个机制了

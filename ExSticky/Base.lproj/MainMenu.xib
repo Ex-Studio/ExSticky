@@ -544,7 +544,7 @@
                         <items>
                             <menuItem title="New" alternate="YES" keyEquivalent="n" id="YZO-h7-ACU">
                                 <connections>
-                                    <action selector="Click_Menu_Window_New:" target="Voe-Tx-rLC" id="rhT-SR-nLn"/>
+                                    <action selector="ClickMenu_Window_New:" target="Voe-Tx-rLC" id="2sN-zI-kXc"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
@@ -569,18 +569,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="arrangeInFront:" target="-1" id="DRN-fu-gQh"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="Help" id="wpr-3q-Mcd">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
-                        <items>
-                            <menuItem title="ExSticky Help" keyEquivalent="?" id="FKE-Sm-Kum">
-                                <connections>
-                                    <action selector="Click_Menu_Help:" target="Voe-Tx-rLC" id="OiR-aF-KvB"/>
                                 </connections>
                             </menuItem>
                         </items>

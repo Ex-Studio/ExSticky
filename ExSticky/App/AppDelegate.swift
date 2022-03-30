@@ -7,40 +7,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         CreateNewWindow()
-        SetupHistoryMenu()
+        SetupMenu_History()
+        SetupMenu_Help()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
         true
-    }
-
-    /// menu: ExSticky Edit Window History Help
-    private func SetupHistoryMenu() {
-        // create menu
-        let HistoryMenu = NSMenu(title: C.MENU_TITLE_HISTORY)
-
-        let HistoryMenu_ClearAll = NSMenuItem(
-            title: String(localized: "Clear All"),
-            action: #selector(Click_Menu_History_ClearAll(_:)),
-            keyEquivalent: ""
-        )
-        HistoryMenu.addItem(HistoryMenu_ClearAll)
-        let HistoryMenu_Separator = NSMenuItem.separator()
-        HistoryMenu.addItem(HistoryMenu_Separator)
-
-        // add menu to menu bar
-        let main_HistoryMenu = NSMenuItem(title: C.MENU_TITLE_HISTORY, action: nil, keyEquivalent: "")
-        main_HistoryMenu.submenu = HistoryMenu
-        main_HistoryMenu.submenu!.autoenablesItems = false // important: if set to true, you cannot set the `isEnable` property on all items
-        NSApp.mainMenu!.insertItem(main_HistoryMenu, at: 3)
-
-        // load history before
-        SetupHistoryMenuItems(history: UserData.history)
-    }
-
-    @objc
-    private func Click_Menu_History_ClearAll(_: NSMenuItem) {
-        UserData.history = []
     }
 
     // MARK: - Windows
@@ -59,10 +31,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         textWindowQueue.last!.setFrameOrigin(NSPoint(x: x, yFromTopLeft: y, windowHeight: textWindowQueue.last!.frame.height))
     }
 
-    @IBAction func Click_Menu_Window_New(_: Any) {
-        CreateNewWindow()
-    }
-
     // MARK: PreferenceWindow
 
     private let preferenceWC = PreferenceWC() // instance only once
@@ -74,16 +42,77 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             didOpenPreferenceWindow = true
         }
     }
-    
-    // MARK: HelpWindow
-    
-    private let helpWC = HelpWC() // instance only once
-    private var didOpenHelpWindow = false
-    @IBAction func Click_Menu_Help(_: Any) {
-        helpWC.window!.makeKeyAndOrderFront(self)
-        if didOpenHelpWindow == false {
-            helpWC.window!.center() // only center preference window when first open it
-            didOpenHelpWindow = true
-        }
+
+    // MARK: - Menu
+
+    // menu: ExSticky Edit Window History Help
+
+    @IBAction func ClickMenu_Window_New(_: Any) {
+        CreateNewWindow()
+    }
+
+    private func SetupMenu_History() {
+        // create menu
+        let Menu_History = NSMenu(title: C.MENU_TITLE_HISTORY)
+
+        let Menu_History_ClearAll = NSMenuItem(
+            title: String(localized: "Clear All"),
+            action: #selector(ClickMenu_History_ClearAll(_:)),
+            keyEquivalent: ""
+        )
+        Menu_History.addItem(Menu_History_ClearAll)
+        let HistoryMenu_Separator = NSMenuItem.separator()
+        Menu_History.addItem(HistoryMenu_Separator)
+
+        // add menu to menu bar
+        let mainMenu_History = NSMenuItem(title: C.MENU_TITLE_HISTORY, action: nil, keyEquivalent: "")
+        mainMenu_History.submenu = Menu_History
+        mainMenu_History.submenu!.autoenablesItems = false // important: if set to true, you cannot set the `isEnable` property on all items
+        NSApp.mainMenu!.insertItem(mainMenu_History, at: 3)
+
+        // load history before
+        SetupHistoryMenuItems(history: UserData.history)
+    }
+
+    @objc
+    private func ClickMenu_History_ClearAll(_: NSMenuItem) {
+        UserData.history = []
+    }
+
+    private func SetupMenu_Help() {
+        // create menu
+        let Menu_Help = NSMenu(title: C.MENU_TITLE_HELP)
+
+        let Menu_Help_Help = NSMenuItem(
+            title: String(localized: "Check Help"),
+            action: #selector(ClickMenu_Help_Help(_:)),
+            keyEquivalent: "?"
+        )
+        Menu_Help_Help.keyEquivalentModifierMask = .command
+        Menu_Help.addItem(Menu_Help_Help)
+
+        let Menu_Help_Report = NSMenuItem(
+            title: String(localized: "Report an Issue"),
+            action: #selector(ClickMenu_Help_Report(_:)),
+            keyEquivalent: ""
+        )
+        Menu_Help.addItem(Menu_Help_Report)
+
+        // add menu to menu bar
+        let mainMenu_Help = NSMenuItem(title: C.MENU_TITLE_HELP, action: nil, keyEquivalent: "")
+        mainMenu_Help.submenu = Menu_Help
+        NSApp.mainMenu!.insertItem(mainMenu_Help, at: 4)
+    }
+
+    @objc
+    private func ClickMenu_Help_Help(_: NSMenuItem) {
+        let url = URL(string: "https://ex-studio.github.io/ExSticky-Site/help/")!
+        NSWorkspace.shared.open(url)
+    }
+
+    @objc
+    private func ClickMenu_Help_Report(_: NSMenuItem) {
+        let url = URL(string: "https://ex-studio.github.io/ExSticky-Site/report/")!
+        NSWorkspace.shared.open(url)
     }
 }

@@ -29,6 +29,7 @@ struct ExStickyConstants {
     static let SUPPORT_INFO_FREQUENCY = 200
 
     static let MENU_TITLE_HISTORY = String(localized: "History")
+    static let MENU_TITLE_HELP = String(localized: "Help")
 
     static let UI_FIRST_WINDOW_X = 20
     static let UI_FIRST_WINDOW_Y_FROM_TOP_LEFT = 40 // will be grate if not hide menu bar
@@ -36,20 +37,4 @@ struct ExStickyConstants {
     static let UI_WINDOW_VERTICLE_DISTANCE = 26
     static let UI_WINDOW_CYCLE = 8
 
-    private static let HELP_INFO_ARRAY = [
-        String(localized: "Thanks for using ExSticky!"), "\n",
-        "\n",
-        String(localized: "Usage"), "\n",
-        "- ", String(localized: "pin a sticky on your desktop"), "\n",
-        "- ", String(localized: "paste and copy pure text contents"), "\n",
-        "- ", String(localized: "temporarily store some text"), "\n",
-        "\n",
-        String(localized: "Menu"), "\n",
-        "- ", "⌘N", " ", String(localized: "New Window"), "\n",
-        "- ", "⌘,", "  ", String(localized: "Open Preferences"), "\n",
-        "- ", "⌘?", " ", String(localized: "Check Help"), "\n",
-    ]
-    static let HELP_INFO = HELP_INFO_ARRAY.reduce("") { a, b in
-        a + b
-    }
 }
