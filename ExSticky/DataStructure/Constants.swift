@@ -26,7 +26,7 @@ struct ExStickyConstants {
     static let HISTORY_MAX_COUNT = 7
 
     /// 每新建多少个窗口出现一次买咖啡的消息
-    static let SUPPORT_INFO_FREQUENCY = 100
+    static let SUPPORT_INFO_FREQUENCY = 200
 
     static let MENU_TITLE_HISTORY = String(localized: "History")
 

@@ -1,4 +1,7 @@
 /* No comment provided by engineer. */
+"%@ %lld %@ %lld %@ %lld" = "%@ %lld %@ %lld %@ %lld";
+
+/* No comment provided by engineer. */
 "Alert" = "提示";
 
 /* No comment provided by engineer. */
@@ -21,6 +24,9 @@
 
 /* No comment provided by engineer. */
 "Changes will take effect on new windows." = "修改将会对新窗口生效";
+
+/* No comment provided by engineer. */
+"Check Help" = "查看帮助";
 
 /* No comment provided by engineer. */
 "Clear All" = "清空记录";
@@ -53,6 +59,9 @@
 "Height" = "高度";
 
 /* No comment provided by engineer. */
+"Help" = "帮助";
+
+/* No comment provided by engineer. */
 "History" = "历史";
 
 /* No comment provided by engineer. */
@@ -62,16 +71,31 @@
 "max" = "最大";
 
 /* No comment provided by engineer. */
+"Menu" = "菜单";
+
+/* No comment provided by engineer. */
 "min" = "最小";
 
 /* No comment provided by engineer. */
 "min %@ max %@ default %@" = "最小 %@ 最大 %@ 默认 %@";
 
 /* No comment provided by engineer. */
+"New Window" = "新窗口";
+
+/* No comment provided by engineer. */
 "OK" = "好";
 
 /* No comment provided by engineer. */
+"Open Preferences" = "打开设置";
+
+/* No comment provided by engineer. */
 "Orange" = "橙色";
+
+/* No comment provided by engineer. */
+"paste and copy pure text contents" = "粘贴复制纯文本内容";
+
+/* No comment provided by engineer. */
+"pin a sticky on your desktop" = "桌面便签";
 
 /* No comment provided by engineer. */
 "please input correct float" = "请输入正确的小数值";
@@ -110,16 +134,22 @@
 "Size" = "大小";
 
 /* No comment provided by engineer. */
+"temporarily store some text" = "临时存储文字内容";
+
+/* No comment provided by engineer. */
 "Text" = "文字";
 
 /* No comment provided by engineer. */
 "Text Format" = "文字样式";
 
 /* No comment provided by engineer. */
-"Thanks for downloading ExSticky!\n\nSeveral Usages\n- pin a sticky on your desktop\n- copy and paste pure text contents\n- temporarily store some text (click history in History menu to copy)\n\nShortcuts\n- ⌘N New Window\n- ⌘, Preferences" = "感谢下载使用Ex便签！\n\n几种用法：\n- 将便签悬浮到你的桌面\n- 复制粘贴纯文本内容\n- 临时保存某些文字（在历史菜单中可以点击进行复制）\n\n快捷键：\n- ⌘N 新建便签\n- ⌘, 打开设置";
+"Thanks for using ExSticky!" = "感谢使用Ex便签！";
 
 /* No comment provided by engineer. */
 "Theme" = "主题";
+
+/* No comment provided by engineer. */
+"Usage" = "用法";
 
 /* No comment provided by engineer. */
 "Use customized color" = "使用自定义色";
