@@ -1,6 +1,3 @@
-
-"HELP_INFO" = "感谢使用 `Ex便签`！\n\n用法\n\n- 在桌面创建便签\n- 粘贴复制纯文本内容\n- 临时存储文本\n\n菜单\n\n- ⌘N 新建窗口\n- ⌘, 打开设置\n- ⌘? 查看帮助";
-
 /* No comment provided by engineer. */
 "%@ %lld %@ %lld %@ %lld" = "%@ %lld %@ %lld %@ %lld";
 
@@ -64,6 +61,9 @@
 /* No comment provided by engineer. */
 "Help" = "帮助";
 
+/* (No Comment) */
+"HELP_INFO" = "感谢使用 `Ex便签`！\n\n用法\n\n- 在桌面创建便签\n- 粘贴复制纯文本内容\n- 临时存储文本\n\n菜单\n\n- ⌘N 新建窗口\n- ⌘, 打开设置\n- ⌘? 查看帮助";
+
 /* No comment provided by engineer. */
 "History" = "历史";
 
@@ -74,31 +74,16 @@
 "max" = "最大";
 
 /* No comment provided by engineer. */
-"Menu" = "菜单";
-
-/* No comment provided by engineer. */
 "min" = "最小";
 
 /* No comment provided by engineer. */
 "min %@ max %@ default %@" = "最小 %@ 最大 %@ 默认 %@";
 
 /* No comment provided by engineer. */
-"New Window" = "新窗口";
-
-/* No comment provided by engineer. */
 "OK" = "好";
 
 /* No comment provided by engineer. */
-"Open Preferences" = "打开设置";
-
-/* No comment provided by engineer. */
 "Orange" = "橙色";
-
-/* No comment provided by engineer. */
-"paste and copy pure text contents" = "粘贴复制纯文本内容";
-
-/* No comment provided by engineer. */
-"pin a sticky on your desktop" = "桌面便签";
 
 /* No comment provided by engineer. */
 "please input correct float" = "请输入正确的小数值";
@@ -125,6 +110,9 @@
 "Red" = "红色";
 
 /* No comment provided by engineer. */
+"Report an Issue" = "问题反馈";
+
+/* No comment provided by engineer. */
 "Should windows appear on all desktops." = "窗口是否出现在所有桌面";
 
 /* No comment provided by engineer. */
@@ -137,22 +125,13 @@
 "Size" = "大小";
 
 /* No comment provided by engineer. */
-"temporarily store some text" = "临时存储文字内容";
-
-/* No comment provided by engineer. */
 "Text" = "文字";
 
 /* No comment provided by engineer. */
 "Text Format" = "文字样式";
 
 /* No comment provided by engineer. */
-"Thanks for using ExSticky!" = "感谢使用Ex便签！";
-
-/* No comment provided by engineer. */
 "Theme" = "主题";
-
-/* No comment provided by engineer. */
-"Usage" = "用法";
 
 /* No comment provided by engineer. */
 "Use customized color" = "使用自定义色";
