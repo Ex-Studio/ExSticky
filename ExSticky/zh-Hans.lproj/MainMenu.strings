@@ -47,7 +47,7 @@
 "9ic-FL-obx.title" = "替换";
 
 /* Class = "NSMenuItem"; title = "Smart Copy/Paste"; ObjectID = "9yt-4B-nSM"; */
-"9yt-4B-nSM.title" = "Smart Copy/Paste";
+"9yt-4B-nSM.title" = "智能拷贝/粘贴";
 
 /* Class = "NSMenuItem"; title = "Tighten"; ObjectID = "46P-cB-AYj"; */
 "46P-cB-AYj.title" = "Tighten";
@@ -89,13 +89,13 @@
 "cqv-fj-IhA.title" = "选区";
 
 /* Class = "NSMenuItem"; title = "Smart Links"; ObjectID = "cwL-P1-jid"; */
-"cwL-P1-jid.title" = "Smart Links";
+"cwL-P1-jid.title" = "智能链接";
 
 /* Class = "NSMenu"; title = "Text"; ObjectID = "d9c-me-L2H"; */
 "d9c-me-L2H.title" = "文字";
 
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "d9M-CD-aMd"; */
-"d9M-CD-aMd.title" = "Make Lower Case";
+"d9M-CD-aMd.title" = "变为小写";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "dRJ-4n-Yzg"; */
 "dRJ-4n-Yzg.title" = "撤销";
@@ -140,7 +140,7 @@
 "HFQ-gK-NFA.title" = "文字替换";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "hQb-2v-fYv"; */
-"hQb-2v-fYv.title" = "Smart Quotes";
+"hQb-2v-fYv.title" = "智能引号";
 
 /* Class = "NSMenuItem"; title = "Check Document Now"; ObjectID = "hz2-CU-CR7"; */
 "hz2-CU-CR7.title" = "检查文档";
@@ -236,7 +236,7 @@
 "rbD-Rh-wIN.title" = "输入时检查拼写";
 
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "rgM-f4-ycn"; */
-"rgM-f4-ycn.title" = "Smart Dashes";
+"rgM-f4-ycn.title" = "智能破折号";
 
 /* Class = "NSMenuItem"; title = "Superscript"; ObjectID = "Rqc-34-cIF"; */
 "Rqc-34-cIF.title" = "Superscript";
@@ -245,7 +245,7 @@
 "Ruw-6m-B2m.title" = "全选";
 
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "S0p-oC-mLd"; */
-"S0p-oC-mLd.title" = "Jump to Selection";
+"S0p-oC-mLd.title" = "跳转至";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "窗口";
@@ -254,10 +254,10 @@
 "tlD-Oa-oAM.title" = "Kern";
 
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "tRr-pd-1PS"; */
-"tRr-pd-1PS.title" = "Data Detectors";
+"tRr-pd-1PS.title" = "数据检测器";
 
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "UEZ-Bs-lqG"; */
-"UEZ-Bs-lqG.title" = "Capitalize";
+"UEZ-Bs-lqG.title" = "首字母大写";
 
 /* Class = "NSMenu"; title = "ExSticky"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Ex便签";
@@ -281,7 +281,7 @@
 "vLm-3I-IUL.title" = "Show Ruler";
 
 /* Class = "NSMenuItem"; title = "Make Upper Case"; ObjectID = "vmV-6d-7jI"; */
-"vmV-6d-7jI.title" = "Make Upper Case";
+"vmV-6d-7jI.title" = "变为大写";
 
 /* Class = "NSMenu"; title = "Ligatures"; ObjectID = "w0m-vy-SC9"; */
 "w0m-vy-SC9.title" = "Ligatures";
@@ -290,7 +290,7 @@
 "W48-6f-4Dl.title" = "编辑";
 
 /* Class = "NSMenuItem"; title = "Align Right"; ObjectID = "wb2-vD-lq4"; */
-"wb2-vD-lq4.title" = "Align Right";
+"wb2-vD-lq4.title" = "右对齐";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "WeT-3V-zwk"; */
 "WeT-3V-zwk.title" = "按格式粘贴";
@@ -299,7 +299,7 @@
 "wpr-3q-Mcd.title" = "帮助";
 
 /* Class = "NSMenuItem"; title = "Underline"; ObjectID = "WRG-CD-K1S"; */
-"WRG-CD-K1S.title" = "Underline";
+"WRG-CD-K1S.title" = "下划线";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "x3v-GG-iWU"; */
 "x3v-GG-iWU.title" = "复制";
@@ -329,7 +329,7 @@
 "z6F-FW-3nz.title" = "显示替换";
 
 /* Class = "NSMenuItem"; title = "Align Left"; ObjectID = "ZM1-6Q-yy1"; */
-"ZM1-6Q-yy1.title" = "Align Left";
+"ZM1-6Q-yy1.title" = "左对齐";
 
 /* Class = "NSMenuItem"; title = "Paragraph"; ObjectID = "ZvO-Gk-QUH"; */
 "ZvO-Gk-QUH.title" = "段落";

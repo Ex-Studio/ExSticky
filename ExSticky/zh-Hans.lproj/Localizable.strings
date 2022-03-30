@@ -44,7 +44,7 @@
 "Default display format of text.\nYou can also change the format of your contents in menu bar." = "文字的默认显示效果\n你也可以在格式菜单中修改内容的样式";
 
 /* No comment provided by engineer. */
-"default SFMono-Regular\nCheck Font Book in your Mac to get the postscript name of a specific font." = "默认 SFMono-Regular\n查看你电脑上的字体库来查看字体的名字";
+"default SFMono-Regular\nCheck Font Book in your Mac to get the postscript name of a specific font." = "默认 SFMono-Regular\n打开Mac的字体册以查找字体的PostScript名称";
 
 /* No comment provided by engineer. */
 "Floating" = "悬浮";
