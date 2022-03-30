@@ -115,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				48164C6F27F081CA00145E13 /* App */,
+				48CFAF4627F510F5005C9D14 /* User */,
 				48A10A2227F2061000303EC8 /* DataStructure */,
 				482A99AC27F05CA3004D16EE /* Extension */,
 				482A999B27F0527C004D16EE /* Assets.xcassets */,
@@ -152,14 +153,21 @@
 		48A10A2227F2061000303EC8 /* DataStructure */ = {
 			isa = PBXGroup;
 			children = (
+				48698FC927F226DA0006B3E4 /* Constants.swift */,
 				48A10A1E27F2003200303EC8 /* DataPackages.swift */,
 				48A10A2027F205FB00303EC8 /* ExStickyEnums.swift */,
-				48698FC927F226DA0006B3E4 /* Constants.swift */,
-				48164C7127F081E000145E13 /* UserSettings.swift */,
-				4816AB2627F2D7B000C49316 /* UserData.swift */,
 				48CFAF4427F50BC0005C9D14 /* ExStickyHistory.swift */,
 			);
 			path = DataStructure;
+			sourceTree = "<group>";
+		};
+		48CFAF4627F510F5005C9D14 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				48164C7127F081E000145E13 /* UserSettings.swift */,
+				4816AB2627F2D7B000C49316 /* UserData.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
