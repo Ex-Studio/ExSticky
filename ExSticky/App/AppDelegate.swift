@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         textWindowQueue.last!.setFrameOrigin(NSPoint(x: x, yFromTopLeft: y, windowHeight: textWindowQueue.last!.frame.height))
     }
 
-    @IBAction func MenuNew(_: Any) {
+    @IBAction func Click_Menu_Window_New(_: Any) {
         CreateNewWindow()
     }
 

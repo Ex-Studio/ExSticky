@@ -544,7 +544,7 @@
                         <items>
                             <menuItem title="New" alternate="YES" keyEquivalent="n" id="YZO-h7-ACU">
                                 <connections>
-                                    <action selector="MenuNew:" target="Voe-Tx-rLC" id="oAt-7p-S8I"/>
+                                    <action selector="Click_Menu_Window_New:" target="Voe-Tx-rLC" id="rhT-SR-nLn"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
