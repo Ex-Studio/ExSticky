@@ -10,7 +10,7 @@ struct ExStickyConstants {
     static let TEXT_SIZE_MAX = 72
     static let TEXT_SIZE_DEFAULT = 24
 
-    static let TEXT_FONT_DEFAULT = "SFMono-Regular" // FIXME: 在中文的机器上有这个字体嘛 不会显示成SFMono-常规什么的吧 可能会直接崩掉
+    static let TEXT_FONT_DEFAULT = "SFMono-Regular"
 
     static let COLOR_CUSTOMIZED_DEFAULT = UInt32(0x66CCFF)
 
@@ -28,13 +28,12 @@ struct ExStickyConstants {
     /// 每新建多少个窗口出现一次买咖啡的消息
     static let SUPPORT_INFO_FREQUENCY = 200
 
-    static let MENU_TITLE_HISTORY = String(localized: "History")
-    static let MENU_TITLE_HELP = String(localized: "Help")
+    static let MENU_TITLE_HISTORY = "History"
+    static let MENU_TITLE_HELP = "Help"
 
     static let UI_FIRST_WINDOW_X = 20
     static let UI_FIRST_WINDOW_Y_FROM_TOP_LEFT = 40 // will be grate if not hide menu bar
     static let UI_WINDOW_HORIZONTAL_DISTANCE = 20
     static let UI_WINDOW_VERTICLE_DISTANCE = 26
     static let UI_WINDOW_CYCLE = 8
-
 }

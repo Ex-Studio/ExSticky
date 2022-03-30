@@ -72,8 +72,8 @@ struct ExStickySettings {
                         return .single
                     }
                 } else { // default value
-                    UserDefaults.standard.set("single", forKey: key_color_theme)
-                    return .single
+                    UserDefaults.standard.set("random", forKey: key_color_theme)
+                    return .random
                 }
             }
             set {

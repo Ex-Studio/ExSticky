@@ -542,11 +542,6 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
                         <items>
-                            <menuItem title="New" alternate="YES" keyEquivalent="n" id="YZO-h7-ACU">
-                                <connections>
-                                    <action selector="ClickMenu_Window_New:" target="Voe-Tx-rLC" id="2sN-zI-kXc"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
                                 <connections>
                                     <action selector="performClose:" target="-1" id="HmO-Ls-i7Q"/>

@@ -7,6 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         CreateNewWindow()
+        SetupMenu_Window_New()
         SetupMenu_History()
         SetupMenu_Help()
     }
@@ -28,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let window_serial: Int = (textWindowQueue.count - 1) % C.UI_WINDOW_CYCLE
         let x = CGFloat(C.UI_FIRST_WINDOW_X + C.UI_WINDOW_HORIZONTAL_DISTANCE * window_serial)
         let y = CGFloat(C.UI_FIRST_WINDOW_Y_FROM_TOP_LEFT + C.UI_WINDOW_VERTICLE_DISTANCE * window_serial)
-        textWindowQueue.last!.setFrameOrigin(NSPoint(x: x, yFromTopLeft: y, windowHeight: textWindowQueue.last!.frame.height))
+        textWindowQueue.last!.setFrameOrigin(NSPoint(x: x, yFromTop: y, windowHeight: textWindowQueue.last!.frame.height))
     }
 
     // MARK: PreferenceWindow
@@ -46,8 +47,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Menu
 
     // menu: ExSticky Edit Window History Help
+    
+    private func SetupMenu_Window_New(){
+        
+    }
 
-    @IBAction func ClickMenu_Window_New(_: Any) {
+    @objc
+    private func ClickMenu_Window_New(_: Any) {
         CreateNewWindow()
     }
 
