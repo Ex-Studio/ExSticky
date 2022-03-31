@@ -20,16 +20,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: TextWindow
 
-    private var textWindowQueue: [TextWindow] = [] // 这里只是存了指针 会多存储指针 但是问题不大 至于为什么要放到外面是因为放到函数体里面创建后关闭可能会造成重复释放 // 在窗口关闭之后 内存会清空的 但是如果将该数组内的指针清空 由于ARC 会引起二次释放 程序崩溃 简单来说现在这么用没什么问题 也不会有内存泄漏（最多泄漏十几个指针的空间） 每次应用退出都会归零的 // FIXME: 用WindowController会不会更好一些
+    private var window_serial = 0
 
     private func CreateNewWindow() {
-        textWindowQueue.append(TextWindow())
-        textWindowQueue.last!.makeKeyAndOrderFront(self)
+        XCLog(.trace)
+        
+        let textWC = TextWC()
+        textWC.window!.makeKeyAndOrderFront(self)
 
-        let window_serial: Int = (textWindowQueue.count - 1) % C.UI_WINDOW_CYCLE
-        let x = CGFloat(C.UI_FIRST_WINDOW_X + C.UI_WINDOW_HORIZONTAL_DISTANCE * window_serial)
-        let y = CGFloat(C.UI_FIRST_WINDOW_Y_FROM_TOP_LEFT + C.UI_WINDOW_VERTICLE_DISTANCE * window_serial)
-        textWindowQueue.last!.setFrameOrigin(NSPoint(x: x, yFromTop: y, windowHeight: textWindowQueue.last!.frame.height))
+        window_serial += 1
+        let serial: Int = (window_serial - 1) % C.UI_WINDOW_CYCLE
+
+        let x = CGFloat(C.UI_FIRST_WINDOW_X + C.UI_WINDOW_HORIZONTAL_DISTANCE * serial)
+        let y = CGFloat(C.UI_FIRST_WINDOW_Y_FROM_TOP_LEFT + C.UI_WINDOW_VERTICLE_DISTANCE * serial)
+        textWC.window!.setFrameOrigin(NSPoint(x: x, yFromTop: y, windowHeight: textWC.window!.frame.height))
     }
 
     // MARK: PreferenceWindow

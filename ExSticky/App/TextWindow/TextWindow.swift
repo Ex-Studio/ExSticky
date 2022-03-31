@@ -5,6 +5,7 @@ class TextWindow: NSWindow {
     // MARK: - Window
 
     convenience init() {
+        XCLog(.trace)
         let styleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable]
         self.init(
             contentRect: .zero,
@@ -37,7 +38,10 @@ class TextWindow: NSWindow {
     }
 
     override func close() {
+        XCLog(.trace)
+        
         super.close()
+        
         let string = view.textView.string
         if string != "" {
             let c = UserData.history.count
