@@ -24,9 +24,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func CreateNewWindow() {
         XCLog(.trace)
-        
+
         let textWC = TextWC()
         textWC.window!.makeKeyAndOrderFront(self)
+        textWC.window!.makeMain()
 
         window_serial += 1
         let serial: Int = (window_serial - 1) % C.UI_WINDOW_CYCLE
@@ -42,6 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var didOpenPreferenceWindow = false
     @IBAction func Click_Menu_Preferences(_: Any) {
         preferenceWC.window!.makeKeyAndOrderFront(self)
+        preferenceWC.window!.makeMain()
         if didOpenPreferenceWindow == false {
             preferenceWC.window!.center() // only center preference window when first open it
             didOpenPreferenceWindow = true
