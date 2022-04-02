@@ -6,10 +6,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Application
 
     func applicationDidFinishLaunching(_: Notification) {
-        CreateNewWindow()
         SetupMenu_Window_New()
         SetupMenu_History()
         SetupMenu_Help()
+        CreateNewWindow()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {

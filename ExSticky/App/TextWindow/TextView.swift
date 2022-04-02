@@ -11,13 +11,15 @@ class TextView: NSView {
 
     // MARK: - Subviews
 
-    var textView: NSTextView!
+    public var textView: NSTextView!
+    private var scrollView: NSScrollView!
     private func AddTextView(color: TextWindowColor) {
-        let scrollView = NSTextView.scrollableTextView()
+        scrollView = NSTextView.scrollableTextView()
         textView = scrollView.documentView as? NSTextView
 
         textView.drawsBackground = false // transparent
         textView.isRichText = false
+        
         if UserData.times == 0 {
             textView.string = String(localized: "HELP_INFO")
         } else if UserData.times % C.SUPPORT_INFO_FREQUENCY == 0 {

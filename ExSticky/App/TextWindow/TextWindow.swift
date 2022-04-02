@@ -39,9 +39,7 @@ class TextWindow: NSWindow {
 
     override func close() {
         XCLog(.trace)
-        
-        super.close()
-        
+
         let string = view.textView.string
         if string != "" {
             let c = UserData.history.count
@@ -54,6 +52,8 @@ class TextWindow: NSWindow {
                 UserData.history.append(ExStickyHistoryItem(string))
             }
         }
+
+        super.close()
     }
 
     private func ConfigureWindow(color: TextWindowColor) {

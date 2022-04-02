@@ -5,11 +5,11 @@ import XCLog
 var UserSettings = ExStickySettings.shared
 
 struct ExStickySettings {
-    static var shared = ExStickySettings()
+    public static var shared = ExStickySettings()
 
-    var text = Text()
-    var appearence = Appearence()
-    var behavior = Behavior()
+    public var text = Text()
+    public var appearence = Appearence()
+    public var behavior = Behavior()
 
     // MARK: - Text
 

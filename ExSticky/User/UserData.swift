@@ -3,7 +3,6 @@ import XCLog
 
 var UserData = ExStickyData.shared
 
-
 struct ExStickyData {
     static var shared = ExStickyData()
 
@@ -41,4 +40,3 @@ struct ExStickyData {
         }
     }
 }
-
