@@ -36,10 +36,10 @@ copyright: Copyright &copy; 2022 杨希杰 # 左下角的版权声明
 nav:
   - index.md
   - installation.md
-  - open-source.md
-  - report.md
-  - privacy.md
   - help.md
+  - report.md
+  - open-source.md
+  - privacy.md
 
 # [Extensions]
 plugins:
