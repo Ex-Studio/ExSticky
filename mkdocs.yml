@@ -1,0 +1,59 @@
+# [Info]
+site_name: Ex便签 / ExSticky # 左上角标题
+site_url: https://ex-studio.github.io/ExSticky/
+site_author: 杨希杰
+site_description: ExSticky
+
+# [UI]
+## [top]
+theme:
+  name: material
+  palette: 
+    - scheme: default # 日间模式
+      primary: indigo # 上方的
+      accent: orange # 链接等可交互元件的高亮色
+      toggle:
+        icon: material/weather-night # 图标
+        name: 切换至夜间模式 # 鼠标悬浮提示
+    - scheme: slate # 夜间模式
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: 切换至日间模式
+  features:
+    - navigation.top # 返回顶部的按钮 在上滑时出现
+    - navigation.expand # 打开Tab时左侧目录全部展开
+  language: zh # 一些提示性的文字会变成中文
+edit_uri: edit/main/docs # 编辑按钮跳转的链接
+## [top-right corner]
+repo_url: https://github.com/Ex-Studio/ExSticky # 右上角点击跳转的链接
+repo_name: ExSticky # 右上角的名字
+## [bottom-left corner]
+copyright: Copyright &copy; 2022 杨希杰 # 左下角的版权声明
+
+# [Navigation]
+nav:
+  - index.md
+  - installation.md
+  - open-source.md
+  - report.md
+  - privacy.md
+  - help.md
+
+# [Extensions]
+plugins:
+  - search # 现在还不支持中文搜索 支持之后可以设置语言
+  - tags
+markdown_extensions:
+  - attr_list # 给图片后面添加{width="300"}设置大小
+  - toc:
+      permalink: true # 固定标题位置为当前位置
+  - pymdownx.highlight: # 代码块高亮
+      # linenums: true # 显示行号
+      # auto_title: true # 显示编程语言名称
+  - pymdownx.superfences # 代码块高亮插件
+  - meta # 支持Markdown文件上方自定义标题标签等
+extra_css:
+  - mkdocs/css/no-footer.css # 不使用底部的翻页
+  - mkdocs/css/unordered-list-symbols.css # multiplt unordered list symbols

@@ -1,15 +1,19 @@
-# ExSticky
+# Ex便签 / ExSticky
 
-ExSticky is a macOS utility app to give you handy and pretty stickies.
+Ex便签是macOS平台的一款实用工具 帮助你创建美观的便签
 
-[screenshots](https://github.com/Ex-Studio/ExSticky/discussions/3)
+[截图](https://ex-studio.github.io/ExSticky/index)
 
-## Installation
+[安装](https://ex-studio.github.io/ExSticky/installation)
 
-Go to the [release page](https://github.com/Ex-Studio/ExSticky/releases) and download the latest `.zip` file. Unzip and get the `.app` file. To install ExSticky, drag the `.app` file to your `Applications` folder.
+了解更多信息请访问 [Ex便签-主页](https://ex-studio.github.io/ExSticky/).
 
 ---
 
-This is the code repository of ExSticky. 
+ExSticky is a macOS utility app to give you handy and pretty stickies.
 
-For more information, please check [ExSticky-Site](https://ex-studio.github.io/ExSticky-Site/).
+[screenshots](https://ex-studio.github.io/ExSticky/index)
+
+[installation](https://ex-studio.github.io/ExSticky/installation)
+
+For more information, please check [ExSticky-Site](https://ex-studio.github.io/ExSticky/).
