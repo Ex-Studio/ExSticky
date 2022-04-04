@@ -6,8 +6,8 @@
 
 `ExSticky` is a utility app on macOS. You can use `ExSticky` to create multiple handy stickies on your desktop. `ExSticky` provides several preferences that you can configure in your favor.
 
-![](./images/single-window.png)
+![](./images/single-window.png){width="600"}
 
-![](./images/multi-window.png)
+![](./images/multi-window.png){width="600"}
 
-![](./images/preferences.png)
+![](./images/preferences.png){width="600"}

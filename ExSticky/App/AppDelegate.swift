@@ -123,6 +123,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         Menu_Help.addItem(Menu_Help_Report)
 
+        // Support
+        let Menu_Help_Support = NSMenuItem(
+            title: String(localized: "Support"),
+            action: #selector(ClickMenu_Help_Support(_:)),
+            keyEquivalent: ""
+        )
+        Menu_Help.addItem(Menu_Help_Support)
+
         // Open Source
         let Menu_Help_OpenSource = NSMenuItem(
             title: String(localized: "GitHub Repository"),
@@ -152,6 +160,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc
     private func ClickMenu_Help_OpenSource(_: NSMenuItem) {
         let url = URL(string: "https://ex-studio.github.io/ExSticky/open-source/")!
+        NSWorkspace.shared.open(url)
+    }
+
+    @objc
+    private func ClickMenu_Help_Support(_: NSMenuItem) {
+        let url = URL(string: "https://ex-studio.github.io/ExSticky/support/")!
         NSWorkspace.shared.open(url)
     }
 }
