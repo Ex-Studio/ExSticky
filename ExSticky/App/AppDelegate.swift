@@ -52,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: - Menu
 
-    // menu: ExSticky Edit Window History Help
+    // MARK: Window > New
 
     private func SetupMenu_Window_New() {
         let Menu_Window = NSApp.mainMenu!.item(withTitle: "Window")
@@ -69,6 +69,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func ClickMenu_Window_New(_: Any) {
         CreateNewWindow()
     }
+
+    // MARK: History
 
     private func SetupMenu_History() {
         // create menu
@@ -98,10 +100,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserData.history = []
     }
 
+    // MARK: Help
+
     private func SetupMenu_Help() {
         // create menu
         let Menu_Help = NSMenu(title: C.MENU_TITLE_HELP)
 
+        // Help
         let Menu_Help_Help = NSMenuItem(
             title: String(localized: "Check Help"),
             action: #selector(ClickMenu_Help_Help(_:)),
@@ -110,12 +115,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Menu_Help_Help.keyEquivalentModifierMask = .command
         Menu_Help.addItem(Menu_Help_Help)
 
+        // Report
         let Menu_Help_Report = NSMenuItem(
             title: String(localized: "Report an Issue"),
             action: #selector(ClickMenu_Help_Report(_:)),
             keyEquivalent: ""
         )
         Menu_Help.addItem(Menu_Help_Report)
+
+        // Open Source
+        let Menu_Help_OpenSource = NSMenuItem(
+            title: String(localized: "GitHub Repository"),
+            action: #selector(ClickMenu_Help_OpenSource(_:)),
+            keyEquivalent: ""
+        )
+        Menu_Help.addItem(Menu_Help_OpenSource)
 
         // add menu to menu bar
         let mainMenu_Help = NSMenuItem(title: C.MENU_TITLE_HELP, action: nil, keyEquivalent: "")
@@ -125,13 +139,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc
     private func ClickMenu_Help_Help(_: NSMenuItem) {
-        let url = URL(string: "https://ex-studio.github.io/ExSticky-Site/help/")!
+        let url = URL(string: "https://ex-studio.github.io/ExSticky/help")!
         NSWorkspace.shared.open(url)
     }
 
     @objc
     private func ClickMenu_Help_Report(_: NSMenuItem) {
-        let url = URL(string: "https://ex-studio.github.io/ExSticky-Site/report/")!
+        let url = URL(string: "https://ex-studio.github.io/ExSticky/report/")!
+        NSWorkspace.shared.open(url)
+    }
+
+    @objc
+    private func ClickMenu_Help_OpenSource(_: NSMenuItem) {
+        let url = URL(string: "https://ex-studio.github.io/ExSticky/open-source/")!
         NSWorkspace.shared.open(url)
     }
 }
