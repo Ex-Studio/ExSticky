@@ -17,6 +17,7 @@
 		481F04E827F1E5E0005FB2A4 /* UInt32_String+hex_dec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F04E727F1E5E0005FB2A4 /* UInt32_String+hex_dec.swift */; };
 		48257E2727F5F31A008B8559 /* TextWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48257E2627F5F31A008B8559 /* TextWC.swift */; };
 		4825E4D6284B79990051D6D5 /* TextWindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825E4D5284B79990051D6D5 /* TextWindowDelegate.swift */; };
+		4825E4EB284BA12F0051D6D5 /* NSTextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825E4EA284BA12F0051D6D5 /* NSTextView+.swift */; };
 		482A999A27F05279004D16EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A999927F05279004D16EE /* AppDelegate.swift */; };
 		482A999C27F0527C004D16EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482A999B27F0527C004D16EE /* Assets.xcassets */; };
 		482A999F27F0527C004D16EE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482A999D27F0527C004D16EE /* MainMenu.xib */; };
@@ -44,6 +45,7 @@
 		481F04E727F1E5E0005FB2A4 /* UInt32_String+hex_dec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt32_String+hex_dec.swift"; sourceTree = "<group>"; };
 		48257E2627F5F31A008B8559 /* TextWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWC.swift; sourceTree = "<group>"; };
 		4825E4D5284B79990051D6D5 /* TextWindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWindowDelegate.swift; sourceTree = "<group>"; };
+		4825E4EA284BA12F0051D6D5 /* NSTextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+.swift"; sourceTree = "<group>"; };
 		482A999627F05279004D16EE /* ExSticky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExSticky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482A999927F05279004D16EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		482A999B27F0527C004D16EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				48CFAF4227F50B2D005C9D14 /* NSApp+CopyToSystemPasteboard.swift */,
 				4816AB2427F2D27B00C49316 /* NSPoint+init_yFromTop.swift */,
 				481F04E727F1E5E0005FB2A4 /* UInt32_String+hex_dec.swift */,
+				4825E4EA284BA12F0051D6D5 /* NSTextView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				482A99A727F052E8004D16EE /* TextWindow.swift in Sources */,
 				48164C7227F081E000145E13 /* UserSettings.swift in Sources */,
 				48698FCA27F226DA0006B3E4 /* Constants.swift in Sources */,
+				4825E4EB284BA12F0051D6D5 /* NSTextView+.swift in Sources */,
 				48CFAF4527F50BC0005C9D14 /* ExStickyHistory.swift in Sources */,
 				480C6C2927F0FAC200028C65 /* TextPreferenceVC.swift in Sources */,
 				482A99A927F052F6004D16EE /* TextView.swift in Sources */,
