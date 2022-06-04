@@ -4,6 +4,8 @@ import XCLog
 class TextWindow: NSWindow {
     // MARK: - Window
 
+    private var windowDelegate: TextWindowDelegate!
+
     convenience init() {
         XCLog(.trace)
         let styleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable]
@@ -13,6 +15,8 @@ class TextWindow: NSWindow {
             backing: .buffered,
             defer: true
         )
+        self.windowDelegate = TextWindowDelegate()
+        self.delegate = windowDelegate
 
         let color_theme = UserSettings.appearence.color_theme
         switch color_theme {
@@ -83,12 +87,12 @@ class TextWindow: NSWindow {
     // MARK: - Views
 
     /// main view
-    private var view: TextView!
+    public var view: TextView!
     private func AddMainView(color: NSColor) {
         view = TextView(color: color)
         self.contentView = view
     }
-    
+
     public func setColor(_ color: NSColor) {
         self.backgroundColor = color
         self.view.textView.selectedTextAttributes = [

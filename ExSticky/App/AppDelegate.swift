@@ -18,6 +18,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         true
     }
 
+    // app will enter background add loss focus
+    func applicationWillResignActive(_: Notification) {
+        XCLog(.trace)
+    }
+
     // MARK: - Windows
 
     // MARK: TextWindow
