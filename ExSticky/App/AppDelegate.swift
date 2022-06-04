@@ -7,7 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         SetupMenu_Edit_Debug()
-        SetupMenu_Edit_MoveDown()
+        SetupMenu_Edit_Move()
         SetupMenu_Window_Color()
         SetupMenu_Window_Opacity()
         SetupMenu_Window_New()
@@ -409,17 +409,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: - TextView
 
-    private func SetupMenu_Edit_MoveDown() {
-        let Menu_Edit_Move_Up = NSMenuItem(
-            title: String(localized: "Up"),
-            action: #selector(ClickMenu_Edit_MoveUp(_:)),
+    private func SetupMenu_Edit_Move() {
+        let Menu_Edit_Move_MoveLineUp = NSMenuItem(
+            title: String(localized: "Move Line Up"),
+            action: #selector(ClickMenu_Edit_Move_MoveLineUp(_:)),
             keyEquivalent: String(Character(UnicodeScalar(NSUpArrowFunctionKey)!))
         )
-        Menu_Edit_Move_Up.keyEquivalentModifierMask = [.option]
+        Menu_Edit_Move_MoveLineUp.keyEquivalentModifierMask = [.option]
+
+        let Menu_Edit_Move_MoveLineDown = NSMenuItem(
+            title: String(localized: "Move Line Down"),
+            action: #selector(ClickMenu_Edit_Move_MoveLineDown(_:)),
+            keyEquivalent: String(Character(UnicodeScalar(NSDownArrowFunctionKey)!))
+        )
+        Menu_Edit_Move_MoveLineDown.keyEquivalentModifierMask = [.option]
 
         let Menu_Edit_Move = NSMenuItem(title: C.MENU_TITLE_EDIT_MOVE, action: nil, keyEquivalent: "")
         let Menu_Edit_Move_Submenu = NSMenu()
-        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_Up, at: 0)
+        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_MoveLineDown, at: 0)
+        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_MoveLineUp, at: 0)
         Menu_Edit_Move.submenu = Menu_Edit_Move_Submenu
 
         let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
@@ -428,10 +436,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc
-    private func ClickMenu_Edit_MoveUp(_: Any) {
+    private func ClickMenu_Edit_Move_MoveLineUp(_: Any) {
         XCLog(.trace)
         guard let current_window = NSApp.keyWindow as? TextWindow else { return }
         current_window.view.textView.moveLineUp()
+    }
+
+    @objc
+    private func ClickMenu_Edit_Move_MoveLineDown(_: Any) {
+        XCLog(.trace)
+        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
+        current_window.view.textView.moveLineDown()
     }
 
     // MARK: - DEBUG
