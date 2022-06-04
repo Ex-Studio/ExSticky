@@ -82,10 +82,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             action: #selector(ClickMenu_Window_Color_Red(_:)),
             keyEquivalent: ""
         )
+        let Menu_Window_Color_Orange = NSMenuItem(
+            title: String(localized: "Orange"),
+            action: #selector(ClickMenu_Window_Color_Orange(_:)),
+            keyEquivalent: ""
+        )
+        let Menu_Window_Color_Yellow = NSMenuItem(
+            title: String(localized: "Yellow"),
+            action: #selector(ClickMenu_Window_Color_Yellow(_:)),
+            keyEquivalent: ""
+        )
+        let Menu_Window_Color_Green = NSMenuItem(
+            title: String(localized: "Green"),
+            action: #selector(ClickMenu_Window_Color_Green(_:)),
+            keyEquivalent: ""
+        )
+        let Menu_Window_Color_Blue = NSMenuItem(
+            title: String(localized: "Blue"),
+            action: #selector(ClickMenu_Window_Color_Blue(_:)),
+            keyEquivalent: ""
+        )
 
         let Menu_Window_Color = NSMenuItem(title: C.MENU_TITLE_WINDOW_COLOR, action: nil, keyEquivalent: "")
         let Menu_Window_Color_Submenu = NSMenu()
         Menu_Window_Color_Submenu.insertItem(Menu_Window_Color_Red, at: 0)
+        Menu_Window_Color_Submenu.insertItem(Menu_Window_Color_Orange, at: 0)
+        Menu_Window_Color_Submenu.insertItem(Menu_Window_Color_Yellow, at: 0)
+        Menu_Window_Color_Submenu.insertItem(Menu_Window_Color_Green, at: 0)
+        Menu_Window_Color_Submenu.insertItem(Menu_Window_Color_Blue, at: 0)
         Menu_Window_Color.submenu = Menu_Window_Color_Submenu
 
         Menu_Window!.submenu!.insertItem(Menu_Window_Color, at: 0)
@@ -94,6 +118,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc
     private func ClickMenu_Window_Color_Red(_: Any) {
         SetKeyWindowColor(.red)
+    }
+
+    @objc
+    private func ClickMenu_Window_Color_Orange(_: Any) {
+        SetKeyWindowColor(.orange)
+    }
+
+    @objc
+    private func ClickMenu_Window_Color_Yellow(_: Any) {
+        SetKeyWindowColor(.yellow)
+    }
+
+    @objc
+    private func ClickMenu_Window_Color_Green(_: Any) {
+        SetKeyWindowColor(.green)
+    }
+
+    @objc
+    private func ClickMenu_Window_Color_Blue(_: Any) {
+        SetKeyWindowColor(.blue)
     }
 
     private func SetKeyWindowColor(_ color: ExStickyPresetColor) {
