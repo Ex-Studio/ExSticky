@@ -86,4 +86,11 @@ class TextWindow: NSWindow {
         view = TextView(color: color)
         self.contentView = view
     }
+    
+    public func setColor(_ color: NSColor) {
+        self.backgroundColor = color
+        self.view.textView.selectedTextAttributes = [
+            NSAttributedString.Key.backgroundColor: color,
+        ]
+    }
 }
