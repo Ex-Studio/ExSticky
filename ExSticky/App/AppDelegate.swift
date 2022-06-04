@@ -6,6 +6,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Application
 
     func applicationDidFinishLaunching(_: Notification) {
+        SetupMenu_Edit_MoveDown()
         SetupMenu_Window_Color()
         SetupMenu_Window_Opacity()
         SetupMenu_Window_New()
@@ -403,5 +404,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserData.did_open_support = true
         let url = URL(string: "https://ex-studio.github.io/ExSticky/support/")!
         NSWorkspace.shared.open(url)
+    }
+
+    // MARK: - TextView
+
+    private func SetupMenu_Edit_MoveDown() {
+        let Menu_Edit_Move_Up = NSMenuItem(
+            title: String(localized: "Up"),
+            action: #selector(ClickMenu_Edit_MoveUp(_:)),
+            keyEquivalent: String(Character(UnicodeScalar(NSUpArrowFunctionKey)!))
+        )
+        Menu_Edit_Move_Up.keyEquivalentModifierMask = [.option]
+
+        let Menu_Edit_Move = NSMenuItem(title: C.MENU_TITLE_EDIT_MOVE, action: nil, keyEquivalent: "")
+        let Menu_Edit_Move_Submenu = NSMenu()
+        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_Up, at: 0)
+        Menu_Edit_Move.submenu = Menu_Edit_Move_Submenu
+
+        let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
+        Menu_Edit!.submenu!.insertItem(.separator(), at: 0)
+        Menu_Edit!.submenu!.insertItem(Menu_Edit_Move, at: 0)
+    }
+
+    @objc
+    private func ClickMenu_Edit_MoveUp(_: Any) {
+        XCLog(.trace)
+        // TODO
     }
 }

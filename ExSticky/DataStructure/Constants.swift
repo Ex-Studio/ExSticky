@@ -35,7 +35,10 @@ struct ExStickyConstants {
     static let MENU_TITLE_WINDOW_OPACITY_SUBMENU = "Opacity Submenu"
     static let MENU_TITLE_WINDOW_COLOR = "Set Color"
     static let MENU_TITLE_WINDOW_COLOR_SUBMENU = "Color Submenu"
-    
+    static let MENU_TITLE_EDIT = "Edit"
+    static let MENU_TITLE_EDIT_MOVE = "Move"
+    static let MENU_TITLE_EDIT_MOVE_SUBMENU = "Move Submenu"
+
     static let UI_FIRST_WINDOW_X = 20
     static let UI_FIRST_WINDOW_Y_FROM_TOP_LEFT = 40 // will be grate if not hide menu bar
     static let UI_WINDOW_HORIZONTAL_DISTANCE = 20
