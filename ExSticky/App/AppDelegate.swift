@@ -7,6 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         SetupMenu_Window_New()
+        SetupMenu_Window_Opacity()
         SetupMenu_History()
         SetupMenu_Help()
         CreateNewWindow()
@@ -68,6 +69,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc
     private func ClickMenu_Window_New(_: Any) {
         CreateNewWindow()
+    }
+
+    // MARK: Window > Opacity
+
+    private func SetupMenu_Window_Opacity() {
+        let Menu_Window = NSApp.mainMenu!.item(withTitle: "Window")
+        let Menu_Window_Opacity_5 = NSMenuItem(
+            title: String(localized: "0.5"),
+            action: #selector(ClickMenu_Window_Opacity_5(_:)),
+            keyEquivalent: "5"
+        )
+        Menu_Window_Opacity_5.keyEquivalentModifierMask = .command
+        Menu_Window!.submenu!.insertItem(Menu_Window_Opacity_5, at: 0)
+    }
+
+    @objc
+    private func ClickMenu_Window_Opacity_5(_: Any) {
+        XCLog(.trace)
+        guard let current_window = NSApp.keyWindow else { return }
+        guard let previous_color = current_window.backgroundColor else { return }
+        current_window.backgroundColor = NSColor(red: previous_color.redComponent,
+                                                 green: previous_color.greenComponent,
+                                                 blue: previous_color.blueComponent,
+                                                 alpha: 0.5)
     }
 
     // MARK: History
