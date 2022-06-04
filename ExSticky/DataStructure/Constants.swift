@@ -30,6 +30,10 @@ struct ExStickyConstants {
 
     static let MENU_TITLE_HISTORY = "History"
     static let MENU_TITLE_HELP = "Help"
+    static let MENU_TITLE_WINDOW = "Window"
+    static let MENU_TITLE_WINDOW_OPACITY = "Set Opacity"
+    static let MENU_TITLE_WINDOW_OPACITY_SUBMENU = "Opacity Submenu"
+    
 
     static let UI_FIRST_WINDOW_X = 20
     static let UI_FIRST_WINDOW_Y_FROM_TOP_LEFT = 40 // will be grate if not hide menu bar
