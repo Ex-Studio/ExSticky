@@ -6,14 +6,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Application
 
     func applicationDidFinishLaunching(_: Notification) {
-        SetupMenu_Edit_Debug()
-        SetupMenu_Edit_Move()
-        SetupMenu_Window_Color()
-        SetupMenu_Window_Opacity()
-        SetupMenu_Window_New()
-        SetupMenu_History()
-        SetupMenu_Help()
-        CreateNewWindow()
+        SetupMenu()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
@@ -60,6 +53,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // MARK: - Menu
+
+    // MARK: All
+
+    func SetupMenu() {
+        SetupMenu_Edit_Markdown()
+        SetupMenu_Edit_Move()
+        SetupMenu_Window_Color()
+        SetupMenu_Window_Opacity()
+        SetupMenu_Window_New()
+        SetupMenu_History()
+        SetupMenu_Help()
+        CreateNewWindow()
+    }
 
     // MARK: Window > New
 
@@ -479,25 +485,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         current_window.view.textView.outdentLine()
     }
 
-    // MARK: - DEBUG
+    // MARK: - Menu > Edit > Markdown
 
-    private func SetupMenu_Edit_Debug() {
-        let Menu_Edit_Move_Up = NSMenuItem(
-            title: String(localized: "Debug"),
-            action: #selector(ClickMenu_Edit_Debug(_:)),
-            keyEquivalent: "d"
+    private func SetupMenu_Edit_Markdown() {
+        let Menu_Edit_Markdown_ToggleUnorderedList = NSMenuItem(
+            title: String(localized: "Move Line Up"),
+            action: #selector(ClickMenu_Edit_Markdown_ToggleUnorderedList(_:)),
+            keyEquivalent: "u"
         )
-        Menu_Edit_Move_Up.keyEquivalentModifierMask = [.command]
+        Menu_Edit_Markdown_ToggleUnorderedList.keyEquivalentModifierMask = [.control]
+
+        let Menu_Edit_Markdown = NSMenuItem(title: C.MENU_TITLE_EDIT_MARKDOWN, action: nil, keyEquivalent: "")
+        let Menu_Edit_Markdown_Submenu = NSMenu()
+        Menu_Edit_Markdown_Submenu.insertItem(Menu_Edit_Markdown_ToggleUnorderedList, at: 0)
+        Menu_Edit_Markdown.submenu = Menu_Edit_Markdown_Submenu
 
         let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
-
-        Menu_Edit!.submenu!.insertItem(Menu_Edit_Move_Up, at: 0)
+        Menu_Edit!.submenu!.insertItem(Menu_Edit_Markdown, at: 0)
     }
 
     @objc
-    private func ClickMenu_Edit_Debug(_: Any) {
+    private func ClickMenu_Edit_Markdown_ToggleUnorderedList(_: Any) {
+        XCLog(.trace)
         guard let current_window = NSApp.keyWindow as? TextWindow else { return }
-        let previous_cusor_position = current_window.view!.textView.selectedRanges.first!.rangeValue.location
-        XCLog(.debug, "\(previous_cusor_position)")
+        current_window.view.textView.toggleUnorderedList()
     }
 }
