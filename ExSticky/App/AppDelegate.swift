@@ -165,6 +165,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc
     private func ClickMenu_Help_Support(_: NSMenuItem) {
+        UserData.did_open_support = true
         let url = URL(string: "https://ex-studio.github.io/ExSticky/support/")!
         NSWorkspace.shared.open(url)
     }

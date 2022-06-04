@@ -16,6 +16,17 @@ struct ExStickyData {
             UserDefaults.standard.integer(forKey: key_data_times) // default is 0
         }
     }
+    
+    private let key_did_open_support = "exsticky.data.times"
+    /// keep track of how many times the user opens a new window
+    var did_open_support: Bool {
+        set {
+            UserDefaults.standard.set(newValue, forKey: key_did_open_support)
+        }
+        get {
+            UserDefaults.standard.bool(forKey: key_did_open_support) // default is false
+        }
+    }
 
     private var key_data_history = "exsticky.data.history"
     /// user history array
@@ -39,4 +50,6 @@ struct ExStickyData {
             }
         }
     }
+    
+    
 }

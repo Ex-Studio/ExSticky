@@ -116,8 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				48164C6F27F081CA00145E13 /* App */,
-				48CFAF4627F510F5005C9D14 /* User */,
 				48A10A2227F2061000303EC8 /* DataStructure */,
+				48CFAF4627F510F5005C9D14 /* User */,
 				482A99AC27F05CA3004D16EE /* Extension */,
 				482A999B27F0527C004D16EE /* Assets.xcassets */,
 				482A999D27F0527C004D16EE /* MainMenu.xib */,
