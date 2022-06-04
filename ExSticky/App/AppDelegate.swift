@@ -424,8 +424,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         Menu_Edit_Move_MoveLineDown.keyEquivalentModifierMask = [.option]
 
+        let Menu_Edit_Move_IndentLine = NSMenuItem(
+            title: String(localized: "Indent Line"),
+            action: #selector(ClickMenu_Edit_Move_IndentLine(_:)),
+            keyEquivalent: "]"
+        )
+        Menu_Edit_Move_IndentLine.keyEquivalentModifierMask = [.control]
+
+        let Menu_Edit_Move_OutdentLine = NSMenuItem(
+            title: String(localized: "Outdent Line"),
+            action: #selector(ClickMenu_Edit_Move_OutdentLine(_:)),
+            keyEquivalent: "["
+        )
+        Menu_Edit_Move_OutdentLine.keyEquivalentModifierMask = [.control]
+
         let Menu_Edit_Move = NSMenuItem(title: C.MENU_TITLE_EDIT_MOVE, action: nil, keyEquivalent: "")
         let Menu_Edit_Move_Submenu = NSMenu()
+        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_OutdentLine, at: 0)
+        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_IndentLine, at: 0)
         Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_MoveLineDown, at: 0)
         Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_MoveLineUp, at: 0)
         Menu_Edit_Move.submenu = Menu_Edit_Move_Submenu
@@ -447,6 +463,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         XCLog(.trace)
         guard let current_window = NSApp.keyWindow as? TextWindow else { return }
         current_window.view.textView.moveLineDown()
+    }
+
+    @objc
+    private func ClickMenu_Edit_Move_IndentLine(_: Any) {
+        XCLog(.trace)
+        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
+        current_window.view.textView.indentLine()
+    }
+
+    @objc
+    private func ClickMenu_Edit_Move_OutdentLine(_: Any) {
+        XCLog(.trace)
+        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
+        current_window.view.textView.outdentLine()
     }
 
     // MARK: - DEBUG
