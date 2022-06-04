@@ -428,7 +428,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc
     private func ClickMenu_Edit_MoveUp(_: Any) {
+        // FIXME: should add support for undo
         XCLog(.trace)
-        // TODO
+        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
+        let previous_cusor_position = current_window.view!.textView.selectedRanges.first!.rangeValue.location
+        let previous_string = current_window.view.textView.string
+
+        var lines = previous_string.components(separatedBy: .newlines)
+
+        var current_line = 0
+        var line_end_position = 0
+        for i in 0 ..< lines.count {
+            line_end_position += lines[i].count + 1 // add \n
+            if previous_cusor_position < line_end_position {
+                current_line = i
+                break
+            }
+        }
+
+        if current_line < lines.count, current_line > 0 { // not consider first line
+            XCLog(.debug, "previous \(previous_cusor_position) new \(previous_cusor_position - lines[current_line - 1].count)")
+            // exchange line
+            let temp_line = lines[current_line]
+            lines[current_line] = lines[current_line - 1]
+            lines[current_line - 1] = temp_line
+            current_window.view.textView.string = lines.joined(separator: "\n")
+
+            // reset position of cusor
+            current_window.view!.textView.setSelectedRange(NSRange(location: previous_cusor_position - lines[current_line - 1].count, length: 0))
+        }
     }
 }
