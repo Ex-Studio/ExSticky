@@ -3,7 +3,7 @@ import Cocoa
 class TextView: NSView {
     // MARK: - View
 
-    convenience init(color: TextWindowColor) {
+    convenience init(color: NSColor) {
         self.init(frame: .zero) // will extent to the size of parent window
 
         AddTextView(color: color)
@@ -13,16 +13,16 @@ class TextView: NSView {
 
     public var textView: NSTextView!
     private var scrollView: NSScrollView!
-    private func AddTextView(color: TextWindowColor) {
+    private func AddTextView(color: NSColor) {
         scrollView = NSTextView.scrollableTextView()
         textView = scrollView.documentView as? NSTextView
 
         textView.drawsBackground = false // transparent
         textView.isRichText = false
-        
+
         if UserData.times == 0 {
             textView.string = String(localized: "HELP_INFO")
-        } else if UserData.times % C.SUPPORT_INFO_FREQUENCY == 0 && UserData.did_open_support == false {
+        } else if UserData.times % C.SUPPORT_INFO_FREQUENCY == 0, UserData.did_open_support == false {
             textView.string = String(localized: "You have created \(UserData.times) stickies with ExSticky.\n") + String(localized: "Would you want to buy a cup of coffee for the developer?\n") + String(localized: "Help > Support\n\n")
             // TODO: 购买之后就没有这个机制了
         } else {
@@ -40,8 +40,10 @@ class TextView: NSView {
 
         textView.selectedTextAttributes = [
             NSAttributedString.Key.backgroundColor:
-                NSColor(hex: color.hex,
-                        alpha: color.alpha),
+                NSColor(red: color.redComponent,
+                        green: color.greenComponent,
+                        blue: color.blueComponent,
+                        alpha: color.alphaComponent),
         ]
 
         self.addSubview(scrollView)

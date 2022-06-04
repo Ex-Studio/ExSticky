@@ -25,13 +25,13 @@ class TextWindow: NSWindow {
             }
 
             let alpha = UserSettings.appearence.alpha
-            let window_color = TextWindowColor(hex: color, alpha: alpha)
+            let window_color = NSColor(hex: color, alpha: alpha)
             ConfigureWindow(color: window_color)
             AddMainView(color: window_color)
         case .random:
             let color = ExStickyPresetColor.allCases.randomElement()!.rawValue
             let alpha = UserSettings.appearence.alpha
-            let window_color = TextWindowColor(hex: color, alpha: alpha)
+            let window_color = NSColor(hex: color, alpha: alpha)
             ConfigureWindow(color: window_color)
             AddMainView(color: window_color)
         }
@@ -56,15 +56,17 @@ class TextWindow: NSWindow {
         super.close()
     }
 
-    private func ConfigureWindow(color: TextWindowColor) {
+    private func ConfigureWindow(color: NSColor) {
         self.setContentSize(CGSize(
             width: CGFloat(UserSettings.appearence.width),
             height: CGFloat(UserSettings.appearence.height)
         )) // default window size
 
         self.titlebarAppearsTransparent = true
-        self.backgroundColor = NSColor(hex: color.hex,
-                                       alpha: color.alpha) // default color
+        self.backgroundColor = NSColor(red: color.redComponent,
+                                       green: color.greenComponent,
+                                       blue: color.blueComponent,
+                                       alpha: color.alphaComponent) // default color
 
         if UserSettings.behavior.float == true {
             self.level = .floating
@@ -82,7 +84,7 @@ class TextWindow: NSWindow {
 
     /// main view
     private var view: TextView!
-    private func AddMainView(color: TextWindowColor) {
+    private func AddMainView(color: NSColor) {
         view = TextView(color: color)
         self.contentView = view
     }
