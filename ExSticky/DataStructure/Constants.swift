@@ -36,7 +36,7 @@ struct ExStickyConstants {
 
     static let MENU_TITLE_EDIT = "Edit"
     static let MENU_TITLE_EDIT_MOVE = "Move"
-    static let MENU_TITLE_EDIT_MARKDOWN = "Move"
+    static let MENU_TITLE_EDIT_MARKDOWN = "Markdown"
 
     static let UI_FIRST_WINDOW_X = 20
     static let UI_FIRST_WINDOW_Y_FROM_TOP_LEFT = 40 // will be grate if not hide menu bar

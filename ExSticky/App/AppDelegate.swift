@@ -7,6 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         SetupMenu()
+        CreateNewWindow()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
@@ -57,17 +58,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: All
 
     func SetupMenu() {
-        SetupMenu_Edit_Markdown()
         SetupMenu_Edit_Move()
+        SetupMenu_Edit_Markdown()
+        let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
+        Menu_Edit!.submenu!.insertItem(.separator(), at: 2)
+
         SetupMenu_Window_Color()
         SetupMenu_Window_Opacity()
         SetupMenu_Window_New()
+
         SetupMenu_History()
+
         SetupMenu_Help()
-        CreateNewWindow()
     }
 
-    // MARK: Window > New
+    // MARK: Menu > Window > New
 
     private func SetupMenu_Window_New() {
         let Menu_Window = NSApp.mainMenu!.item(withTitle: "Window")
@@ -85,7 +90,205 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         CreateNewWindow()
     }
 
-    // MARK: Window > Color
+    // MARK: Menu > History
+
+    private func SetupMenu_History() {
+        // create menu
+        let Menu_History = NSMenu(title: C.MENU_TITLE_HISTORY)
+
+        let Menu_History_ClearAll = NSMenuItem(
+            title: String(localized: "Clear All"),
+            action: #selector(ClickMenu_History_ClearAll(_:)),
+            keyEquivalent: ""
+        )
+        Menu_History.addItem(Menu_History_ClearAll)
+        let HistoryMenu_Separator = NSMenuItem.separator()
+        Menu_History.addItem(HistoryMenu_Separator)
+
+        // add menu to menu bar
+        let mainMenu_History = NSMenuItem(title: C.MENU_TITLE_HISTORY, action: nil, keyEquivalent: "")
+        mainMenu_History.submenu = Menu_History
+        mainMenu_History.submenu!.autoenablesItems = false // important: if set to true, you cannot set the `isEnable` property on all items
+        NSApp.mainMenu!.insertItem(mainMenu_History, at: 3)
+
+        // load history before
+        SetupHistoryMenuItems(history: UserData.history)
+    }
+
+    @objc
+    private func ClickMenu_History_ClearAll(_: NSMenuItem) {
+        UserData.history = []
+    }
+
+    // MARK: Menu > Help
+
+    private func SetupMenu_Help() {
+        // create menu
+        let Menu_Help = NSMenu(title: C.MENU_TITLE_HELP)
+
+        // Help
+        let Menu_Help_Help = NSMenuItem(
+            title: String(localized: "Check Help"),
+            action: #selector(ClickMenu_Help_Help(_:)),
+            keyEquivalent: "?"
+        )
+        Menu_Help_Help.keyEquivalentModifierMask = .command
+        Menu_Help.addItem(Menu_Help_Help)
+
+        // Report
+        let Menu_Help_Report = NSMenuItem(
+            title: String(localized: "Report an Issue"),
+            action: #selector(ClickMenu_Help_Report(_:)),
+            keyEquivalent: ""
+        )
+        Menu_Help.addItem(Menu_Help_Report)
+
+        // Support
+        let Menu_Help_Support = NSMenuItem(
+            title: String(localized: "Support"),
+            action: #selector(ClickMenu_Help_Support(_:)),
+            keyEquivalent: ""
+        )
+        Menu_Help.addItem(Menu_Help_Support)
+
+        // Open Source
+        let Menu_Help_OpenSource = NSMenuItem(
+            title: String(localized: "GitHub Repository"),
+            action: #selector(ClickMenu_Help_OpenSource(_:)),
+            keyEquivalent: ""
+        )
+        Menu_Help.addItem(Menu_Help_OpenSource)
+
+        // add menu to menu bar
+        let mainMenu_Help = NSMenuItem(title: C.MENU_TITLE_HELP, action: nil, keyEquivalent: "")
+        mainMenu_Help.submenu = Menu_Help
+        NSApp.mainMenu!.insertItem(mainMenu_Help, at: 4)
+    }
+
+    @objc
+    private func ClickMenu_Help_Help(_: NSMenuItem) {
+        let url = URL(string: "https://ex-studio.github.io/ExSticky/help")!
+        NSWorkspace.shared.open(url)
+    }
+
+    @objc
+    private func ClickMenu_Help_Report(_: NSMenuItem) {
+        let url = URL(string: "https://ex-studio.github.io/ExSticky/report/")!
+        NSWorkspace.shared.open(url)
+    }
+
+    @objc
+    private func ClickMenu_Help_OpenSource(_: NSMenuItem) {
+        let url = URL(string: "https://ex-studio.github.io/ExSticky/open-source/")!
+        NSWorkspace.shared.open(url)
+    }
+
+    @objc
+    private func ClickMenu_Help_Support(_: NSMenuItem) {
+        UserData.did_open_support = true
+        let url = URL(string: "https://ex-studio.github.io/ExSticky/support/")!
+        NSWorkspace.shared.open(url)
+    }
+
+    // MARK: Menu > Edit > Move
+
+    private func SetupMenu_Edit_Move() {
+        let Menu_Edit_Move_MoveLineUp = NSMenuItem(
+            title: String(localized: "Move Line Up"),
+            action: #selector(ClickMenu_Edit_Move_MoveLineUp(_:)),
+            keyEquivalent: String(Character(UnicodeScalar(NSUpArrowFunctionKey)!))
+        )
+        Menu_Edit_Move_MoveLineUp.keyEquivalentModifierMask = [.option]
+
+        let Menu_Edit_Move_MoveLineDown = NSMenuItem(
+            title: String(localized: "Move Line Down"),
+            action: #selector(ClickMenu_Edit_Move_MoveLineDown(_:)),
+            keyEquivalent: String(Character(UnicodeScalar(NSDownArrowFunctionKey)!))
+        )
+        Menu_Edit_Move_MoveLineDown.keyEquivalentModifierMask = [.option]
+
+        let Menu_Edit_Move_IndentLine = NSMenuItem(
+            title: String(localized: "Indent Line"),
+            action: #selector(ClickMenu_Edit_Move_IndentLine(_:)),
+            keyEquivalent: "]"
+        )
+        Menu_Edit_Move_IndentLine.keyEquivalentModifierMask = [.control]
+
+        let Menu_Edit_Move_OutdentLine = NSMenuItem(
+            title: String(localized: "Outdent Line"),
+            action: #selector(ClickMenu_Edit_Move_OutdentLine(_:)),
+            keyEquivalent: "["
+        )
+        Menu_Edit_Move_OutdentLine.keyEquivalentModifierMask = [.control]
+
+        let Menu_Edit_Move = NSMenuItem(title: C.MENU_TITLE_EDIT_MOVE, action: nil, keyEquivalent: "")
+        let Menu_Edit_Move_Submenu = NSMenu()
+        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_OutdentLine, at: 0)
+        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_IndentLine, at: 0)
+        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_MoveLineDown, at: 0)
+        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_MoveLineUp, at: 0)
+        Menu_Edit_Move.submenu = Menu_Edit_Move_Submenu
+
+        let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
+
+        Menu_Edit!.submenu!.insertItem(Menu_Edit_Move, at: 0)
+    }
+
+    @objc
+    private func ClickMenu_Edit_Move_MoveLineUp(_: Any) {
+        XCLog(.trace)
+        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
+        current_window.view.textView.moveLineUp()
+    }
+
+    @objc
+    private func ClickMenu_Edit_Move_MoveLineDown(_: Any) {
+        XCLog(.trace)
+        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
+        current_window.view.textView.moveLineDown()
+    }
+
+    @objc
+    private func ClickMenu_Edit_Move_IndentLine(_: Any) {
+        XCLog(.trace)
+        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
+        current_window.view.textView.indentLine()
+    }
+
+    @objc
+    private func ClickMenu_Edit_Move_OutdentLine(_: Any) {
+        XCLog(.trace)
+        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
+        current_window.view.textView.outdentLine()
+    }
+
+    // MARK: Menu > Edit > Markdown
+
+    private func SetupMenu_Edit_Markdown() {
+        let Menu_Edit_Markdown_ToggleUnorderedList = NSMenuItem(
+            title: String(localized: "Move Line Up"),
+            action: #selector(ClickMenu_Edit_Markdown_ToggleUnorderedList(_:)),
+            keyEquivalent: "u"
+        )
+        Menu_Edit_Markdown_ToggleUnorderedList.keyEquivalentModifierMask = [.control]
+
+        let Menu_Edit_Markdown = NSMenuItem(title: C.MENU_TITLE_EDIT_MARKDOWN, action: nil, keyEquivalent: "")
+        let Menu_Edit_Markdown_Submenu = NSMenu()
+        Menu_Edit_Markdown_Submenu.insertItem(Menu_Edit_Markdown_ToggleUnorderedList, at: 0)
+        Menu_Edit_Markdown.submenu = Menu_Edit_Markdown_Submenu
+
+        let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
+        Menu_Edit!.submenu!.insertItem(Menu_Edit_Markdown, at: 0)
+    }
+
+    @objc
+    private func ClickMenu_Edit_Markdown_ToggleUnorderedList(_: Any) {
+        XCLog(.trace)
+        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
+        current_window.view.textView.toggleUnorderedList()
+    }
+
+    // MARK: Menu > Window > Set Color
 
     private func SetupMenu_Window_Color() {
         let Menu_Window = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_WINDOW)
@@ -159,7 +362,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         current_window.setColor(NSColor(hex: color.rawValue, alpha: Float(previous_color.alphaComponent)))
     }
 
-    // MARK: Window > Opacity
+    // MARK: Menu > Window > Set Opacity
 
     private func SetupMenu_Window_Opacity() {
         let Menu_Window = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_WINDOW)
@@ -311,203 +514,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                         green: previous_color.greenComponent,
                                         blue: previous_color.blueComponent,
                                         alpha: CGFloat(opacity)))
-    }
-
-    // MARK: History
-
-    private func SetupMenu_History() {
-        // create menu
-        let Menu_History = NSMenu(title: C.MENU_TITLE_HISTORY)
-
-        let Menu_History_ClearAll = NSMenuItem(
-            title: String(localized: "Clear All"),
-            action: #selector(ClickMenu_History_ClearAll(_:)),
-            keyEquivalent: ""
-        )
-        Menu_History.addItem(Menu_History_ClearAll)
-        let HistoryMenu_Separator = NSMenuItem.separator()
-        Menu_History.addItem(HistoryMenu_Separator)
-
-        // add menu to menu bar
-        let mainMenu_History = NSMenuItem(title: C.MENU_TITLE_HISTORY, action: nil, keyEquivalent: "")
-        mainMenu_History.submenu = Menu_History
-        mainMenu_History.submenu!.autoenablesItems = false // important: if set to true, you cannot set the `isEnable` property on all items
-        NSApp.mainMenu!.insertItem(mainMenu_History, at: 3)
-
-        // load history before
-        SetupHistoryMenuItems(history: UserData.history)
-    }
-
-    @objc
-    private func ClickMenu_History_ClearAll(_: NSMenuItem) {
-        UserData.history = []
-    }
-
-    // MARK: Help
-
-    private func SetupMenu_Help() {
-        // create menu
-        let Menu_Help = NSMenu(title: C.MENU_TITLE_HELP)
-
-        // Help
-        let Menu_Help_Help = NSMenuItem(
-            title: String(localized: "Check Help"),
-            action: #selector(ClickMenu_Help_Help(_:)),
-            keyEquivalent: "?"
-        )
-        Menu_Help_Help.keyEquivalentModifierMask = .command
-        Menu_Help.addItem(Menu_Help_Help)
-
-        // Report
-        let Menu_Help_Report = NSMenuItem(
-            title: String(localized: "Report an Issue"),
-            action: #selector(ClickMenu_Help_Report(_:)),
-            keyEquivalent: ""
-        )
-        Menu_Help.addItem(Menu_Help_Report)
-
-        // Support
-        let Menu_Help_Support = NSMenuItem(
-            title: String(localized: "Support"),
-            action: #selector(ClickMenu_Help_Support(_:)),
-            keyEquivalent: ""
-        )
-        Menu_Help.addItem(Menu_Help_Support)
-
-        // Open Source
-        let Menu_Help_OpenSource = NSMenuItem(
-            title: String(localized: "GitHub Repository"),
-            action: #selector(ClickMenu_Help_OpenSource(_:)),
-            keyEquivalent: ""
-        )
-        Menu_Help.addItem(Menu_Help_OpenSource)
-
-        // add menu to menu bar
-        let mainMenu_Help = NSMenuItem(title: C.MENU_TITLE_HELP, action: nil, keyEquivalent: "")
-        mainMenu_Help.submenu = Menu_Help
-        NSApp.mainMenu!.insertItem(mainMenu_Help, at: 4)
-    }
-
-    @objc
-    private func ClickMenu_Help_Help(_: NSMenuItem) {
-        let url = URL(string: "https://ex-studio.github.io/ExSticky/help")!
-        NSWorkspace.shared.open(url)
-    }
-
-    @objc
-    private func ClickMenu_Help_Report(_: NSMenuItem) {
-        let url = URL(string: "https://ex-studio.github.io/ExSticky/report/")!
-        NSWorkspace.shared.open(url)
-    }
-
-    @objc
-    private func ClickMenu_Help_OpenSource(_: NSMenuItem) {
-        let url = URL(string: "https://ex-studio.github.io/ExSticky/open-source/")!
-        NSWorkspace.shared.open(url)
-    }
-
-    @objc
-    private func ClickMenu_Help_Support(_: NSMenuItem) {
-        UserData.did_open_support = true
-        let url = URL(string: "https://ex-studio.github.io/ExSticky/support/")!
-        NSWorkspace.shared.open(url)
-    }
-
-    // MARK: - TextView
-
-    private func SetupMenu_Edit_Move() {
-        let Menu_Edit_Move_MoveLineUp = NSMenuItem(
-            title: String(localized: "Move Line Up"),
-            action: #selector(ClickMenu_Edit_Move_MoveLineUp(_:)),
-            keyEquivalent: String(Character(UnicodeScalar(NSUpArrowFunctionKey)!))
-        )
-        Menu_Edit_Move_MoveLineUp.keyEquivalentModifierMask = [.option]
-
-        let Menu_Edit_Move_MoveLineDown = NSMenuItem(
-            title: String(localized: "Move Line Down"),
-            action: #selector(ClickMenu_Edit_Move_MoveLineDown(_:)),
-            keyEquivalent: String(Character(UnicodeScalar(NSDownArrowFunctionKey)!))
-        )
-        Menu_Edit_Move_MoveLineDown.keyEquivalentModifierMask = [.option]
-
-        let Menu_Edit_Move_IndentLine = NSMenuItem(
-            title: String(localized: "Indent Line"),
-            action: #selector(ClickMenu_Edit_Move_IndentLine(_:)),
-            keyEquivalent: "]"
-        )
-        Menu_Edit_Move_IndentLine.keyEquivalentModifierMask = [.control]
-
-        let Menu_Edit_Move_OutdentLine = NSMenuItem(
-            title: String(localized: "Outdent Line"),
-            action: #selector(ClickMenu_Edit_Move_OutdentLine(_:)),
-            keyEquivalent: "["
-        )
-        Menu_Edit_Move_OutdentLine.keyEquivalentModifierMask = [.control]
-
-        let Menu_Edit_Move = NSMenuItem(title: C.MENU_TITLE_EDIT_MOVE, action: nil, keyEquivalent: "")
-        let Menu_Edit_Move_Submenu = NSMenu()
-        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_OutdentLine, at: 0)
-        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_IndentLine, at: 0)
-        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_MoveLineDown, at: 0)
-        Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_MoveLineUp, at: 0)
-        Menu_Edit_Move.submenu = Menu_Edit_Move_Submenu
-
-        let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
-        Menu_Edit!.submenu!.insertItem(.separator(), at: 0)
-        Menu_Edit!.submenu!.insertItem(Menu_Edit_Move, at: 0)
-    }
-
-    @objc
-    private func ClickMenu_Edit_Move_MoveLineUp(_: Any) {
-        XCLog(.trace)
-        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
-        current_window.view.textView.moveLineUp()
-    }
-
-    @objc
-    private func ClickMenu_Edit_Move_MoveLineDown(_: Any) {
-        XCLog(.trace)
-        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
-        current_window.view.textView.moveLineDown()
-    }
-
-    @objc
-    private func ClickMenu_Edit_Move_IndentLine(_: Any) {
-        XCLog(.trace)
-        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
-        current_window.view.textView.indentLine()
-    }
-
-    @objc
-    private func ClickMenu_Edit_Move_OutdentLine(_: Any) {
-        XCLog(.trace)
-        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
-        current_window.view.textView.outdentLine()
-    }
-
-    // MARK: - Menu > Edit > Markdown
-
-    private func SetupMenu_Edit_Markdown() {
-        let Menu_Edit_Markdown_ToggleUnorderedList = NSMenuItem(
-            title: String(localized: "Move Line Up"),
-            action: #selector(ClickMenu_Edit_Markdown_ToggleUnorderedList(_:)),
-            keyEquivalent: "u"
-        )
-        Menu_Edit_Markdown_ToggleUnorderedList.keyEquivalentModifierMask = [.control]
-
-        let Menu_Edit_Markdown = NSMenuItem(title: C.MENU_TITLE_EDIT_MARKDOWN, action: nil, keyEquivalent: "")
-        let Menu_Edit_Markdown_Submenu = NSMenu()
-        Menu_Edit_Markdown_Submenu.insertItem(Menu_Edit_Markdown_ToggleUnorderedList, at: 0)
-        Menu_Edit_Markdown.submenu = Menu_Edit_Markdown_Submenu
-
-        let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
-        Menu_Edit!.submenu!.insertItem(Menu_Edit_Markdown, at: 0)
-    }
-
-    @objc
-    private func ClickMenu_Edit_Markdown_ToggleUnorderedList(_: Any) {
-        XCLog(.trace)
-        guard let current_window = NSApp.keyWindow as? TextWindow else { return }
-        current_window.view.textView.toggleUnorderedList()
     }
 }
