@@ -6,6 +6,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Application
 
     func applicationDidFinishLaunching(_: Notification) {
+        SetupMenu_Window_Color()
         SetupMenu_Window_Opacity()
         SetupMenu_Window_New()
         SetupMenu_History()
@@ -69,6 +70,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc
     private func ClickMenu_Window_New(_: Any) {
         CreateNewWindow()
+    }
+
+    // MARK: Window > Color
+
+    private func SetupMenu_Window_Color() {
+        let Menu_Window = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_WINDOW)
+
+        let Menu_Window_Color_Red = NSMenuItem(
+            title: String(localized: "Red"),
+            action: #selector(ClickMenu_Window_Color_Red(_:)),
+            keyEquivalent: ""
+        )
+
+        let Menu_Window_Color = NSMenuItem(title: C.MENU_TITLE_WINDOW_OPACITY, action: nil, keyEquivalent: "")
+        let Menu_Window_Color_Submenu = NSMenu()
+        Menu_Window_Color_Submenu.insertItem(Menu_Window_Color_Red, at: 0)
+        Menu_Window_Color.submenu = Menu_Window_Color_Submenu
+
+        Menu_Window!.submenu!.insertItem(Menu_Window_Color, at: 0)
+    }
+
+    @objc
+    private func ClickMenu_Window_Color_Red(_: Any) {
+        SetKeyWindowColor(.red)
+    }
+
+    private func SetKeyWindowColor(_ color: ExStickyPresetColor) {
+        guard let current_window = NSApp.keyWindow else { return }
+        guard let previous_color = current_window.backgroundColor else { return }
+        current_window.backgroundColor = NSColor(hex: color.rawValue, alpha: Float(CGFloat(previous_color.alphaComponent)))
     }
 
     // MARK: Window > Opacity
@@ -223,6 +254,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                                  green: previous_color.greenComponent,
                                                  blue: previous_color.blueComponent,
                                                  alpha: CGFloat(opacity))
+//        FIXME: add text background's alpha
     }
 
     // MARK: History
