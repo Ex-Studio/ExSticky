@@ -28,14 +28,11 @@ struct ExStickyConstants {
     /// 每新建多少个窗口出现一次买咖啡的消息
     static let SUPPORT_INFO_FREQUENCY = 100
 
-    static let MENU_TITLE_ADJUST = "Adjust"
-    static let MENU_TITLE_HISTORY = "History"
-    static let MENU_TITLE_HELP = "Help"
-    static let MENU_TITLE_WINDOW = "Window"
+    static let MENU_TITLE_ADJUST = String(localized: "Adjust")
+    static let MENU_TITLE_HISTORY = String(localized: "History")
+    static let MENU_TITLE_HELP = String(localized: "Help")
 
-    static let MENU_TITLE_EDIT = "Edit"
-    static let MENU_TITLE_EDIT_MOVE = "Move"
-    static let MENU_TITLE_EDIT_MARKDOWN = "Markdown"
+    static let MENU_TITLE_ADJUST_MOVE = String(localized: "Move")
 
     static let UI_FIRST_WINDOW_X = 20
     static let UI_FIRST_WINDOW_Y_FROM_TOP_LEFT = 40 // will be grate if not hide menu bar

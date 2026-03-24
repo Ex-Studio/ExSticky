@@ -239,7 +239,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         Menu_Edit_Move_OutdentLine.keyEquivalentModifierMask = [.control]
 
-        let Menu_Edit_Move = NSMenuItem(title: C.MENU_TITLE_EDIT_MOVE, action: nil, keyEquivalent: "")
+        let Menu_Edit_Move = NSMenuItem(title: C.MENU_TITLE_ADJUST_MOVE, action: nil, keyEquivalent: "")
         let Menu_Edit_Move_Submenu = NSMenu()
         Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_OutdentLine, at: 0)
         Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_IndentLine, at: 0)
@@ -281,23 +281,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // MARK: Menu > Edit > Markdown
-
-    private func SetupMenu_Edit_Markdown() {
-        let Menu_Edit_Markdown_ToggleUnorderedList = NSMenuItem(
-            title: String(localized: "Move Line Up"),
-            action: #selector(ClickMenu_Edit_Markdown_ToggleUnorderedList(_:)),
-            keyEquivalent: "u"
-        )
-        Menu_Edit_Markdown_ToggleUnorderedList.keyEquivalentModifierMask = [.control]
-
-        let Menu_Edit_Markdown = NSMenuItem(title: C.MENU_TITLE_EDIT_MARKDOWN, action: nil, keyEquivalent: "")
-        let Menu_Edit_Markdown_Submenu = NSMenu()
-        Menu_Edit_Markdown_Submenu.insertItem(Menu_Edit_Markdown_ToggleUnorderedList, at: 0)
-        Menu_Edit_Markdown.submenu = Menu_Edit_Markdown_Submenu
-
-        let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
-        Menu_Edit!.submenu!.insertItem(Menu_Edit_Markdown, at: 0)
-    }
 
     @objc
     private func ClickMenu_Edit_Markdown_ToggleUnorderedList(_: Any) {
@@ -454,7 +437,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         Menu_Window_Opacity_0.keyEquivalentModifierMask = .command
 
-        let Menu_Window_Opacity = NSMenuItem(title: String(localized: "Set Opacity") , action: nil, keyEquivalent: "")
+        let Menu_Window_Opacity = NSMenuItem(title: String(localized: "Set Opacity"), action: nil, keyEquivalent: "")
         let Menu_Window_Opacity_Submenu = NSMenu()
         Menu_Window_Opacity_Submenu.insertItem(Menu_Window_Opacity_0, at: 0)
         Menu_Window_Opacity_Submenu.insertItem(Menu_Window_Opacity_9, at: 0)
