@@ -32,8 +32,6 @@ struct ExStickyConstants {
     static let MENU_TITLE_HISTORY = "History"
     static let MENU_TITLE_HELP = "Help"
     static let MENU_TITLE_WINDOW = "Window"
-    static let MENU_TITLE_WINDOW_OPACITY = "Set Opacity"
-    static let MENU_TITLE_WINDOW_COLOR = "Set Color"
 
     static let MENU_TITLE_EDIT = "Edit"
     static let MENU_TITLE_EDIT_MOVE = "Move"

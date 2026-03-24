@@ -60,7 +60,7 @@
 		488D64E927F338B4003578EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		488D64EC27F338B4003578EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		48A10A2027F205FB00303EC8 /* ExStickyEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExStickyEnums.swift; sourceTree = "<group>"; };
-		48CFAF4127F50291005C9D14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		48CFAF4127F50291005C9D14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.plist; };
 		48CFAF4227F50B2D005C9D14 /* NSApp+CopyToSystemPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApp+CopyToSystemPasteboard.swift"; sourceTree = "<group>"; };
 		48CFAF4427F50BC0005C9D14 /* ExStickyHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExStickyHistory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -369,6 +369,7 @@
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -428,6 +429,7 @@
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;

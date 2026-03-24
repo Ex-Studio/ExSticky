@@ -82,7 +82,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func SetupMenu_Adjust_New() {
         let Menu_Window = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_ADJUST)
         let Menu_Window_New = NSMenuItem(
-            title: String(localized: "New"),
+            title: String(localized: "New Window"),
             action: #selector(ClickMenu_Window_New(_:)),
             keyEquivalent: "n"
         )
@@ -337,7 +337,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             keyEquivalent: ""
         )
 
-        let Menu_Window_Color = NSMenuItem(title: C.MENU_TITLE_WINDOW_COLOR, action: nil, keyEquivalent: "")
+        let Menu_Window_Color = NSMenuItem(title: String(localized: "Set Color"), action: nil, keyEquivalent: "")
         let Menu_Window_Color_Submenu = NSMenu()
         Menu_Window_Color_Submenu.insertItem(Menu_Window_Color_Red, at: 0)
         Menu_Window_Color_Submenu.insertItem(Menu_Window_Color_Orange, at: 0)
@@ -454,7 +454,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         Menu_Window_Opacity_0.keyEquivalentModifierMask = .command
 
-        let Menu_Window_Opacity = NSMenuItem(title: C.MENU_TITLE_WINDOW_OPACITY, action: nil, keyEquivalent: "")
+        let Menu_Window_Opacity = NSMenuItem(title: String(localized: "Set Opacity") , action: nil, keyEquivalent: "")
         let Menu_Window_Opacity_Submenu = NSMenu()
         Menu_Window_Opacity_Submenu.insertItem(Menu_Window_Opacity_0, at: 0)
         Menu_Window_Opacity_Submenu.insertItem(Menu_Window_Opacity_9, at: 0)
