@@ -1,0 +1,324 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@ %lld %@ %lld %@ %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$lld %3$@ %4$lld %5$@ %6$lld"
+          }
+        }
+      }
+    },
+    "%@ %lldx%lld  %@ %lldx%lld  %@ %lldx%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$lldx%3$lld  %4$@ %5$lldx%6$lld  %7$@ %8$lldx%9$lld"
+          }
+        }
+      }
+    },
+    "0.1" : {
+
+    },
+    "0.2" : {
+
+    },
+    "0.3" : {
+
+    },
+    "0.4" : {
+
+    },
+    "0.5" : {
+
+    },
+    "0.6" : {
+
+    },
+    "0.7" : {
+
+    },
+    "0.8" : {
+
+    },
+    "0.9" : {
+
+    },
+    "1.0" : {
+
+    },
+    "Alert" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "警告"
+          }
+        }
+      }
+    },
+    "Appear on All Desktops" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在所有桌面显示"
+          }
+        }
+      }
+    },
+    "Appearance" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "外观"
+          }
+        }
+      }
+    },
+    "Behavior" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "行为"
+          }
+        }
+      }
+    },
+    "Blue" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蓝色"
+          }
+        }
+      }
+    },
+    "cannot convert" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法转换"
+          }
+        }
+      }
+    },
+    "Changes will take effect on new windows." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改会对新窗口生效。"
+          }
+        }
+      }
+    },
+    "Check Help" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查看帮助"
+          }
+        }
+      }
+    },
+    "Clear All" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除所有"
+          }
+        }
+      }
+    },
+    "Color" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "颜色"
+          }
+        }
+      }
+    },
+    "Customization" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定义"
+          }
+        }
+      }
+    },
+    "default" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认"
+          }
+        }
+      }
+    },
+    "Default display format of text.\nYou can also change the format of your contents in menu bar." : {
+
+    },
+    "default SFMono-Regular\nCheck Font Book in your Mac to get the postscript name of a specific font." : {
+
+    },
+    "Floating" : {
+
+    },
+    "Font" : {
+
+    },
+    "GitHub Repository" : {
+
+    },
+    "Green" : {
+
+    },
+    "Height" : {
+
+    },
+    "Help > Support\n\n" : {
+
+    },
+    "HELP_INFO" : {
+
+    },
+    "Indent Line" : {
+
+    },
+    "Input the hex of your faviorite color. eg. 0x66CCFF" : {
+
+    },
+    "max" : {
+
+    },
+    "min" : {
+
+    },
+    "min %@ max %@ default %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "min %1$@ max %2$@ default %3$@"
+          }
+        }
+      }
+    },
+    "Move Line Down" : {
+
+    },
+    "Move Line Up" : {
+
+    },
+    "New Window" : {
+
+    },
+    "OK" : {
+
+    },
+    "Opacity" : {
+
+    },
+    "Orange" : {
+
+    },
+    "Outdent Line" : {
+
+    },
+    "please input correct float" : {
+
+    },
+    "please input correct font name" : {
+
+    },
+    "please input correct font size" : {
+
+    },
+    "please input correct integer" : {
+
+    },
+    "Preferences" : {
+
+    },
+    "Preset" : {
+
+    },
+    "random" : {
+
+    },
+    "Red" : {
+
+    },
+    "Report an Issue" : {
+
+    },
+    "Set Color" : {
+
+    },
+    "Set Opacity" : {
+
+    },
+    "Should windows appear on all desktops." : {
+
+    },
+    "Should windows float on the top." : {
+
+    },
+    "single" : {
+
+    },
+    "Size" : {
+
+    },
+    "Support" : {
+
+    },
+    "Text" : {
+
+    },
+    "Text Format" : {
+
+    },
+    "Theme" : {
+
+    },
+    "Use customized color" : {
+
+    },
+    "Width" : {
+
+    },
+    "Window Behavior" : {
+
+    },
+    "Window Size" : {
+
+    },
+    "Would you want to buy a cup of coffee for the developer?\n" : {
+
+    },
+    "Yellow" : {
+
+    },
+    "You have created %lld stickies with ExSticky.\n" : {
+
+    }
+  },
+  "version" : "1.1"
+}

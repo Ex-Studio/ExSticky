@@ -41,7 +41,8 @@ struct AppearancePreferenceView: View {
                         }
                     }
                     TextField(String(localized: "Height"),
-                              text: $windowHeight_String) {
+                              text: $windowHeight_String)
+                    {
                         if let receivedValue = Float(windowHeight_String), receivedValue >= C.TEXT_WINDOW_HEIGHT_MIN {
                             UserSettings.appearence.height = receivedValue
                         } else {
@@ -61,11 +62,13 @@ struct AppearancePreferenceView: View {
                     Text(String(localized: "Color"))
                         .font(.system(.title))
 
-                    TextField(String(localized: "Alpha"),
-                              text: $alpha_String) {
+                    TextField(String(localized: "Opacity"),
+                              text: $alpha_String)
+                    {
                         if let receivedValue = Float(alpha_String),
                            receivedValue >= C.COLOR_ALPHA_MIN,
-                           receivedValue <= C.COLOR_ALPHA_MAX {
+                           receivedValue <= C.COLOR_ALPHA_MAX
+                        {
                             UserSettings.appearence.alpha = receivedValue
                         } else {
                             alertMessage = String(localized: "please input correct float")
