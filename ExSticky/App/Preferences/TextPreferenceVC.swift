@@ -55,7 +55,7 @@ struct TextPreferenceView: View {
                             XCLog(.error, "wrong font name")
                         }
                     }
-                    Text(String(localized: "default SFMono-Regular\nCheck Font Book in your Mac to get the postscript name of a specific font."))
+                    Text(String(localized: "default SFPro-Regular\nCheck Font Book in your Mac to get the postscript name of a specific font."))
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
                 }
