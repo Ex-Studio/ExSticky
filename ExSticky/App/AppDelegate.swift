@@ -58,16 +58,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: All
 
     func SetupMenu() {
-        SetupMenu_Edit_Move()
-        SetupMenu_Edit_Markdown()
-        let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
-        Menu_Edit!.submenu!.insertItem(.separator(), at: 2)
-
-        SetupMenu_Window_Color()
-        SetupMenu_Window_Opacity()
-        SetupMenu_Window_New()
+        // avoid changing system default menus
 
         SetupMenu_Adjust()
+        let Menu_Adjust = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_ADJUST)
+
+        SetupMenu_Adjust_Move()
+        Menu_Adjust!.submenu!.insertItem(.separator(), at: 0)
+
+        SetupMenu_Adjust_Color()
+        SetupMenu_Adjust_Opacity()
+        Menu_Adjust!.submenu!.insertItem(.separator(), at: 0)
+
+        SetupMenu_Adjust_New()
 
         SetupMenu_History()
 
@@ -76,8 +79,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: Menu > Window > New
 
-    private func SetupMenu_Window_New() {
-        let Menu_Window = NSApp.mainMenu!.item(withTitle: "Window")
+    private func SetupMenu_Adjust_New() {
+        let Menu_Window = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_ADJUST)
         let Menu_Window_New = NSMenuItem(
             title: String(localized: "New"),
             action: #selector(ClickMenu_Window_New(_:)),
@@ -96,20 +99,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func SetupMenu_Adjust() {
         // create menu
-        let Menu_History = NSMenu(title: C.MENU_TITLE_ADJUST)
-
-        let Menu_History_ClearAll = NSMenuItem(
-            title: String(localized: "Clear All"),
-            action: #selector(ClickMenu_History_ClearAll(_:)),
-            keyEquivalent: ""
-        )
-        Menu_History.addItem(Menu_History_ClearAll)
-        let HistoryMenu_Separator = NSMenuItem.separator()
-        Menu_History.addItem(HistoryMenu_Separator)
+        let Menu_Adjust = NSMenu(title: C.MENU_TITLE_ADJUST)
 
         // add menu to menu bar
         let mainMenu_History = NSMenuItem(title: C.MENU_TITLE_ADJUST, action: nil, keyEquivalent: "")
-        mainMenu_History.submenu = Menu_History
+        mainMenu_History.submenu = Menu_Adjust
         mainMenu_History.submenu!.autoenablesItems = false // important: if set to true, you cannot set the `isEnable` property on all items
         NSApp.mainMenu!.insertItem(mainMenu_History, at: 3)
     }
@@ -214,9 +208,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSWorkspace.shared.open(url)
     }
 
-    // MARK: Menu > Edit > Move
+    // MARK: Menu > Adjust > Move
 
-    private func SetupMenu_Edit_Move() {
+    private func SetupMenu_Adjust_Move() {
         let Menu_Edit_Move_MoveLineUp = NSMenuItem(
             title: String(localized: "Move Line Up"),
             action: #selector(ClickMenu_Edit_Move_MoveLineUp(_:)),
@@ -253,7 +247,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Menu_Edit_Move_Submenu.insertItem(Menu_Edit_Move_MoveLineUp, at: 0)
         Menu_Edit_Move.submenu = Menu_Edit_Move_Submenu
 
-        let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_EDIT)
+        let Menu_Edit = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_ADJUST)
 
         Menu_Edit!.submenu!.insertItem(Menu_Edit_Move, at: 0)
     }
@@ -314,8 +308,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: Menu > Window > Set Color
 
-    private func SetupMenu_Window_Color() {
-        let Menu_Window = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_WINDOW)
+    private func SetupMenu_Adjust_Color() {
+        let Menu_Window = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_ADJUST)
 
         let Menu_Window_Color_Red = NSMenuItem(
             title: String(localized: "Red"),
@@ -388,8 +382,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: Menu > Window > Set Opacity
 
-    private func SetupMenu_Window_Opacity() {
-        let Menu_Window = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_WINDOW)
+    private func SetupMenu_Adjust_Opacity() {
+        let Menu_Window = NSApp.mainMenu!.item(withTitle: C.MENU_TITLE_ADJUST)
 
         let Menu_Window_Opacity_1 = NSMenuItem(
             title: String(localized: "0.1"),
