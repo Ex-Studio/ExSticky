@@ -28,6 +28,7 @@ struct ExStickyConstants {
     /// 每新建多少个窗口出现一次买咖啡的消息
     static let SUPPORT_INFO_FREQUENCY = 100
 
+    static let MENU_TITLE_ADJUST = "Adjust"
     static let MENU_TITLE_HISTORY = "History"
     static let MENU_TITLE_HELP = "Help"
     static let MENU_TITLE_WINDOW = "Window"

@@ -67,6 +67,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         SetupMenu_Window_Opacity()
         SetupMenu_Window_New()
 
+        SetupMenu_Adjust()
+
         SetupMenu_History()
 
         SetupMenu_Help()
@@ -90,6 +92,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         CreateNewWindow()
     }
 
+    // MARK: Menu > Adjust
+
+    private func SetupMenu_Adjust() {
+        // create menu
+        let Menu_History = NSMenu(title: C.MENU_TITLE_ADJUST)
+
+        let Menu_History_ClearAll = NSMenuItem(
+            title: String(localized: "Clear All"),
+            action: #selector(ClickMenu_History_ClearAll(_:)),
+            keyEquivalent: ""
+        )
+        Menu_History.addItem(Menu_History_ClearAll)
+        let HistoryMenu_Separator = NSMenuItem.separator()
+        Menu_History.addItem(HistoryMenu_Separator)
+
+        // add menu to menu bar
+        let mainMenu_History = NSMenuItem(title: C.MENU_TITLE_ADJUST, action: nil, keyEquivalent: "")
+        mainMenu_History.submenu = Menu_History
+        mainMenu_History.submenu!.autoenablesItems = false // important: if set to true, you cannot set the `isEnable` property on all items
+        NSApp.mainMenu!.insertItem(mainMenu_History, at: 3)
+    }
+
     // MARK: Menu > History
 
     private func SetupMenu_History() {
@@ -109,7 +133,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let mainMenu_History = NSMenuItem(title: C.MENU_TITLE_HISTORY, action: nil, keyEquivalent: "")
         mainMenu_History.submenu = Menu_History
         mainMenu_History.submenu!.autoenablesItems = false // important: if set to true, you cannot set the `isEnable` property on all items
-        NSApp.mainMenu!.insertItem(mainMenu_History, at: 3)
+        NSApp.mainMenu!.insertItem(mainMenu_History, at: 4)
 
         // load history before
         SetupHistoryMenuItems(history: UserData.history)
@@ -162,7 +186,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // add menu to menu bar
         let mainMenu_Help = NSMenuItem(title: C.MENU_TITLE_HELP, action: nil, keyEquivalent: "")
         mainMenu_Help.submenu = Menu_Help
-        NSApp.mainMenu!.insertItem(mainMenu_Help, at: 4)
+        NSApp.mainMenu!.insertItem(mainMenu_Help, at: 5)
     }
 
     @objc
