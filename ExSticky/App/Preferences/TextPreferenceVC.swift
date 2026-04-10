@@ -31,7 +31,8 @@ struct TextPreferenceView: View {
                     TextField(String(localized: "Size"), text: $textSize_string) {
                         if let receivedValue = Int(textSize_string),
                            receivedValue >= C.TEXT_SIZE_MIN,
-                           receivedValue <= C.TEXT_SIZE_MAX {
+                           receivedValue <= C.TEXT_SIZE_MAX
+                        {
                             UserSettings.text.size = receivedValue
                         } else {
                             XCLog(.error)
@@ -55,7 +56,7 @@ struct TextPreferenceView: View {
                             XCLog(.error, "wrong font name")
                         }
                     }
-                    Text(String(localized: "default SFPro-Regular\nCheck Font Book in your Mac to get the postscript name of a specific font."))
+                    Text(String(localized: "default Helvetica\nCheck Font Book in your Mac to get the PostScript Name of a specific font."))
                         .foregroundColor(Color.gray)
                         .font(.system(.callout))
                 }

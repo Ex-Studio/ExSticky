@@ -10,7 +10,7 @@ struct ExStickyConstants {
     static let TEXT_SIZE_MAX = 72
     static let TEXT_SIZE_DEFAULT = 24
 
-    static let TEXT_FONT_DEFAULT = "SFPro-Regular"
+    static let TEXT_FONT_DEFAULT = "Helvetica"
 
     static let COLOR_CUSTOMIZED_DEFAULT = UInt32(0x66CCFF)
 

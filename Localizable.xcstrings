@@ -191,12 +191,23 @@
         }
       }
     },
-    "default SFPro-Regular\nCheck Font Book in your Mac to get the postscript name of a specific font." : {
+    "default Helvetica\nCheck Font Book in your Mac to get the PostScript Name of a specific font." : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "默认 SF Pro - 常规体。\n你可以在 Mac 的字体库中查找字体的名称。"
+            "value" : "默认 Helvetica。\n如果要替换字体，你可以在 Mac 的字体册中查找字体在信息面板标志符中显式的 PostScript 名称。"
+          }
+        }
+      }
+    },
+    "default SFPro-Regular\nCheck Font Book in your Mac to get the postscript name of a specific font." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认 Helvetica。\n如果要替换字体，你可以在 Mac 的字体册中查找字体在信息面板标志符中显式的 PostScript 名称。"
           }
         }
       }
