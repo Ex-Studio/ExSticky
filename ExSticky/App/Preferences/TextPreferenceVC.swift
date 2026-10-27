@@ -11,6 +11,7 @@ class TextPreferenceVC: NSHostingController<TextPreferenceView> {
 struct TextPreferenceView: View {
     @State var textSize_string = "\(UserSettings.text.size)"
     @State var textFont_string = "\(UserSettings.text.font)"
+    @State private var selectionTextColor = UserSettings.text.selectionTextColor
 
     @State var alertMessage = ""
     @State var presentAlert = false
@@ -61,13 +62,42 @@ struct TextPreferenceView: View {
                         .font(.system(.callout))
                 }
             }
-            Divider()
-
-            Text(String(localized: "Changes will take effect on new windows."))
+            Text(String(localized: "Font changes will take effect on new windows."))
                 .foregroundColor(Color.gray)
                 .font(.system(.callout))
+
+            Divider()
+                .padding(.vertical, 8)
+
+            VStack(alignment: .leading, spacing: 10) {
+                Text(String(localized: "Selected text color"))
+                    .font(.headline)
+                Picker(String(localized: "Selected text color"), selection: $selectionTextColor) {
+                    ForEach(ExStickySelectionTextColor.allCases) { mode in
+                        Text(mode.localizedName).tag(mode)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .labelsHidden()
+                .onChange(of: selectionTextColor) { mode in
+                    UserSettings.text.selectionTextColor = mode
+                    for case let window as TextWindow in NSApp.windows {
+                        window.view.updateSelectionAppearance(isActive: window.isKeyWindow)
+                    }
+                }
+
+                HStack(spacing: 8) {
+                    ForEach(ExStickyPresetColor.allCases) { preset in
+                        selectionPreview(preset)
+                    }
+                }
+                Text(String(localized: "Color preview for opaque notes."))
+                    .foregroundColor(.secondary)
+                    .font(.callout)
+            }
         }
         .padding()
+        .frame(minWidth: 440)
         .alert(
             String(localized: "Alert"), isPresented: $presentAlert, presenting: alertMessage
         ) { _ in
@@ -75,5 +105,25 @@ struct TextPreferenceView: View {
         } message: { message in
             Text(message)
         }
+    }
+
+    private func selectionPreview(_ preset: ExStickyPresetColor) -> some View {
+        let noteColor = NSColor(hex: preset.rawValue, alpha: 1)
+        let palette = ExStickySelectionPalette(noteColor: noteColor, mode: selectionTextColor)
+        return VStack(spacing: 8) {
+            Text(preset.localizedName)
+                .font(.caption)
+                .foregroundColor(.black)
+            Text(String(localized: "Selected"))
+                .font(.system(size: 13, weight: .medium))
+                .foregroundColor(Color(nsColor: palette.foreground))
+                .padding(.horizontal, 4)
+                .padding(.vertical, 2)
+                .background(Color(nsColor: palette.background))
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 12)
+        .background(Color(nsColor: noteColor))
+        .cornerRadius(6)
     }
 }

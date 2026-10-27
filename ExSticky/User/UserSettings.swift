@@ -14,6 +14,17 @@ struct ExStickySettings {
     // MARK: - Text
 
     struct Text {
+        private let key_selectionTextColor = "exsticky.text.selectionTextColor"
+        var selectionTextColor: ExStickySelectionTextColor {
+            get {
+                let value = UserDefaults.standard.string(forKey: key_selectionTextColor) ?? ""
+                return ExStickySelectionTextColor(rawValue: value) ?? .automatic
+            }
+            set {
+                UserDefaults.standard.set(newValue.rawValue, forKey: key_selectionTextColor)
+            }
+        }
+
         private let key_size = "exsticky.text.size"
         var size: Int {
             set {

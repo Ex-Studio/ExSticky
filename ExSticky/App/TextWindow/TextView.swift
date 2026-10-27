@@ -1,6 +1,63 @@
 import Cocoa
 
-class TextView: NSView {
+class TextView: NSView, NSTextViewDelegate {
+    private var noteColor = NSColor.white
+    private var selectionIsActive = true
+    private var temporarySelectionRanges: [NSRange] = []
+
+    func updateSelectionAppearance(noteColor: NSColor? = nil, isActive: Bool? = nil) {
+        if let noteColor = noteColor { self.noteColor = noteColor }
+        if let isActive = isActive { selectionIsActive = isActive }
+
+        let textRange = NSRange(location: 0, length: (textView.string as NSString).length)
+        for range in temporarySelectionRanges {
+            let validRange = NSIntersectionRange(range, textRange)
+            if validRange.length > 0 {
+                textView.layoutManager?.removeTemporaryAttribute(.foregroundColor, forCharacterRange: validRange)
+            }
+        }
+        temporarySelectionRanges.removeAll()
+
+        if selectionIsActive {
+            let palette = ExStickySelectionPalette(noteColor: self.noteColor, mode: UserSettings.text.selectionTextColor)
+            textView.selectedTextAttributes = [
+                .backgroundColor: palette.background,
+                .foregroundColor: palette.foreground,
+            ]
+        } else {
+            textView.selectedTextAttributes = [
+                .backgroundColor: NSColor.unemphasizedSelectedTextBackgroundColor,
+                .foregroundColor: NSColor.unemphasizedSelectedTextColor,
+            ]
+            // AppKit ignores selectedTextAttributes' foreground color when inactive.
+            // Temporary layout attributes never alter the stored text or its color.
+            for value in textView.selectedRanges {
+                let range = NSIntersectionRange(value.rangeValue, textRange)
+                if range.length > 0 {
+                    textView.layoutManager?.addTemporaryAttribute(
+                        .foregroundColor, value: NSColor.unemphasizedSelectedTextColor,
+                        forCharacterRange: range
+                    )
+                    temporarySelectionRanges.append(range)
+                }
+            }
+        }
+        textView.needsDisplay = true
+    }
+
+    func textViewDidChangeSelection(_ notification: Notification) {
+        updateSelectionAppearance()
+    }
+
+    func textDidChange(_ notification: Notification) {
+        updateSelectionAppearance()
+    }
+
+    override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        updateSelectionAppearance(isActive: window?.isKeyWindow ?? false)
+    }
+
     // MARK: - View
 
     convenience init(color: NSColor) {
@@ -16,6 +73,7 @@ class TextView: NSView {
     private func AddTextView(color: NSColor) {
         scrollView = NSTextView.scrollableTextView()
         textView = scrollView.documentView as? NSTextView
+        textView.delegate = self
 
         textView.drawsBackground = false // transparent
         textView.isRichText = false
@@ -38,13 +96,7 @@ class TextView: NSView {
         textView.usesFindPanel = true
         textView.allowsUndo = true
 
-        textView.selectedTextAttributes = [
-            NSAttributedString.Key.backgroundColor:
-                NSColor(red: color.redComponent,
-                        green: color.greenComponent,
-                        blue: color.blueComponent,
-                        alpha: color.alphaComponent),
-        ]
+        updateSelectionAppearance(noteColor: color)
 
         self.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
